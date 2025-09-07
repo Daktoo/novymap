@@ -4,9 +4,9 @@ hence it has code that is incomplable together due to licensing.
 
 so
 
-novymap-qvh code/logo (expect discord/a.php,nginx/,shared/neofetch.php) are under same license as the novymap 
+novymap-qvh code/logo (expect [discord/a.php](./discord/a.php),[nginx/](./nginx/),[shared/neofetch.php](./shared/neofetch.php) ) are under same license as the novymap 
 
-discord/a.php is under ISC license(licenses/ISC-qvh)
+[discord/a.php](./discord/a.php) is under ISC license( [licenses/ISC-qvh](./licenses/ISC-qvh) )
 
 (However the text in array $msg of websithandler is are under same license as the novymap)
 
@@ -16,26 +16,26 @@ discord/a.php is under ISC license(licenses/ISC-qvh)
 
 It contain [LiveAtlas](https://github.com/JLyne/LiveAtlas),icon from [dynmap](https://github.com/webbukkit/dynmap),also abit of novymap-qvh code,fbi meme,edited dynmap config
 
-LiveAtlas dynmap are under  Apache-2.0 license (/licenses/Apache-2.0)
+LiveAtlas dynmap are under  Apache-2.0 license ( [/licenses/Apache-2.0](./licenses/Apache-2.0) )
 
 so
 
-map/live-atlas/assets/fbi.png is the fbi meme and its license is unknown.
+[map/live-atlas/assets/fbi.png](./map/live-atlas/assets/fbi.png) is the fbi meme and its license is unknown.
 
-map/api/internal/novy.php,map/images/novymap-qvh.png and it is under same license as the novymap 
+[map/api/internal/novy.php](./map/api/internal/novy.php) and it is under same license as the novymap 
 
-icon (map/hack/_markers_) and reset of map/ (LiveAtlas,edited dynmap config) are  Apache-2.0 license(licenses/Apache-2.0)
-
-
-admin/,api/,home/ fellow the novymap license
+icon ( [map/hack/\_markers\_](./map/hack/\_markers\_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license(licenses/Apache-2.0)
 
 
-shared/FiraCode-Regular.woff2 is [FiraCode](https://github.com/tonsky/FiraCode) which under  OFL-1.1 license(licenses/OFL-1.1-Fira)
+[admin/](./admin),[api/](./api),[home/](./home) fellow the novymap license
 
-shared/neofetch.php is [neofetch2html](https://codeberg.org/exxxxkc/neofetch2html/) which under CC0(licenses/cc0)
+
+shared/FiraCode-Regular.woff2 is [FiraCode](https://github.com/tonsky/FiraCode) which under  OFL-1.1 license([licenses/OFL-1.1-Fira](./licenses/OFL-1.1-Fira))
+
+shared/neofetch.php is [neofetch2html](https://codeberg.org/exxxxkc/neofetch2html/) which under CC0([licenses/cc0](./licenses/cc0) )
 
 reset of shared/ fellow the novymap license
 
-nginx/ is under BSD licenses(licenses/BSD-qvh)
+nginx/ is under BSD licenses( [licenses/BSD-qvh](./licenses/BSD-qvh) )
 
 map/live-atlas/assets/fbi.png and many other image are under unknown licenses. 
