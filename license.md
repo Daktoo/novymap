@@ -14,7 +14,7 @@ novymap-qvh code/logo (expect [discord/a.php](./discord/a.php),[nginx/](./nginx/
 [map/](./map/) is odd
 
 
-It contain [LiveAtlas](https://github.com/JLyne/LiveAtlas),icon from [dynmap](https://github.com/webbukkit/dynmap),also abit of novymap-qvh code,fbi meme,edited dynmap config( [map/crqvhconfig.json}(./map/crqvhconfig.json),[map/qvhconfig.json](./map/qvhconfig.json) )
+It contain [LiveAtlas](https://github.com/JLyne/LiveAtlas),icon from [dynmap](https://github.com/webbukkit/dynmap),also abit of novymap-qvh code,fbi meme,edited dynmap config( [map/crqvhconfig.json](./map/crqvhconfig.json),[map/qvhconfig.json](./map/qvhconfig.json) )
 
 LiveAtlas dynmap are under  Apache-2.0 license ( [licenses/Apache-2.0](./licenses/Apache-2.0) )
 
