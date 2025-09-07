@@ -37,3 +37,5 @@ shared/neofetch.php is [neofetch2html](https://codeberg.org/exxxxkc/neofetch2htm
 reset of shared/ fellow the novymap license
 
 nginx/ is under BSD licenses(licenses/BSD-qvh)
+
+map/live-atlas/assets/fbi.png and many other image are under unknown licenses. 
