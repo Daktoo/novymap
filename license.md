@@ -4,9 +4,9 @@ hence it has code that is incomplable together due to licensing.
 
 so
 
-novymap-qvh code/logo (expect [discord/a.php](./discord/a.php),[nginx/](./nginx/),[shared/neofetch.php](./shared/neofetch.php) ) are under same license as the novymap 
+novymap-qvh code/logo (expect [discord/novydiscordbot.service](./discord/novydiscordbot.service),[discord/a.php](./discord/a.php),[nginx/](./nginx/),[shared/neofetch.php](./shared/neofetch.php) ) are under same license as the novymap 
 
-[discord/a.php](./discord/a.php) is under ISC license( [licenses/ISC-qvh](./licenses/ISC-qvh) )
+[discord/a.php](./discord/a.php),[discord/novydiscordbot.service](./discord/novydiscordbot.service) is under ISC license( [licenses/ISC-qvh](./licenses/ISC-qvh) )
 
 (However the text in array $msg of websithandler is are under same license as the novymap)
 

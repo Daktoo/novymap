@@ -91,6 +91,7 @@ function websithandler (Interaction $interaction) {
 		global $discord;
 		$sitearry=["https://map.novymap-qvh.top","https://api.novymap-qvh.top","https://www.novymap-qvh.top"];
 	$site=' '.$sitearry[array_rand($sitearry)].' ';
+//Ripped from novymap bot
 $msg=[
 
                 'The website is:'.$site,
