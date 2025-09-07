@@ -111,7 +111,7 @@ $msg=[
 
                 'I was just about to tell you...'.$site.'is the website!',
 
-                'Hey! Don’t forget to visit'.$site,
+                'Hey! Don\'t forget to visit'.$site,
 
                 'Did you know that'.$site. 'is a website?',
 
