@@ -27,7 +27,7 @@ so
 icon ( [map/hack/\_markers\_](./map/hack/_markers_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license( [licenses/Apache-2.0](./licenses/Apache-2.0) )
 
 
-[admin/](./admin),[api/](./api),[home/](./home) fellow the novymap license
+[admin/](./admin),[api/](./api),[home/](./home) are under same license as the novymap 
 
 
 [shared/FiraCode-Regular.woff2](./shared/FiraCode-Regular.woff2) is [FiraCode](https://github.com/tonsky/FiraCode) which under  OFL-1.1 license([licenses/OFL-1.1-Fira](./licenses/OFL-1.1-Fira))
