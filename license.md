@@ -1,41 +1,55 @@
-It contain code that mixed with different license or under unknown license.
+# Licenses
 
-hence it has code that is incomplable together due to licensing.
+## novymap-qvh code/logo (excluding discord/a.php,discord/novydiscordbot.service, nginx/, shared/neofetch.php)
+- **License**: Same as the novymap
 
-so
+## discord/
+### a.php,novydiscordbot.service
+- **License**: ISC
+- **File Path**: discord/a.php
+- **License Text**: [ISC License](./licenses/ISC-qvh)
+### b.php
+- **License**: Same as the novymap
+- **File Path**: discord/b.php
 
-novymap-qvh code/logo (expect [discord/novydiscordbot.service](./discord/novydiscordbot.service),[discord/a.php](./discord/a.php),[nginx/](./nginx/),[shared/neofetch.php](./shared/neofetch.php) ) are under same license as the novymap 
+## map/
+### LiveAtlas, icon from dynmap, edited dynmap config
+- **License**: Apache-2.0
+- **File Paths**: map/live-atlas/, map/hack/_markers_, map/ (excluding map/api/internal/novy.php and map/live-atlas/assets/fbi.png)
+- **License Text**: [Apache-2.0 License](./licenses/Apache-2.0)
 
-[discord/a.php](./discord/a.php),[discord/novydiscordbot.service](./discord/novydiscordbot.service) is under ISC license( [licenses/ISC-qvh](./licenses/ISC-qvh) )
+### map/api/internal/novy.php
+- **License**: Same as the novymap
+- **File Path**: map/api/internal/novy.php
 
-(However the text in array $msg of websithandler is are under same license as the novymap)
+### map/live-atlas/assets/fbi.png
+- **License**: Unknown
+- **File Path**: map/live-atlas/assets/fbi.png
 
+## admin/, api/, home/
+- **License**: Same as the novymap
+- **File Paths**: admin/, api/, home/
 
-[map/](./map/) is odd
+## shared/FiraCode-Regular.woff2
+- **License**: OFL-1.1
+- **File Path**: shared/FiraCode-Regular.woff2
+- **License Text**: [OFL-1.1 License](./licenses/OFL-1.1-Fira)
 
+## shared/neofetch.php
+- **License**: CC0
+- **File Path**: shared/neofetch.php
+- **License Text**: [CC0 License](./licenses/CC0)
 
-It contain [LiveAtlas](https://github.com/JLyne/LiveAtlas),icon from [dynmap](https://github.com/webbukkit/dynmap),also abit of novymap-qvh code,fbi meme,edited dynmap config( [map/crqvhconfig.json](./map/crqvhconfig.json),[map/qvhconfig.json](./map/qvhconfig.json) )
+## rest of shared/
+- **License**: Same as the novymap
+- **File Paths**: shared/ (excluding shared/FiraCode-Regular.woff2 and shared/neofetch.php)
 
-LiveAtlas dynmap are under  Apache-2.0 license ( [licenses/Apache-2.0](./licenses/Apache-2.0) )
+## nginx/
+- **License**: BSD
+- **File Paths**: nginx/
+- **License Text**: [BSD License](./licenses/BSD-qvh)
 
-so
+## map/live-atlas/assets/fbi.png and various images
+- **License**: Unknown
+- **File Paths**: map/live-atlas/assets/fbi.png and other images with unknown licenses
 
-[map/live-atlas/assets/fbi.png](./map/live-atlas/assets/fbi.png) is the fbi meme and its license is unknown.
-
-[map/api/internal/novy.php](./map/api/internal/novy.php) and it is under same license as the novymap 
-
-icon ( [map/hack/\_markers\_](./map/hack/_markers_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license( [licenses/Apache-2.0](./licenses/Apache-2.0) )
-
-
-[admin/](./admin),[api/](./api),[home/](./home) are under same license as the novymap 
-
-
-[shared/FiraCode-Regular.woff2](./shared/FiraCode-Regular.woff2) is [FiraCode](https://github.com/tonsky/FiraCode) which under  OFL-1.1 license([licenses/OFL-1.1-Fira](./licenses/OFL-1.1-Fira))
-
-[shared/neofetch.php](./shared/neofetch.php) is [neofetch2html](https://codeberg.org/exxxxkc/neofetch2html/) which under CC0( [licenses/cc0](./licenses/cc0) )
-
-reset of [shared/](./shared/) fellow the novymap license
-
-[nginx/](./nginx/) is under BSD licenses( [licenses/BSD-qvh](./licenses/BSD-qvh) )
-
-[map/live-atlas/assets/fbi.png](./map/live-atlas/assets/fbi.png) and many other image are under unknown licenses. 
