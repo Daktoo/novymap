@@ -37,7 +37,7 @@ function drawChart(view,index,id,name,data) {
         data: {
             labels: Object.keys(data),
             datasets: [{
-                label: name+'Distribution',
+                label: name+' Distribution',
                 data: Object.values(data),
                 backgroundColor: Object.keys(data).map(() => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')),
                 color: Object.keys(data).map(() => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')),
