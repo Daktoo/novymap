@@ -1,0 +1,55 @@
+        .stats-chart-container {
+    height: 400px;
+    position: relative;
+            width: 100%;
+	    display: flex;
+  justify-content: center;
+
+}
+
+.stats-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.tabar{
+	display: flex;
+  flex-direction: row;
+  margin-top: -2rem;
+  border-block-width: 0.1em;
+  border-block-end-color: var(--accent);
+  border-bottom-style: outset;
+  /* backward compairable for older browser */
+     overflow-x: overlay !important;
+    overflow-x: scroll;
+    scrollbar-gutter: stable;
+    overflow-y: clip;
+    }
+
+
+    .tabtu {
+	    margin-bottom: -0.5em;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border-top: none;
+    border-top-style: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+  border-top-style: solid;
+  border-top-width: 0.5em;
+  border-top-color: var(--card-bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+      background-color: rgba(0, 0, 0, 0);
+}
+    .tabtu[data-tabselected] {
+  border-top-color: var(--primary);
+    }
+
+    .tabar-smalltext {
+  font-size: 0.6rem;
+}

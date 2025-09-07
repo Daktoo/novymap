@@ -1,0 +1,314 @@
+<?php 
+    require_once '/etc/novy/3party/vendor/autoload.php';
+    require_once '/etc/novy/shared/san.php';
+    require_once '/etc/novy/shared/credential.php';
+    use UAParser\Parser;
+
+function isqvhip($ivp){
+	return(preg_match('/^172\.16/', $ivp)
+or preg_match('/^127\./', $ivp)  
+or preg_match('/^0\./', $ivp)  
+or preg_match('/^192\.168\./', $ivp)  
+	);
+}
+
+function whereip($ipp){
+	if (isqvhip($ipp)){
+$res=[
+	"where"=>"Hong Kong",
+	"isp"=> "Hong Kong Telecommunications (HKT) Limited Mass Internet"
+];
+		return $res;
+	}
+	else {
+	if (false){
+$ch = curl_init("https://pro.ip-api.com/json/" . $ipp .'?fields=66842623&key=ipapiq9SFY1Ic4');
+
+$headers = [
+    'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
+    'Origin: https://members.ip-api.com',
+    'Referer: https://members.ip-api.com/'
+];
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+}else {
+$ch = curl_init("http://ip-api.com/json/" . $ipp);
+}
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$rawjson = curl_exec($ch);
+$fucked = [
+	"isp"=>"api error",
+	"where"=>"api error"
+];
+if (curl_errno($ch)) {           
+      return  $fucked;
+
+}           
+
+
+if (curl_getinfo($ch, CURLINFO_HTTP_CODE)===200) {
+$decodejson=json_decode($rawjson,true);
+$res=[
+	"where"=>$decodejson["country"],
+	"isp"=>$decodejson["isp"]
+];
+return $res;
+}
+        return  $fucked;
+
+}
+
+}
+
+function disidtousername($id){
+global $discord_botkey;
+$ch = curl_init("https://discord.com/api/users/" . $id );
+$headers = [
+    'Authorization: Bot '.$discord_botkey,
+];
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+$rawjson = curl_exec($ch);
+$fucked = $id;
+if (curl_errno($ch)) {           
+      return  $fucked;
+
+}           
+
+
+if (curl_getinfo($ch, CURLINFO_HTTP_CODE)===200) {
+$decodejson=json_decode($rawjson,true);
+
+$hashnub=$decodejson["discriminator"];
+$username=$decodejson["username"];
+if ($hashnub==="0"){
+$res=$username;
+}else{
+$res=$username . '#' . $hashnub;
+}
+  return $res;    
+}
+  return  $fucked;
+
+
+
+
+}
+
+
+function fatchstats($fromDate,$toDate,$aggregation,$conn,$fuck){
+
+//$fromDate = $_GET['from'] ?? '';
+//$toDate = $_GET['to'] ?? '';
+//$aggregation = $_GET['aggregation'] ?? 'day';
+$datalist=[
+["os","Operating System",[],"💻 OS","(Map Users Stats)"],
+["bro","Browser",[],"🌎 Browser","(Map Users Stats)"],
+["ip","Location",[],"🇭🇰 Location","(Map Users Stats)"],
+["isp","ISP",[],"🇭🇰 ISP","(Map Users Stats)"],
+["adm","Contribution",[],"🙍 Contribution","(Admin Stats)"],
+["dis","Command",[],"🤖 Command Usage","(Discord Bot Stats)"],
+["hate","Roasted/Blamed",[],"🖕 Most blamed/roasted discord user","(Discord Bot Stats)"]
+];
+
+if ($fuck) {
+ return $datalist;
+}
+
+$where = "WHERE 1";
+$params = [];
+$dateExpr="";
+$dateLabel="";
+
+if (!empty($fromDate)) {
+    $where .= " AND timestamp >= ?";
+    $params[] = $fromDate . " 00:00:00";
+}
+if (!empty($toDate)) {
+    $where .= " AND timestamp <= ?";
+    $params[] = $toDate . " 23:59:59";
+}
+
+switch ($aggregation) {
+    case 'week':
+        $dateExpr = "YEARWEEK(timestamp, 1) AS period";
+        $dateLabel = "CONCAT(YEAR(timestamp), '-W', WEEK(timestamp, 1)) AS label";
+        break;
+    case 'month':
+        $dateExpr = "DATE_FORMAT(timestamp, '%Y-%m') AS period";
+        $dateLabel = "DATE_FORMAT(timestamp, '%b %Y') AS label";
+        break;
+    default:
+        $dateExpr = "DATE(timestamp) AS period";
+        $dateLabel = "DATE(timestamp) AS label";
+        break;
+}
+
+// OS distribution
+$osCounts = [];
+$broCounts = [];
+$ispCounts = [];
+$ipCounts = [];
+$admCounts = [];
+$disCounts = [];
+$hateCounts = [];
+$osQuery = "SELECT `user_agent`,`loc`,`isp`,`id`,`ip_address` FROM usage_log_qvh $where";
+$stmtOS = $conn->prepare($osQuery);
+if ($params) {
+    $types = str_repeat("s", count($params));
+    $stmtOS->bind_param($types, ...$params);
+}
+
+$ADMQuery = "SELECT `admin` FROM admin_stat $where";
+$stmtADM = $conn->prepare($ADMQuery);
+if ($params) {
+    $types = str_repeat("s", count($params));
+    $stmtADM->bind_param($types, ...$params);
+}
+
+$DISQuery = "SELECT `cmd` FROM dis_stat $where";
+$stmtDIS = $conn->prepare($DISQuery);
+if ($params) {
+    $types = str_repeat("s", count($params));
+    $stmtDIS->bind_param($types, ...$params);
+}
+
+$HATEQuery = "SELECT `id`,`disid`,`username` FROM hate_stat $where";
+$stmtHATE = $conn->prepare($HATEQuery);
+if ($params) {
+    $types = str_repeat("s", count($params));
+    $stmtHATE->bind_param($types, ...$params);
+}
+
+$stmtOS->execute();
+$resOS = $stmtOS->get_result();
+$rows = $resOS->fetch_all(MYSQLI_ASSOC);
+foreach ($rows as $row) { 
+    $ua = $row['user_agent'];
+    $parser = Parser::create();
+    $result = $parser->parse($ua);
+    $rawip=$row['ip_address'];
+    $id=$row['id'];
+    $iplocation=$row['loc'];
+    $isp=$row['isp'];
+foreach ($rows as $rowowo) { 
+    if(empty($iplocation) or empty($isp)  ){
+$rowo=sqlsan($rowowo,$conn);
+if ($rawip===$rowowo['ip_address']){
+$iplocation=$rowo['loc'];
+    $oid=$rowo['id'];
+    $isp=$rowo['isp'];
+    mysqli_query($conn,"UPDATE `usage_log_qvh` SET loc='".$iplocation."' WHERE id=".$id);
+    mysqli_query($conn,"UPDATE `usage_log_qvh` SET isp='".$isp."' WHERE id=".$id);
+}
+}
+}
+    if(empty($iplocation) or ($iplocation==="api error") or empty($isp) or ($isp==="api error") ){
+    $ipdata=sqlsan(whereip($rawip),$conn);
+    }
+
+    if(empty($iplocation) or ($iplocation==="api error")){
+	    $iplocation=$ipdata['where'];
+   mysqli_query($conn,"UPDATE `usage_log_qvh` SET loc='".$iplocation."' WHERE id=".$id);
+    if (isset($oid)){
+   mysqli_query($conn,"UPDATE `usage_log_qvh` SET loc='".$iplocation."' WHERE id=".$oid);
+    }
+
+    }
+  if(empty($isp) or ($isp==="api error")){
+	   $isp=$ipdata['isp'];
+    mysqli_query($conn,"UPDATE `usage_log_qvh` SET isp='".$isp."' WHERE id=".$id);
+    if (isset($oid)){
+    mysqli_query($conn,"UPDATE `usage_log_qvh` SET isp='".$isp."' WHERE id=".$oid);
+
+    }
+    }
+
+    if (!isset($osCounts[$result->os->family])){
+	    $osCounts[$result->os->family]=0;
+    }
+ if (!isset($broCounts[$result->ua->family])){
+	    $broCounts[$result->ua->family]=0;
+ }
+   if (!isset($ipCounts[$iplocation])){
+	    $ipCounts[$iplocation]=0;
+ }
+ 
+   if (!isset($ispCounts[$isp])){
+	    $ispCounts[$isp]=0;
+ }
+    $ispCounts[$isp]++;
+    $broCounts[$result->ua->family]++;
+    $osCounts[$result->os->family]++;
+    $ipCounts[$iplocation]++;
+}
+$stmtADM->execute();
+$resADM = $stmtADM->get_result();
+while ($row = $resADM->fetch_assoc()) {
+ if (!isset($admCounts[$row['admin']])){
+	    $admCounts[$row['admin']]=0;
+    }
+$admCounts[$row['admin']]++;
+   }
+
+$stmtDIS->execute();
+$resDIS = $stmtDIS->get_result();
+while ($row = $resDIS->fetch_assoc()) {
+ if (!isset($disCounts[$row['cmd']])){
+	    $disCounts[$row['cmd']]=0;
+    }
+$disCounts[$row['cmd']]++;
+   }
+
+$stmtHATE->execute();
+$resHATE = $stmtHATE->get_result();
+while ($row = $resHATE->fetch_assoc()) {
+$username=$row['username'];
+    $id=$row['id'];
+    if(empty($username) ){
+    $username=disidtousername($row['disid']);
+    mysqli_query($conn,"UPDATE `hate_stat` SET username='".$username."' WHERE id=".$id);
+    }
+ if (!isset($hateCounts[$username])){
+	    $hateCounts[$username]=0;
+    }
+$hateCounts[$username]++;
+
+}
+
+$stmtOS->close();
+$conn->close();
+
+$purelist=[
+["os",$osCounts],
+["bro",$broCounts],
+["ip",$ipCounts],
+["isp",$ispCounts],
+["adm",$admCounts],
+["dis",$disCounts],
+["hate",$hateCounts]
+];
+
+
+$newdatalist=[];
+
+$d=0;
+foreach ($datalist as $datarray ) {
+	$newdatalist[$d]=$datarray;
+foreach ($purelist as $purearray ) {
+	if($purearray[0] === $datarray[0]){
+	$newdatalist[$d][2]=$purearray[1];
+	}
+}
+$d++;
+}
+
+
+
+return $newdatalist;
+}
+?>
+

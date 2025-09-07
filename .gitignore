@@ -1,0 +1,3 @@
+3party/vendor/
+3party/composer.lock
+shared/credential.php
