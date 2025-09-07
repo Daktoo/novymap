@@ -4,9 +4,11 @@ hence it has code that is incomplable together due to licensing.
 
 so
 
-novymap-qvh code/logo (expect discord/a.php,nginx/,shared/neofetch.php) fellow the novymap license
+novymap-qvh code/logo (expect discord/a.php,nginx/,shared/neofetch.php) are under same license as the novymap 
 
 discord/a.php is under ISC license(licenses/ISC-qvh)
+
+(However the text in array $msg of websithandler is are under same license as the novymap)
 
 
 map/ is odd
@@ -18,9 +20,9 @@ LiveAtlas dynmap are under  Apache-2.0 license (/licenses/Apache-2.0)
 
 so
 
-map/live-atlas/assets/fbi.png is the fbi meme
+map/live-atlas/assets/fbi.png is the fbi meme and its license is unknown.
 
-map/api/internal/novy.php,map/images/novymap-qvh.png fellow the novymap license
+map/api/internal/novy.php,map/images/novymap-qvh.png and it is under same license as the novymap 
 
 icon (map/hack/_markers_) and reset of map/ (LiveAtlas,edited dynmap config) are  Apache-2.0 license(licenses/Apache-2.0)
 
