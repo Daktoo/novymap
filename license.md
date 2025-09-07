@@ -24,7 +24,7 @@ so
 
 [map/api/internal/novy.php](./map/api/internal/novy.php) and it is under same license as the novymap 
 
-icon ( [map/hack/\_markers\_](./map/hack/\_markers\_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license(licenses/Apache-2.0)
+icon ( [map/hack/\_markers\_](./map/hack/_markers_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license(licenses/Apache-2.0)
 
 
 [admin/](./admin),[api/](./api),[home/](./home) fellow the novymap license
