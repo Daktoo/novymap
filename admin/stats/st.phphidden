@@ -21,19 +21,9 @@ $res=[
 		return $res;
 	}
 	else {
-	if (false){
-$ch = curl_init("https://pro.ip-api.com/json/" . $ipp .'?fields=66842623&key=ipapiq9SFY1Ic4');
-
-$headers = [
-    'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-    'Origin: https://members.ip-api.com',
-    'Referer: https://members.ip-api.com/'
-];
 
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-}else {
 $ch = curl_init("http://ip-api.com/json/" . $ipp);
-}
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 $rawjson = curl_exec($ch);
