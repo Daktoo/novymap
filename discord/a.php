@@ -3,6 +3,7 @@
 include '../3party//vendor/autoload.php';
 include '../shared/credential.php';
 include '../shared/db.php';
+include 'b.php';
 $directory = "../shared/api";
 foreach (array_diff(scandir($directory), array('..', '.')) as $ah) {
 include($directory.'/'.$ah);
@@ -92,36 +93,7 @@ function websithandler (Interaction $interaction) {
 		$sitearry=["https://map.novymap-qvh.top","https://api.novymap-qvh.top","https://www.novymap-qvh.top"];
 	$site=' '.$sitearry[array_rand($sitearry)].' ';
 //Ripped from novymap bot
-$msg=[
-
-                'The website is:'.$site,
-
-                'Oh look what I found!'. $site  . '— It\'s the website!',
-
-                'Looking for the website? Here it is:'. $site,
-
-                'Psst, wanna see something cool?'.$site,
-
-                'Drumroll please...'.$site,
-
-                'Here you go!'.$site.'— Go check it out!',
-
-                'Surprise! The website is'.$site,
-
-                'Guess what? This is the website:'.$site,
-
-                'I was just about to tell you...'.$site.'is the website!',
-
-                'Hey! Don\'t forget to visit'.$site,
-
-                'Did you know that'.$site. 'is a website?',
-
-		'All hail pigwin the one true god! Also the website is'. $site.'!',
-
-		'QuteVoiceHacker the narcissistist hacker/nerd that can make qute voice! Also the website is'.$site.'!',
-
-];
-
+$msg=websithandlermsg($site);
 
 	 $embed = new Embed($discord);
             $embed->setTitle('website')
