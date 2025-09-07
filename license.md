@@ -16,7 +16,7 @@ novymap-qvh code/logo (expect [discord/a.php](./discord/a.php),[nginx/](./nginx/
 
 It contain [LiveAtlas](https://github.com/JLyne/LiveAtlas),icon from [dynmap](https://github.com/webbukkit/dynmap),also abit of novymap-qvh code,fbi meme,edited dynmap config
 
-LiveAtlas dynmap are under  Apache-2.0 license ( [/licenses/Apache-2.0](./licenses/Apache-2.0) )
+LiveAtlas dynmap are under  Apache-2.0 license ( [licenses/Apache-2.0](./licenses/Apache-2.0) )
 
 so
 
@@ -24,18 +24,18 @@ so
 
 [map/api/internal/novy.php](./map/api/internal/novy.php) and it is under same license as the novymap 
 
-icon ( [map/hack/\_markers\_](./map/hack/_markers_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license(licenses/Apache-2.0)
+icon ( [map/hack/\_markers\_](./map/hack/_markers_) ) and reset of [map/](./map/) (LiveAtlas,edited dynmap config) are  Apache-2.0 license( [licenses/Apache-2.0](./licenses/Apache-2.0) )
 
 
 [admin/](./admin),[api/](./api),[home/](./home) fellow the novymap license
 
 
-shared/FiraCode-Regular.woff2 is [FiraCode](https://github.com/tonsky/FiraCode) which under  OFL-1.1 license([licenses/OFL-1.1-Fira](./licenses/OFL-1.1-Fira))
+[shared/FiraCode-Regular.woff2](./shared/FiraCode-Regular.woff2) is [FiraCode](https://github.com/tonsky/FiraCode) which under  OFL-1.1 license([licenses/OFL-1.1-Fira](./licenses/OFL-1.1-Fira))
 
-shared/neofetch.php is [neofetch2html](https://codeberg.org/exxxxkc/neofetch2html/) which under CC0([licenses/cc0](./licenses/cc0) )
+[shared/neofetch.php](./shared/neofetch.php) is [neofetch2html](https://codeberg.org/exxxxkc/neofetch2html/) which under CC0( [licenses/cc0](./licenses/cc0) )
 
-reset of shared/ fellow the novymap license
+reset of [shared/](./shared/) fellow the novymap license
 
-nginx/ is under BSD licenses( [licenses/BSD-qvh](./licenses/BSD-qvh) )
+[nginx/](./nginx/) is under BSD licenses( [licenses/BSD-qvh](./licenses/BSD-qvh) )
 
-map/live-atlas/assets/fbi.png and many other image are under unknown licenses. 
+[map/live-atlas/assets/fbi.png](./map/live-atlas/assets/fbi.png) and many other image are under unknown licenses. 
