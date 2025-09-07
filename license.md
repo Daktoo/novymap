@@ -11,7 +11,7 @@ discord/a.php is under ISC license(licenses/ISC-qvh)
 (However the text in array $msg of websithandler is are under same license as the novymap)
 
 
-map/ is odd
+[map/](./map/) is odd
 
 
 It contain [LiveAtlas](https://github.com/JLyne/LiveAtlas),icon from [dynmap](https://github.com/webbukkit/dynmap),also abit of novymap-qvh code,fbi meme,edited dynmap config
