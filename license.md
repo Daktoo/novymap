@@ -15,7 +15,7 @@
 ## map/
 ### LiveAtlas, icon from dynmap, edited dynmap config
 - **License**: Apache-2.0
-- **File Paths**: map/live-atlas/, map/hack/_markers_, map/ (excluding map/api/internal/novy.php and map/live-atlas/assets/fbi.png)
+- **File Paths**: map/live-atlas/, map/hack/\_markers\_, map/ (excluding map/api/internal/novy.php and map/live-atlas/assets/fbi.png)
 - **License Text**: [Apache-2.0 License](./licenses/Apache-2.0)
 
 ### map/api/internal/novy.php
