@@ -13,14 +13,13 @@ use Discord\WebSockets\Event;
 use Discord\Builders\CommandBuilder;
 use Discord\Builders\MessageBuilder;
 use Discord\Discord;
-use Discord\Parts\Interactions\Command\Command; // Please note to use this correct namespace!
+use Discord\Parts\Interactions\Command\Command;
 use Discord\Parts\Interactions\Command\Option;
 use Discord\Parts\Interactions\Interaction;
 use Discord\Parts\Embed\Embed;
 use Discord\Parts\User\Activity;
 use Discord\Parts\OAuth\Application;
 use Discord\Repository\Interaction\GlobalCommandRepository;
-use function React\Async\async;
 
 $botcolor="#7d5df4";
 $discord = new Discord([
