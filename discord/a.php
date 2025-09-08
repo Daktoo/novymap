@@ -18,6 +18,7 @@ use Discord\Parts\Interactions\Command\Option;
 use Discord\Parts\Interactions\Interaction;
 use Discord\Parts\Embed\Embed;
 use Discord\Parts\User\Activity;
+use Discord\Parts\User\User;
 use Discord\Parts\OAuth\Application;
 use Discord\Repository\Interaction\GlobalCommandRepository;
 
@@ -47,9 +48,7 @@ if ($D) {
 	
 		$F = <<< AAAA
 /dial $row[dial]		
-
 $row[info]
-
 -# ID:$row[id]
 -# X:$row[x]
 -# Y:$row[y]
@@ -61,7 +60,6 @@ AAAA;
 	}else{
 	$F = <<< AAAA
 $row[info]
-	
 -# ID:$row[id]
 -# Rail Name : $row[name]		
 -# Add by:$row[addedby]
@@ -115,22 +113,31 @@ function hatehandler (Interaction $interaction) {
 	global $botcolor;
 
 	 global $discord;
-	  $reason = $interaction->data->options->offsetGet('reason')->value;
-	$defal='<@'.$interaction->data->options->offsetGet('pigwin')->value.'> got '.$hatetype;
-	$bcof="";
-	if (!(empty($reason))){$bcof="|| Because of $reason ||";
-}
-$out=<<<AAAA
-$defal
+	 $embed = new Embed($discord);
+ $timestamp = date('Y-m-d H:i:s');
+	$pigwinid =$interaction->data->options->offsetGet('pigwin')->value;
+	$pigwin =$interaction->data->resolved->users->first();
+if (isset($pigwin['username'])){
+	$pingsign='!';
 
-$bcof
-AAAA;
-	    $timestamp = date('Y-m-d H:i:s');
-	$pigwin=mysqli_real_escape_string($conn,$interaction->data->options->offsetGet('pigwin')->value);
- $sql = "INSERT INTO `hate_stat` (`id`, `username`, `disid`, `timestamp`) VALUES (NULL, '','".$pigwin."','".$timestamp."' )";
+if ($pigwin['discriminator']==="0"){
+$pigwinname=$pigwin['username'];
+}else{
+$pigwinname=$pigwin['username'] . '#' . $pigwin['discriminator'];
+}
+$pigwinname=mysqli_real_escape_string($conn,$pigwinname);
+
+$sql = "INSERT INTO `hate_stat` (`id`, `username`, `timestamp`) VALUES (NULL, '$pigwinname','$timestamp')";
 	                $result = mysqli_query($conn, $sql);
 
-	 $embed = new Embed($discord);
+$embed->setImage(str_replace("webp","png",$pigwin['avatar']));
+}else{
+	$pingsign='&';
+}
+	$out='<@'.$pingsign.$pigwinid.'> got '.$hatetype;
+	$reason = $interaction->data->options->offsetGet('reason')->value ?? '';
+	if (!(empty($reason))){$out.=PHP_EOL."|| Because of $reason ||";}
+ 
             $embed->setTitle($hatetilte)
                 ->setType(Embed::TYPE_RICH)
                 ->setColor($botcolor)
@@ -313,6 +320,12 @@ $command = new Command($discord, [
 ]);
 	    $discord->application->commands->save($command);
 $command = new Command($discord, [
+                'name' => 'phprock',
+                'description' => 'php!!!',
+		
+]);
+	$discord->application->commands->save($command);
+$command = new Command($discord, [
                 'name' => 'website',
                 'description' => 'offical website',
 		
@@ -391,7 +404,6 @@ $result = api_search_railline($conn, $q,$a);
 });
 
 $discord->listenCommand('ping', function (Interaction $interaction) use (&$discord) {
-$discord->updatePresence(null,false,'online',false);
 	global $botcolor;
 	 $embed = new Embed($discord);
             $embed->setTitle('Ping')
@@ -399,6 +411,18 @@ $discord->updatePresence(null,false,'online',false);
                 ->setColor($botcolor)
                 ->setImage('https://www.novymap-qvh.top/img/novymap-qvh.png')
                 ->setDescription('I am alive :3');
+                          $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
+});
+
+
+$discord->listenCommand('phprock', function (Interaction $interaction) use (&$discord) {
+	global $botcolor;
+	 $embed = new Embed($discord);
+            $embed->setTitle('php!!! It rocks.')
+                ->setType(Embed::TYPE_RICH)
+                ->setColor($botcolor)
+                ->setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Webysther_20160423_-_Elephpant.svg/2560px-Webysther_20160423_-_Elephpant.svg.png')
+                ->setDescription('BTW https://php.rocks/ is avery cool site');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });
 
@@ -413,10 +437,7 @@ $discord->listenCommand('about', function (Interaction $interaction) {
 	 $embed = new Embed($discord);
 	 $A=<<<AAAA
 Officaly discord bot of [novymap-qvh](https://www.novymap-qvh.top/).
-
 -# Proudly powered by [DiscordPHP](https://github.com/discord-php/DiscordPHP)
-
-||Who need javascript,python for discord bot when you have PHP :3||
 AAAA;
 
             $embed->setTitle('About')
@@ -431,6 +452,7 @@ $discord->listenCommand('website',function (Interaction $interaction) {websithan
 $discord->listenCommand('site',function (Interaction $interaction) {websithandler($interaction);});
 
 });
+$discord->updatePresence(null,false,'online',false);
 };
 
 $discord->once('init', function (Discord $discord) use (&$init_called, &$application_init_called, &$main) {

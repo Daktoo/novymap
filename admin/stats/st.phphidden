@@ -50,44 +50,6 @@ return $res;
 
 }
 
-function disidtousername($id){
-global $discord_botkey;
-$ch = curl_init("https://discord.com/api/users/" . $id );
-$headers = [
-    'Authorization: Bot '.$discord_botkey,
-];
-
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-$rawjson = curl_exec($ch);
-$fucked = $id;
-if (curl_errno($ch)) {           
-      return  $fucked;
-
-}           
-
-
-if (curl_getinfo($ch, CURLINFO_HTTP_CODE)===200) {
-$decodejson=json_decode($rawjson,true);
-
-$hashnub=$decodejson["discriminator"];
-$username=$decodejson["username"];
-if ($hashnub==="0"){
-$res=$username;
-}else{
-$res=$username . '#' . $hashnub;
-}
-  return $res;    
-}
-  return  $fucked;
-
-
-
-
-}
-
-
 function fatchstats($fromDate,$toDate,$aggregation,$conn,$fuck){
 
 //$fromDate = $_GET['from'] ?? '';
@@ -165,7 +127,7 @@ if ($params) {
     $stmtDIS->bind_param($types, ...$params);
 }
 
-$HATEQuery = "SELECT `id`,`disid`,`username` FROM hate_stat $where";
+$HATEQuery = "SELECT `id`,`username` FROM hate_stat $where";
 $stmtHATE = $conn->prepare($HATEQuery);
 if ($params) {
     $types = str_repeat("s", count($params));
@@ -255,17 +217,11 @@ $disCounts[$row['cmd']]++;
 $stmtHATE->execute();
 $resHATE = $stmtHATE->get_result();
 while ($row = $resHATE->fetch_assoc()) {
-$username=$row['username'];
-    $id=$row['id'];
-    if(empty($username) ){
-    $username=disidtousername($row['disid']);
-    mysqli_query($conn,"UPDATE `hate_stat` SET username='".$username."' WHERE id=".$id);
+if (!isset($hateCounts[$row['username']])){
+$hateCounts[$row['username']]=0;
     }
- if (!isset($hateCounts[$username])){
-	    $hateCounts[$username]=0;
-    }
-$hateCounts[$username]++;
 
+$hateCounts[$row['username']]++;
 }
 
 $stmtOS->close();
