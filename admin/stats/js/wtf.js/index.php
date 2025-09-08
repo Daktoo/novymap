@@ -130,7 +130,6 @@ var foumchild=document.getElementById("stats-from").childNodes;
 for (let kidd of foumchild) {
 if (kidd!==document.getElementById('viewtoggle')){
 kidd.addEventListener('change',(e) => {
-console.log("e"); 
 document.getElementById("stats-from").submit();
 });
 }

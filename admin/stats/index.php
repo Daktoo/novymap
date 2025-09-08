@@ -153,11 +153,6 @@ echo($eh);
 </div>
 </div>
 <?php
- foreach ($datalist as $value){ 
-	if ($value[0]==='oss'){
-	 echo $value[0];}
- }
-
  include '../../shared/footer.php'; ?>
 </body>
 </html>

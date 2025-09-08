@@ -65,7 +65,7 @@ pageView("edit poi :wrench::triangular_flag_on_post::paintbrush:");
 <?php
 
 
-	$RAW=array_diff(scandir("/etc/novy/map/markers/"), array('..', '.'));
+	$RAW=array_diff(scandir("../map/markers/"), array('..', '.'));
 	$PRO=str_replace(".png","",$RAW);
 foreach ($PRO as $value) {
 
