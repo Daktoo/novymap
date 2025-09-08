@@ -1,6 +1,7 @@
 <?php
 include_once("san.php");
-$gitea_auth_header=['Authorization: token 5cc5a8fe59100a9412239a23abd595b0810a1126'];      
+include_once("credential.php");
+$gitea_auth_header=['Authorization: token '.$gitea_autkey];      
 $gitea_based_url='https://auth.novymap-qvh.top/api/v1/';   
 
 function gitea_userinfo($name) {
