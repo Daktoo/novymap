@@ -22,7 +22,6 @@ $res=[
 	}
 	else {
 
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 $ch = curl_init("http://ip-api.com/json/" . $ipp);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
