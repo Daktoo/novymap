@@ -62,7 +62,7 @@ $datalist=[
 ["isp","ISP",[],"🌏 ISP","(Map Users Stats)"],
 ["adm","Contribution",[],"🙍 Contribution","(Admin Stats)"],
 ["dis","Command",[],"🤖 Command Usage","(Discord Bot Stats)"],
-["dislang","Language",[],"🗣️ Discord Language","(Discord Bot Stats)"],
+["dislang","Language",[],"🗣️ Discord Language Usage","(Discord Bot Stats)"],
 ["hate","Roasted/Blamed",[],"🖕 Most blamed/roasted discord user","(Discord Bot Stats)"]
 ];
 
