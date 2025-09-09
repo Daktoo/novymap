@@ -15,19 +15,15 @@ global $conn;
     // User agent
     $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? null;
 
-    // GET parameters
-    $queryParams = json_encode($_GET, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-    $server_var = json_encode($_SERVER, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
-
-
+  
     // Insert into DB
     $stmt = $conn->prepare("
-        INSERT INTO usage_log_qvh (timestamp,  ip_address, user_agent, query_params, server_var)
-        VALUES (?,  ?, ?, ?, ?)
+        INSERT INTO usage_log_qvh (timestamp,  ip_address, user_agent )
+        VALUES (?,  ?, ? )
     ");
 
     if ($stmt) {
-        $stmt->bind_param('sssss', $timestamp,  $ip, $userAgent, $queryParams, $server_var);
+        $stmt->bind_param('sss', $timestamp,  $ip, $userAgent );
         $stmt->execute();
         $stmt->close();
     } else {

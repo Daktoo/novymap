@@ -57,11 +57,12 @@ function fatchstats($fromDate,$toDate,$aggregation,$conn,$fuck){
 //$aggregation = $_GET['aggregation'] ?? 'day';
 $datalist=[
 ["os","Operating System",[],"💻 OS","(Map Users Stats)"],
-["bro","Browser",[],"🌎 Browser","(Map Users Stats)"],
-["ip","Location",[],"🇭🇰 Location","(Map Users Stats)"],
-["isp","ISP",[],"🇭🇰 ISP","(Map Users Stats)"],
+["bro","Browser",[],"🖥 Browser","(Map Users Stats)"],
+["ip","Location",[],"🌏 Location","(Map Users Stats)"],
+["isp","ISP",[],"🌏 ISP","(Map Users Stats)"],
 ["adm","Contribution",[],"🙍 Contribution","(Admin Stats)"],
 ["dis","Command",[],"🤖 Command Usage","(Discord Bot Stats)"],
+["dislang","Language",[],"🗣️ Discord Language","(Discord Bot Stats)"],
 ["hate","Roasted/Blamed",[],"🖕 Most blamed/roasted discord user","(Discord Bot Stats)"]
 ];
 
@@ -106,6 +107,7 @@ $ipCounts = [];
 $admCounts = [];
 $disCounts = [];
 $hateCounts = [];
+$dislangCounts = [];
 $osQuery = "SELECT `user_agent`,`loc`,`isp`,`id`,`ip_address` FROM usage_log_qvh $where";
 $stmtOS = $conn->prepare($osQuery);
 if ($params) {
@@ -120,7 +122,7 @@ if ($params) {
     $stmtADM->bind_param($types, ...$params);
 }
 
-$DISQuery = "SELECT `cmd` FROM dis_stat $where";
+$DISQuery = "SELECT `cmd`,`lang` FROM dis_stat $where";
 $stmtDIS = $conn->prepare($DISQuery);
 if ($params) {
     $types = str_repeat("s", count($params));
@@ -211,6 +213,13 @@ while ($row = $resDIS->fetch_assoc()) {
  if (!isset($disCounts[$row['cmd']])){
 	    $disCounts[$row['cmd']]=0;
     }
+if (!empty($row['lang'])){
+if (!isset($disCounts[$row['lang']])){
+	    $disCounts[$row['lang']]=0;
+    }
+
+$dislangCounts[$row['lang']]++;
+}
 $disCounts[$row['cmd']]++;
    }
 
@@ -234,6 +243,7 @@ $purelist=[
 ["isp",$ispCounts],
 ["adm",$admCounts],
 ["dis",$disCounts],
+["dislang",$dislangCounts],
 ["hate",$hateCounts]
 ];
 

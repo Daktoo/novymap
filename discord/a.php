@@ -515,8 +515,9 @@ $discord->on(
 		    global $conn;
 	    if ($interaction->type === Interaction::TYPE_APPLICATION_COMMAND) {
 	    $timestamp = date('Y-m-d H:i:s');
+	$lang=mysqli_real_escape_string($conn,$interaction->locale);
 	$cmd=mysqli_real_escape_string($conn,$interaction->data->name);
- $sql = "INSERT INTO `dis_stat`(`id`, `cmd`, `timestamp`) VALUES (NULL,'".$cmd."','".$timestamp."' )";
+ $sql = "INSERT INTO `dis_stat`(`id`, `cmd`, `timestamp`,`lang`) VALUES (NULL,'".$cmd."','".$timestamp."','".$lang."' )";
 	                $result = mysqli_query($conn, $sql);
 
 	    }
