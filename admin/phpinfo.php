@@ -32,7 +32,7 @@ echo '</div>';
 	echo '</script>';
  echo '</div>';
 echo '<div class="settings-container ">';
-echo '<iframe class="whatqvhisdoing" srcdoc="'.htmlspecialchars(file_get_contents('/srv/http/novy/discord/log')).'">';
+echo '<iframe class="whatqvhisdoing" srcdoc="'.htmlspecialchars(file_get_contents('/var/log/novydiscordbot/log')).'">';
 echo '</iframe>';
 echo '</div>';
 
