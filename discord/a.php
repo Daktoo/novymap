@@ -25,7 +25,7 @@ use Monolog\Level;
 use Monolog\Logger;
 use Monolog\Formatter\HtmlFormatter;
 use Monolog\Handler\StreamHandler;
-$streamHandler = new StreamHandler('/srv/http/novy/discord/log', Level::Info);
+$streamHandler = new StreamHandler('/var/log/novydiscordbot/log', Level::Info);
 //$streamHandler = new StreamHandler('/srv/http/novy/discord/log', Level::Debug);
 $streamHandler->setFormatter(new HtmlFormatter());
 $logger = new Logger('Novymap-qvh', [$streamHandler]);
@@ -108,6 +108,15 @@ $msg=websithandlermsg($site);
                 ->setDescription($msg[array_rand($msg)]);
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 }
+
+function disusername ($user) {
+if ($user['discriminator']==="0"){
+return($user['username']);
+}else{
+return($user['username'] . '#' . $user['discriminator']);
+}
+}
+
 function hatehandler (Interaction $interaction) {
 	$hate=$interaction->data->name;
 	if($hate==="roast"){
@@ -128,12 +137,7 @@ function hatehandler (Interaction $interaction) {
 if (isset($pigwin['username'])){
 	$pingsign='!';
 
-if ($pigwin['discriminator']==="0"){
-$pigwinname=$pigwin['username'];
-}else{
-$pigwinname=$pigwin['username'] . '#' . $pigwin['discriminator'];
-}
-$pigwinname=mysqli_real_escape_string($conn,$pigwinname);
+$pigwinname=mysqli_real_escape_string($conn,disusername($pigwin));
 
 $sql = "INSERT INTO `hate_stat` (`id`, `username`, `timestamp`) VALUES (NULL, '$pigwinname','$timestamp')";
 	                $result = mysqli_query($conn, $sql);
@@ -351,6 +355,11 @@ newcmd ($discord,$commands, [
 		
 ]);
 
+newcmd ($discord,$commands, [
+                'name' => 'whoami',
+                'description' => 'Who am i?',
+		
+]);
 
 $discord->listenCommand('info', function (Interaction $interaction) {
 	  $ID = intval($interaction->data->options->offsetGet('id')->value);
@@ -417,6 +426,10 @@ $result = api_search_railline($conn, $q,$a);
 
 $discord->listenCommand('ping', function (Interaction $interaction) use (&$discord) {
 	global $botcolor;
+	$out='';
+	foreach ( $interaction->user->attributes as $ah ){
+	echo($ah.PHP_EOL);
+	}
 	 $embed = new Embed($discord);
             $embed->setTitle('Ping')
                 ->setType(Embed::TYPE_RICH)
@@ -426,6 +439,23 @@ $discord->listenCommand('ping', function (Interaction $interaction) use (&$disco
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });
 
+$discord->listenCommand('whoami', function (Interaction $interaction) use (&$discord) {
+	global $botcolor;
+	$user=$interaction->user;
+	$out="Your username : ".disusername($user).PHP_EOL;
+	if(!empty($user['global_name'])){
+	$out.="Your display name : ".$user['global_name'];
+	} 
+	$out.="You speak : ".$interaction->locale;
+
+	 $embed = new Embed($discord);
+            $embed->setTitle('I know who are you')
+                ->setType(Embed::TYPE_RICH)
+                ->setColor($botcolor)
+		->setImage(str_replace("webp","png",$user['avatar']))
+                ->setDescription($out);
+                          $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
+});
 
 $discord->listenCommand('phprock', function (Interaction $interaction) use (&$discord) {
 	global $botcolor;
