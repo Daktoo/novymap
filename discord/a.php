@@ -426,10 +426,6 @@ $result = api_search_railline($conn, $q,$a);
 
 $discord->listenCommand('ping', function (Interaction $interaction) use (&$discord) {
 	global $botcolor;
-	$out='';
-	foreach ( $interaction->user->attributes as $ah ){
-	echo($ah.PHP_EOL);
-	}
 	 $embed = new Embed($discord);
             $embed->setTitle('Ping')
                 ->setType(Embed::TYPE_RICH)
@@ -444,7 +440,7 @@ $discord->listenCommand('whoami', function (Interaction $interaction) use (&$dis
 	$user=$interaction->user;
 	$out="Your username : ".disusername($user).PHP_EOL;
 	if(!empty($user['global_name'])){
-	$out.="Your display name : ".$user['global_name'];
+	$out.="Your display name : ".$user['global_name'].PHP_EOL;
 	} 
 	$out.="You speak : ".$interaction->locale;
 
