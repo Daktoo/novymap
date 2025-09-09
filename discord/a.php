@@ -144,10 +144,19 @@ $embed->setImage(str_replace("webp","png",$pigwin['avatar']));
                 ->setDescription($out);
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 }
+function newcmd (&$discord,&$commands,$cmdarry) {
+	//if ($command = $commands->get('name', $cmdarry['name'])) {
+	//	$commands->delete($command);
+//	}
+    $command = new Command($discord,$cmdarry); 
+
+	    $commands->save($command);
+}
 $main = function (Discord $discord) {
 $discord->application->commands->freshen()
-        ->then(function (GlobalCommandRepository $gloabcmd) use (&$discord) {
-    $command = new Command($discord, [
+        ->then(function (GlobalCommandRepository $commands) use (&$discord) {
+
+newcmd ($discord,$commands, [
                 'name' => 'info',
                 'description' => 'Info',
                 'options' => [
@@ -160,8 +169,7 @@ $discord->application->commands->freshen()
 		],
             ]);
 
-	    $discord->application->commands->save($command);
- $command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'info_railline',
                 'description' => 'Info',
                 'options' => [
@@ -174,9 +182,8 @@ $discord->application->commands->freshen()
 		],
             ]);
 
-	    $discord->application->commands->save($command);
 
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'search',
                 'description' => 'Search Dial',
                 'options' => [
@@ -202,8 +209,7 @@ $command = new Command($discord, [
 		],
             ]);
 
-	    $discord->application->commands->save($command);
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'cords',
                 'description' => 'Search Dial by cords',
                 'options' => [
@@ -234,8 +240,7 @@ $command = new Command($discord, [
 		],
             ]);
 
-	    $discord->application->commands->save($command);
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'search_railline',
                 'description' => 'Search Dial by cords',
 		'options' => 
@@ -257,10 +262,8 @@ $command = new Command($discord, [
 		],
             ]);
 
-	    $discord->application->commands->save($command);
 
-
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'roast',
                 'description' => 'roast',
                 'options' => [
@@ -281,9 +284,8 @@ $command = new Command($discord, [
 		],
             ]);
 
-	    $discord->application->commands->save($command);
 
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'blame',
                 'description' => 'blame',
                 'options' => [
@@ -304,41 +306,37 @@ $command = new Command($discord, [
 		],
             ]);
 
-	    $discord->application->commands->save($command);
 
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'about',
                 'description' => 'about',
             ]);
 
-	    $discord->application->commands->save($command);
 
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'ping',
                 'description' => 'pong',
 		
 ]);
-	    $discord->application->commands->save($command);
-$command = new Command($discord, [
+
+newcmd ($discord,$commands, [
                 'name' => 'phprock',
                 'description' => 'php!!!',
 		
 ]);
-	$discord->application->commands->save($command);
-$command = new Command($discord, [
+
+newcmd ($discord,$commands, [
                 'name' => 'website',
                 'description' => 'offical website',
 		
 ]);
 
-	    $discord->application->commands->save($command);
-$command = new Command($discord, [
+newcmd ($discord,$commands, [
                 'name' => 'site',
                 'description' => 'offical website',
 		
 ]);
 
-	    $discord->application->commands->save($command);
 
 $discord->listenCommand('info', function (Interaction $interaction) {
 	  $ID = intval($interaction->data->options->offsetGet('id')->value);
@@ -427,8 +425,8 @@ $discord->listenCommand('phprock', function (Interaction $interaction) use (&$di
 });
 
 
-$discord->listenCommand('roast', function (Interaction $interaction) {hatehandler ($interaction);});
-$discord->listenCommand('blame', function (Interaction $interaction) {hatehandler ($interaction);});
+$discord->listenCommand('roast',function (Interaction $interaction) {hatehandler($interaction);});
+$discord->listenCommand('blame',function (Interaction $interaction) {hatehandler($interaction);});
 
 $discord->listenCommand('about', function (Interaction $interaction) {
 	global $botcolor;
