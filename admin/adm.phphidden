@@ -109,7 +109,7 @@ $uploaded=true;
 	    }
 if(!$uploadfailed && $uploaded){
 $shotid=substr(hash(hash_algos()[array_rand(hash_algos())],random_bytes(10)),0,100); 
-	    $filename="/srv/http/shot2/".$shotid.".png";
+	    $filename="/srv/http/novy/shot2/".$shotid.".png";
 		$imagick = new Imagick($ufile["tmp_name"]);
 $store=fopen($filename, "w");
 

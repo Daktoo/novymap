@@ -31,6 +31,11 @@ echo '</div>';
 	echo 'document.getElementById("phpwhy").srcdoc=FUCK; '; 
 	echo '</script>';
  echo '</div>';
+echo '<div class="settings-container ">';
+echo '<iframe class="whatqvhisdoing" srcdoc="'.htmlspecialchars(file_get_contents('/srv/http/novy/discord/log')).'">';
+echo '</iframe>';
+echo '</div>';
+
  }
  echo '<div class="settings-container ">';
  echo '<pre class="inxioutput">';

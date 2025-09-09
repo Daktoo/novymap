@@ -3,8 +3,8 @@
 	$result = mysqli_query($conn, $sql);$shotid="";	   
 	while ($row = mysqli_fetch_assoc($result)){		
 		$shotid=$row['shot'];		            }	  
-	if(is_file("/srv/http/shot2/".$shotid.".png")){ 
-		return(readfile("/srv/http/shot2/".$shotid.".png"));
+	if(is_file("/srv/http/novy/shot2/".$shotid.".png")){ 
+		return(readfile("/srv/http/novy/shot2/".$shotid.".png"));
 	} else {	
 		$fucked=json_encode(["request"=>[		  
 			"id"=>$_GET['id'],		    ],	

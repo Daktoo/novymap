@@ -21,9 +21,16 @@ use Discord\Parts\User\Activity;
 use Discord\Parts\User\User;
 use Discord\Parts\OAuth\Application;
 use Discord\Repository\Interaction\GlobalCommandRepository;
-
+use Monolog\Level;
+use Monolog\Logger;
+use Monolog\Formatter\HtmlFormatter;
+use Monolog\Handler\StreamHandler;
+$streamHandler = new StreamHandler('/srv/http/novy/discord/log', Level::Debug);
+$streamHandler->setFormatter(new HtmlFormatter());
+$logger = new Logger('Novymap-qvh', [$streamHandler]);
 $botcolor="#7d5df4";
 $discord = new Discord([
+    'logger' => $logger,
   'token' => $discord_botkey,
 ]);
 $init_called = false;

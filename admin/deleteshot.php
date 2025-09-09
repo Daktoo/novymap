@@ -11,8 +11,8 @@ pageView("Delete shot :wrench::triangular_flag_on_post::wastebasket:");
 		            }
 
 
-if (is_file("/srv/http/shot2/".$shotid.".png")) {
-	unlink("/srv/http/shot2/".$shotid.".png");
+if (is_file("/srv/http/novy/shot2/".$shotid.".png")) {
+	unlink("/srv/http/novy/shot2/".$shotid.".png");
 	}
 
             $sql = "UPDATE `novy` SET `shot` = 'No Screenshot' WHERE `id` =  $daid;";

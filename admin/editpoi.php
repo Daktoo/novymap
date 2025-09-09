@@ -47,7 +47,7 @@ if ($shotid==="No Screenshot"){
 		$removeshot=$row['shot'];
 		}
 if (!($removeshot === "No Screenshot")) {
-	unlink("/srv/http/shot2/".$removeshot.".png");
+	unlink("/srv/http/novy/shot2/".$removeshot.".png");
 }
 	$shotsql=",`shot`='$shotid'";
 }
