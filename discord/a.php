@@ -145,12 +145,18 @@ $embed->setImage(str_replace("webp","png",$pigwin['avatar']));
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 }
 function newcmd (&$discord,&$commands,$cmdarry) {
-	//if ($command = $commands->get('name', $cmdarry['name'])) {
-	//	$commands->delete($command);
-//	}
+	if ($command = $commands->get('name', $cmdarry['name'])) {
+	//		$commands->delete($command);
+	} else {
+	$cmdarry['contexts']=[
+            Interaction::CONTEXT_TYPE_GUILD,
+            Interaction::CONTEXT_TYPE_BOT_DM,
+            Interaction::CONTEXT_TYPE_PRIVATE_CHANNEL,
+        ];
     $command = new Command($discord,$cmdarry); 
 
 	    $commands->save($command);
+}
 }
 $main = function (Discord $discord) {
 $discord->application->commands->freshen()
