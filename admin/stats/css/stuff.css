@@ -44,6 +44,7 @@
   color: var(--text);
   display: flex;
   flex-direction: column;
+      width: 100%;
       background-color: rgba(0, 0, 0, 0);
 }
     .tabtu[data-tabselected] {
