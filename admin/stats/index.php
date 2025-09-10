@@ -115,7 +115,9 @@ foreach ($viewtoggle as $ah) {
 <div>
 <div class="settings-container-top ">
 <?php
-$eh='<div class="tabarwrapper">';
+$eh='<div class="tabarwrapperwrapper">';
+	$eh.=PHP_EOL;
+$eh.='<div class="tabarwrapper">';
 	$eh.=PHP_EOL;
 $eh.='<div class="tabar">';
 foreach ($datalist as $ha) {
@@ -130,6 +132,11 @@ foreach ($datalist as $ha) {
 	$eh.='<span data-tabid="'.$ha[0].'"'. ' class="tabar-smalltext">'.$ha[4]. '</span>'.'</button>';
 }
 $eh.='</div>';
+	$eh.=PHP_EOL;
+$eh.='</div>';
+	$eh.=PHP_EOL;
+$eh.='<div class="tabarwrapperbar"></div>';
+	$eh.=PHP_EOL;
 $eh.='</div>';
 foreach ($datalist as $ah) {
 $eh.=' <details class="tabpage" data-tabid="'.$ah[0].'" name="admin-stats-tab" id="'. $ah[0] .'tab"';

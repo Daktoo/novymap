@@ -18,37 +18,44 @@
 .tabar{
 	display: flex;
   flex-direction: row;
-  border-block-width: 0.1em;
-  border-block-end-color: var(--accent);
-  border-bottom-style: outset;
       background: var(--card-bg);
     white-space: nowrap;
     }
     .tabarwrapper{
+          transform: rotate(180deg);
      /* backward compairable for older browser */
      overflow-x: overlay !important;
     overflow-x: scroll;
     scrollbar-gutter: stable;
      overflow-y: clip;
-      position: sticky;
+    width: 100%;
+      }
+
+
+.tabarwrapperwrapper{
+position: sticky;
       background: var(--card-bg);
     top: -2rem;
     z-index: 9999;
   margin-top: -2rem;
+      margin-left: -2rem;
+    margin-right: -2rem;
+
 }
-
-
     .tabtu {
+     /* https://stackoverflow.com/questions/3934271/horizontal-scrollbar-on-top-and-bottom-of-table
+      * scroll bar on top hack
+      */
 	    margin-bottom: -0.5em;
   padding: 0.5em 0.5em 0.5em 0.5em;
   border-top: none;
     border-top-style: none;
   border-right: none;
   border-left: none;
-  border-bottom: none;
-  border-top-style: solid;
-  border-top-width: 0.5em;
-  border-top-color: var(--card-bg);
+  border-top: none;
+  border-bottom-style: solid;
+  border-bottom-width: 1em;
+  border-bottom-color:  rgba(0, 0, 0, 0);
   color: var(--text);
   display: flex;
   flex-direction: column;
@@ -56,9 +63,22 @@
       background-color: rgba(0, 0, 0, 0);
 }
     .tabtu[data-tabselected] {
-  border-top-color: var(--primary);
-    }
+  border-bottom-color: var(--primary);
+       box-shadow: 3px 3px 3px 3px var(--card-shadow);
+} 
 
     .tabar-smalltext {
+	        transform: rotate(180deg);
   font-size: 0.6rem;
+}
+
+.tabar-text{
+	        transform: rotate(180deg);
+
+}
+
+.tabarwrapperbar {
+    width: 100%;
+    height: 0.1em;
+    background: var(--accent);
 }
