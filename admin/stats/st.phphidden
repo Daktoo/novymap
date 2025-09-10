@@ -213,14 +213,15 @@ while ($row = $resDIS->fetch_assoc()) {
  if (!isset($disCounts[$row['cmd']])){
 	    $disCounts[$row['cmd']]=0;
     }
+$disCounts[$row['cmd']]++;
+
 if (!empty($row['lang'])){
-if (!isset($disCounts[$row['lang']])){
-	    $disCounts[$row['lang']]=0;
+if (!isset($dislangCounts[$row['lang']])){
+	    $dislangCounts[$row['lang']]=0;
     }
 
 $dislangCounts[$row['lang']]++;
 }
-$disCounts[$row['cmd']]++;
    }
 
 $stmtHATE->execute();
