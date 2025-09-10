@@ -18,21 +18,24 @@
 .tabar{
 	display: flex;
   flex-direction: row;
-  margin-top: -2rem;
   border-block-width: 0.1em;
   border-block-end-color: var(--accent);
   border-bottom-style: outset;
-  /* backward compairable for older browser */
+      background: var(--card-bg);
+    white-space: nowrap;
+    }
+    .tabarwrapper{
+     /* backward compairable for older browser */
      overflow-x: overlay !important;
     overflow-x: scroll;
     scrollbar-gutter: stable;
-    overflow-y: clip;
-        position: sticky;
+     overflow-y: clip;
+      position: sticky;
+      background: var(--card-bg);
     top: -2rem;
     z-index: 9999;
-    background: var(--card-bg);
-    white-space: nowrap;
-    }
+  margin-top: -2rem;
+}
 
 
     .tabtu {

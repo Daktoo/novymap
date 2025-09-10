@@ -115,29 +115,44 @@ foreach ($viewtoggle as $ah) {
 <div>
 <div class="settings-container-top ">
 <?php
-$eh='<div class="tabar">';
+$eh='<div class="tabarwrapper">';
+	$eh.=PHP_EOL;
+$eh.='<div class="tabar">';
 foreach ($datalist as $ha) {
+	$eh.=PHP_EOL;
 	$eh.='<button';
 	$eh.= $san['tabid'] === $ha[0] ? ' data-tabselected="" ' : '' ;
 	$eh.=' id="'. $ha[0] .'tabtu" data-tabid="'.$ha[0].'"';
 	$eh.= 'class="tabtu" >';
+	$eh.=PHP_EOL;
 	$eh.='<span data-tabid="'.$ha[0].'"' . ' class="tabar-text">'.$ha[1].'</span>';
+	$eh.=PHP_EOL;
 	$eh.='<span data-tabid="'.$ha[0].'"'. ' class="tabar-smalltext">'.$ha[4]. '</span>'.'</button>';
 }
+$eh.='</div>';
 $eh.='</div>';
 foreach ($datalist as $ah) {
 $eh.=' <details class="tabpage" data-tabid="'.$ah[0].'" name="admin-stats-tab" id="'. $ah[0] .'tab"';
 	$eh.= $san['tabid'] === $ah[0] ? 'open="" ' : '' ;
 	$eh.= '>' ;
 
+	$eh.=PHP_EOL;
 $eh.='<summary class="dropdown-head"></summary>';
+	$eh.=PHP_EOL;
 $eh.='<h1  class="qvhtile">'.$ah[3] . ' Distribution </h1>';
+	$eh.=PHP_EOL;
 $eh.='<h1 class="qvhtilesmall">'.$ah[4] . '</h1>';
+	$eh.=PHP_EOL;
     $eh.='<div class="stats-chart-container">';
+	$eh.=PHP_EOL;
         $eh.='<canvas class="stats-canvas" id="'. $ah[0] .'Chart"></canvas>';
+	$eh.=PHP_EOL;
         $eh.='<table id="'.$ah[0].'Table" style="display: none;">';
+	$eh.=PHP_EOL;
        $eh.=' </table>';
+	$eh.=PHP_EOL;
    $eh.=' </div>';
+	$eh.=PHP_EOL;
 $eh.='</details>';
 }
 echo($eh);
