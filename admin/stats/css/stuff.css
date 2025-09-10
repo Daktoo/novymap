@@ -27,6 +27,11 @@
     overflow-x: scroll;
     scrollbar-gutter: stable;
     overflow-y: clip;
+        position: sticky;
+    top: -2rem;
+    z-index: 9999;
+    background: var(--card-bg);
+    white-space: nowrap;
     }
 
 
