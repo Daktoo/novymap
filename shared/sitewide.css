@@ -630,4 +630,7 @@ flex-direction: column;
 
 .nav-wrapper {
   text-decoration: none;
+      width: 50%;
+    overflow: hidden;
+        white-space: nowrap;
 }
