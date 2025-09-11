@@ -38,7 +38,7 @@ echo '</div>';
 
  }
  echo '<div class="settings-container ">';
- echo '<pre class="inxioutput">';
+ echo '<pre class="inxioutput terminal">';
 exec('inxi -Fxz | aha --no-header', $outputA, $useless);
 echo(loopoutput($outputA));
  echo '</pre>';

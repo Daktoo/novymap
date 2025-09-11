@@ -24,9 +24,9 @@ if ($conn) {
 putenv("SQLVER=".mysqli_get_server_info($conn));
 }
 if ($neofetch_A){
-	$res .= '<div class="archbox-center">';
+	$res .= '<div class="archbox-center terminal">';
 } else {
-	$res .= '<div class="archbox">';
+	$res .= '<div class="archbox terminal">';
 }
  $res .= '<pre class="archlogo">';
 exec('neofetch -L | aha --no-header', $neofetch_outputA, $neofetch_useless);

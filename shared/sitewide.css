@@ -607,7 +607,14 @@ flex-direction: column;
     overflow: overlay !important;
         overflow: scroll;
     scrollbar-gutter: stable;
-}
+    }
+    .terminal{
+	    width: fit-content;
+background: black;
+    color: white;
+    border-radius: 2rem;
+
+    }
 .archbox-center {
 	justify-content: center;
 }
