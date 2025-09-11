@@ -261,9 +261,6 @@ th {
   color: var(--text);
 }
 
-tbody tr:nth-child(even) {
-  background-color: var(--surface-bg);
-}
 
 tr:hover {
   background-color: var(--link-hover);
