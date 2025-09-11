@@ -157,11 +157,10 @@ input[type=radio]+.marker .marker__icon[data-v-3a029710] {
 .map.leaflet-container.leaflet-touch.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
   background-color: var(--background-base) !important;
 } 
-:root[data-theme="light"] .leaflet-control-loading svg  {
-  filter: brightness(0.0);
-} 
 
-
+#icon--loading {
+    stroke: var(--text-day) !important;
+}
 .dial-box{
 font-size: 15px;
 }
