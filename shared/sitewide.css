@@ -318,7 +318,6 @@ tr:hover {
 }
 
 .feature-card {
-  color: var(--primary);
   background-color:var(--accent);
   border-radius: 1.5rem;
   padding: 2rem;
