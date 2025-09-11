@@ -49,6 +49,7 @@ position: sticky;
       * scroll bar on top hack
       */
 	    margin-bottom: -0.5em;
+	    cursor: grab;
   padding: 0.5em 0.5em 0.5em 0.5em;
   border-top: none;
     border-top-style: none;
