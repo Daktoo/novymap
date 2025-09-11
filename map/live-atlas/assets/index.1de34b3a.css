@@ -213,66 +213,59 @@ font-style: normal;
 * {
     font-family: 'Fira Code' !important;                    
 }
-
-        :root {
-            --background-base: #222222; /* Foreground UI elements */
-            --background-dark: #121212; /* Body/Splash screen/Shadows */
-            --background-light: #363636; /* Scrollbars/inputs */
-            --background-error: #771616; /* Errors */
-            --background-marker: var(--background-dark); /* Map markers */
-
-            --background-disabled: #555555; /* Disabled controls */
-            --background-hover: #363636; /* :hovered buttons/menu items */
-            --background-active: #6d6d6d; /* Button :active */
-            --background-selected: #BDBDBD; /* Selected buttons/menu items */
-
-            --outline-focus: #eeeeee; /* :focus outline */
-
-            --border-radius: 0.5rem;
-            --border-color: #333333; /* Control borders */
-            --border-error: #cc0e0e;
-            --box-shadow: 2px 2px 0px #111111;
-
-            --text-base: rgba(255, 255, 255, 0.7); /* Normal text */
-            --text-emphasis: rgba(255, 255, 255, 0.87); /* Chat messages/:focus inputs */
-            --text-subtle: rgba(255, 255, 255, 0.5); /* Skeletons/secondary text */
-            --text-disabled: var(--text-subtle); /* Disabled controls */
-            --text-marker: var(--text-base); /* Map markers */
-
-            --text-hover: var(--text-base); /* Text in :hover buttons */
-            --text-active: var(--text-base); /* Text in :active buttons */
-            --text-selected: var(--background-base); /* Text in selected buttons */
-            --text-shadow: 0.1rem 0.1rem #000000; /* Text in selected buttons */
-
-            --text-night: #ddffff; /* Clock time at night */
-            --text-day: #ffdd33; /* Clock time in day */
-        }
-:root[data-theme="light"] {
-  --background-base: #fff;
-  --background-light: var(--background-base);
-  --background-dark: #363636;
-  --background-error: #ff0909;
-  --background-marker: #fffefe;
-  --background-disabled: #fffefe;
-  --background-hover: #e1e1e1;
-  --background-active: #f8f2f2;
-  --background-selected: #BDBDBD;
+:root[data-theme="dark"] {
+  --background-base: #1a1b26;
+  --background-dark: #15161E;
+  --background-light: #a9b1d6;
+  --background-error: #f7768e;
+  --background-marker: var(--background-dark);
+  --background-disabled: #ff9e64;
+  --background-hover: #15161E;
+  --background-active: #a9b1d6;
+  --background-selected: #a9b1d6;
   --outline-focus: #eeeeee;
   --border-radius: 0.5rem;
-  --border-color: #fff;
-  --border-error: #cc0e0e;
+  --border-color: #1a1b26;
+  --border-error: #f7768e;
+  --text-night: #bb9af7;
+  --text-day: #e0af68;
   --box-shadow: 2px 2px 0px #111111;
-  --text-base: rgba(0, 0, 0, 0.7);
-  --text-emphasis: rgba(0, 0, 0, 0.87);
-  --text-subtle: rgba(0, 0, 0, 0.5);
+  --text-base: #c0caf5;
+  --text-emphasis: rgba(255, 255, 255, 0.87);
+  --text-subtle: rgba(255, 255, 255, 0.5);
   --text-disabled: var(--text-subtle);
-  --text-marker: rgba(0, 0, 0, 0.7);
-  --text-hover: rgba(0, 0, 0, 0.7);
-  --text-active: rgba(0, 0, 0, 0.7);
+  --text-marker: var(--text-base);
+  --text-hover: var(--text-base);
+  --text-active: var(--text-base);
   --text-selected: var(--background-base);
   --text-shadow: 0.1rem 0.1rem #000000;
-  --text-night: #ddffff;
-  --text-day: #ffdd33;
+}
+:root[data-theme="light"] {
+  --background-base: #e1e2e7;
+  --background-dark: #e9e9ed;
+  --background-light: #3760bf;
+  --background-error: #f52a65;
+  --background-marker: var(--background-dark);
+  --background-disabled: #8c6c3e;
+  --background-hover: #e9e9ed;
+  --background-active: #6172b0;
+  --background-selected: #6172b0;
+  --outline-focus: #eeeeee;
+  --border-radius: 0.5rem;
+  --border-color: #e9e9ed;
+  --border-error: #f52a65;
+  --text-night: #9854f1;
+  --text-day: #8c6c3e;
+  --box-shadow: 2px 2px 0px #111111;
+  --text-base: #3760bf;
+  --text-emphasis: rgba(255, 255, 255, 0.87);
+  --text-subtle: rgba(255, 255, 255, 0.5);
+  --text-disabled: var(--text-subtle);
+  --text-marker: var(--text-base);
+  --text-hover: var(--text-base);
+  --text-active: var(--text-base);
+  --text-selected: var(--background-base);
+  --text-shadow: 0.1rem 0.1rem #000000;
 }
         @keyframes fade {
             from {
