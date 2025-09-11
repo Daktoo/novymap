@@ -397,5 +397,9 @@ font-style: normal;
 }
 
 #qvhhackbox1 {
-  order: 999;
+  order: 3;
+}
+
+.leaflet-top .leaflet-control-loading {
+	order: 999 !important;
 }
