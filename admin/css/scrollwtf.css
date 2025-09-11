@@ -25,3 +25,15 @@ height: 20rem;
 line-break: anywhere;
   transform: skewX(-70deg);;
 }
+
+
+.scroll3-outrot{
+height: 20rem;
+  overflow: scroll;
+  transform: rotate3d(1, 1, 1, 80deg);
+}
+
+.scroll3-inrot{
+line-break: anywhere;
+transform: rotate3d(-1, 1, 1, -80deg);
+}
