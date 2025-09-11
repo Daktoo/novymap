@@ -227,8 +227,7 @@ font-style: normal;
   --text-night: #bb9af7;
   --text-day: #e0af68;
   --text-base: #c0caf5;
-  --text-emphasis: rgba(255, 255, 255, 0.87);
-  --text-subtle: rgba(255, 255, 255, 0.5);
+  --text-subtle: #7dcfff;
   }
 :root[data-theme="light"] {
   --background-base: #e1e2e7;
@@ -245,10 +244,15 @@ font-style: normal;
   --text-night: #9854f1;
   --text-day: #8c6c3e;
   --text-base: #3760bf;
-  --text-emphasis: rgba(255, 255, 255, 0.87);
-  --text-subtle: rgba(255, 255, 255, 0.5);
+  --text-subtle: #007197;
   }
+  input {
+	  background-color: var(--background-selected) !important;
+  color: var(--text-selected) !important;
+  }
+
 :root{
+  --text-emphasis: var(--text-base);
 --text-disabled: var(--text-subtle);
   --text-marker: var(--text-base);
   --text-hover: var(--text-base);
