@@ -84,3 +84,12 @@ position: sticky;
     height: 0.1em;
     background: var(--accent);
 }
+
+[data-theme="dark"] {
+    --chartcolor: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="light"] {
+   --chartcolor: rgba(255, 255, 255, 0.1);
+}
+

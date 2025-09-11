@@ -10,37 +10,38 @@ font-style: normal;
     font-family: 'Fira Code' ;
 }
 
-/* Default (dark) theme variables */
+/* Default (dark) theme variables (tokyonight-dark) */
 [data-theme="dark"] {
-  --background: #121212;
-  --surface-bg: #1e1e1e;
-  --accent: #e63946;
-  --primary: #ffb703;
-  --secondary: #8ecae6;
-  --link: #ffd166;
-  --link-hover: #ffb703;
-  --text: #f0f0f0;
-  --muted-text: #a0a0a0;
-  --card-bg: #1f1f1f;
+  --background: #1a1b26;
+  --surface-bg: #15161E;
+  --accent: #f7768e;
+  --primary: #e0af68;
+  --secondary: #7dcfff;
+  --link: #e0af68;
+  --link-hover: #e0af68;
+  --text: #c0caf5;
+  --red:#f7768e;
+  --muted-text: #7dcfff;
+  --card-bg: #15161E;
   --card-shadow: rgba(0, 0, 0, 0.6);
   --transition: 0.3s ease;
-  --chartcolor: rgba(255, 255, 255, 0.1);
 }
 
-/* Light theme overrides (add data-theme="light" on <html> or <body>) */
+/* Light theme overrides (add data-theme="light" on <html> or <body>) (tokyonight-day) */
 [data-theme="light"] {
-  --background: #f5f5f5;
-  --surface-bg: #ffffff;
-  --accent: #d00000;
-  --primary: #0077b6;
-  --secondary: #0096c7;
-  --link: #0077b6;
-  --link-hover: #005f87;
-  --text: #121212;
-  --muted-text: #555555;
-  --card-bg: #ffffff;
-  --card-shadow: rgba(0, 0, 0, 0.1);
-  --chartcolor: rgba(0, 0, 0, 0.1);
+  --background: #e1e2e7;
+  --surface-bg: #e9e9ed;
+  --accent: #f52a65;
+  --primary: #e0af68;
+  --secondary: #7dcfff;
+  --link: #8c6c3e;
+  --link-hover: #8c6c3e;
+  --text: #3760bf;
+  --muted-text: #2e7de9;
+  --card-bg: #e9e9ed;
+  --card-shadow: rgba(0, 0, 0, 0.6);
+  --red:#f52a65;
+  --transition: 0.3s ease;
 }
 
 :root[data-theme="light"]  .darkicon {
