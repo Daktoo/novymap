@@ -235,9 +235,10 @@ table {
   font-size: 1rem;
   background-color: var(--card-bg);
   box-shadow: 0 4px 16px var(--card-shadow);
-  border-radius: 1rem;
   overflow: hidden;
   animation: fadeInTable 0.8s ease both;
+  border-top-left-radius: 1rem;
+border-top-right-radius: 1rem;
 }
 
 @keyframes fadeInTable {
