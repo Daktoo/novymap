@@ -52,7 +52,7 @@ height: 3em;
 .admin-table-bar{
     height: auto;
     width: 0.1em;
-    background-color: var(--text);
+    background-color: var(--muted-text);
     margin-left: 0.5em;
     margin-right: 0.5em;
     }
