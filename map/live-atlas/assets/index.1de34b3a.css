@@ -218,55 +218,47 @@ font-style: normal;
   --background-dark: #15161E;
   --background-light: #a9b1d6;
   --background-error: #f7768e;
-  --background-marker: var(--background-dark);
   --background-disabled: #ff9e64;
   --background-hover: #15161E;
   --background-active: #a9b1d6;
   --background-selected: #a9b1d6;
   --outline-focus: #eeeeee;
-  --border-radius: 0.5rem;
   --border-color: #1a1b26;
   --border-error: #f7768e;
   --text-night: #bb9af7;
   --text-day: #e0af68;
-  --box-shadow: 2px 2px 0px #111111;
   --text-base: #c0caf5;
   --text-emphasis: rgba(255, 255, 255, 0.87);
   --text-subtle: rgba(255, 255, 255, 0.5);
-  --text-disabled: var(--text-subtle);
-  --text-marker: var(--text-base);
-  --text-hover: var(--text-base);
-  --text-active: var(--text-base);
-  --text-selected: var(--background-base);
-}
+  }
 :root[data-theme="light"] {
   --background-base: #e1e2e7;
   --background-dark: #e9e9ed;
   --background-light: #3760bf;
   --background-error: #f52a65;
-  --background-marker: var(--background-dark);
   --background-disabled: #8c6c3e;
   --background-hover: #e9e9ed;
   --background-active: #6172b0;
   --background-selected: #6172b0;
   --outline-focus: #eeeeee;
-  --border-radius: 0.5rem;
   --border-color: #e9e9ed;
   --border-error: #f52a65;
   --text-night: #9854f1;
   --text-day: #8c6c3e;
-  --box-shadow: 2px 2px 0px #111111;
   --text-base: #3760bf;
   --text-emphasis: rgba(255, 255, 255, 0.87);
   --text-subtle: rgba(255, 255, 255, 0.5);
-  --text-disabled: var(--text-subtle);
+  }
+:root{
+--text-disabled: var(--text-subtle);
   --text-marker: var(--text-base);
   --text-hover: var(--text-base);
   --text-active: var(--text-base);
   --text-selected: var(--background-base);
-}
-:root{
+  --background-marker: var(--background-dark);
 --text-shadow: none;
+    --border-radius: 1rem;
+  --box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.6);
 }
         @keyframes fade {
             from {
