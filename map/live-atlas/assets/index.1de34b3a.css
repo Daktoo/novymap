@@ -238,7 +238,6 @@ font-style: normal;
   --text-hover: var(--text-base);
   --text-active: var(--text-base);
   --text-selected: var(--background-base);
-  --text-shadow: 0.1rem 0.1rem #000000;
 }
 :root[data-theme="light"] {
   --background-base: #e1e2e7;
@@ -265,7 +264,9 @@ font-style: normal;
   --text-hover: var(--text-base);
   --text-active: var(--text-base);
   --text-selected: var(--background-base);
-  --text-shadow: 0.1rem 0.1rem #000000;
+}
+:root{
+--text-shadow: none;
 }
         @keyframes fade {
             from {
