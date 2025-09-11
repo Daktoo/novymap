@@ -1,9 +1,9 @@
 <?php
 include 'adm.phphidden';
-$admpagetitle="Server Info";
-$MSG="WebHook Tester :wrench::triangular_flag_on_post::book:";
+$admpagetitle="WebHook Tester and Scolling tester";
+$MSG="WebHook Tester and Scolling tester :wrench::triangular_flag_on_post::book:";
 	 pageView($MSG);
-	echo(admin_head($admpagetitle));
+	echo(admin_head($admpagetitle,'<link rel="stylesheet" href="/css/scrollwtf.css">'));
 	echo(admin_navbar());
 
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,7 +21,17 @@ $MSG="WebHook Tester :wrench::triangular_flag_on_post::book:";
 
 </form>
 </div>
-
+<div class="settings-container ">
+  <div class="scroll-out"> 
+<div class="scroll1-outrot"> 
+<div>
+<p class="scroll1-inrot">
+This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.This is really long paragraph.
+</p>
+</div>
+</div>
+</div>
+</div>
  </div>
 <?php
 include '../shared/footer.php';

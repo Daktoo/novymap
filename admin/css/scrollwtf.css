@@ -1,0 +1,15 @@
+.scroll-out{
+height: 50rem;
+}
+
+
+.scroll1-outrot{
+height: 20rem;
+  overflow: scroll;
+  transform: rotate(30deg);
+}
+
+.scroll1-inrot{
+line-break: anywhere;
+  transform: rotate(-30deg);
+}
