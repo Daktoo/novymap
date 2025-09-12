@@ -130,6 +130,7 @@ function hatehandler (Interaction $interaction) {
 	global $botcolor;
 
 	 global $discord;
+$conn=reconnectdb($conn);
 	 $embed = new Embed($discord);
  $timestamp = date('Y-m-d H:i:s');
 	$pigwinid =$interaction->data->options->offsetGet('pigwin')->value;
@@ -374,7 +375,7 @@ $tmp=[0=>$result['data']];
 $discord->listenCommand('info_railline', function (Interaction $interaction) {
 	  $ID = intval($interaction->data->options->offsetGet('id')->value);
 
-	 global $conn;
+	  global $conn;
 $result = api_info_railline($conn, $ID);
 $tmp=[0=>$result['data']];
 	 $embed=dialtodis(false,$tmp,'Info');
@@ -391,7 +392,7 @@ if(empty($a) or ($a > 25) or ($a < 0)){
 	  
 
 
-	 global $conn;
+	  global $conn;
 $result = api_search($conn, $q,$a,$w,0);
 	 $embed=dialtodis(true,$result['data'],'Search','Found Dial :');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
@@ -407,7 +408,7 @@ $discord->listenCommand('cords', function (Interaction $interaction) {
 	  if(empty($a) or ($a > 25) or ($a < 0)){
 	  $a=25;
 	  }
-	 global $conn;
+	  global $conn;
 $result = api_cords($conn, $x,$z,$r,$a,0);
 	 $embed=dialtodis(true,$result['data'],'Coords','Found Dial :');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
@@ -418,7 +419,7 @@ $discord->listenCommand('search_railline', function (Interaction $interaction) {
 	  if(empty($a) or ($a > 25) or ($a < 0)){
 	  $a=25;
 	  }
-	 global $conn;
+	  global $conn;
 $result = api_search_railline($conn, $q,$a);
 	 $embed=dialtodis(false,$result['data'],'Lines','Found Line :');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
@@ -513,6 +514,7 @@ $discord->on(
     Event::INTERACTION_CREATE,
     function (Interaction $interaction) {
 		    global $conn;
+$conn=reconnectdb($conn);
 	    if ($interaction->type === Interaction::TYPE_APPLICATION_COMMAND) {
 	    $timestamp = date('Y-m-d H:i:s');
 	$lang=mysqli_real_escape_string($conn,$interaction->locale);

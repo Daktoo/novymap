@@ -1,5 +1,6 @@
 <?php
 function api_railline($conn) {
+$conn=reconnectdb($conn);
 $response = [];
 
 // Build the SQL query to select data

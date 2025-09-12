@@ -1,5 +1,6 @@
 <?php
 function api_search($conn,$rawq,$rawa,$raww,$rawd) {
+$conn=reconnectdb($conn);
 
 $q = mysqli_real_escape_string($conn, $rawq);
 $a = intval($rawa);
@@ -86,8 +87,7 @@ $response['data'] = [];
 		  unset($response['data'][$row['id']]['shot']);
   }
 
-// Return the results as JSON
-header('Content-Type: application/json');
+mysqli_close($conn);
 return $response;
 }
 ?>

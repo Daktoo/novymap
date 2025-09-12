@@ -1,5 +1,6 @@
 <?php
 function api_search_railline($conn,$rawq,$rawa) {
+$conn=reconnectdb($conn);
 
 $q = mysqli_real_escape_string($conn, $rawq);
 $a = is_numeric($rawa) ? (int)$rawa : 0;
@@ -55,8 +56,7 @@ if (!(empty($row['admin'])||$row['admin']==="???")){
 
 		  }
 
-// Return the results as JSON
-header('Content-Type: application/json');
+mysqli_close($conn);
 return $response;
 }
 ?>

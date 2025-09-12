@@ -1,5 +1,7 @@
 <?php
 function api_markers($conn) {
+	$conn=reconnectdb($conn);
+
 // Initialize response array
 $response = [];
 

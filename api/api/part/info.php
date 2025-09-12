@@ -1,5 +1,7 @@
 <?php
 function api_info($conn,$rawid=0) { 
+	$conn=reconnectdb($conn);
+
 // Initialize response array
 $id=intval($rawid);
 $response = [
@@ -49,6 +51,7 @@ $response['data'] = [];
 		  unset($response['data']['shot']);
   }
 
+mysqli_close($conn);
 // Return JSON response
 return($response);
 }

@@ -1,5 +1,7 @@
 <?php
 function api_cords($conn,$rawx,$rawz,$rawr,$rawa,$rawd) {
+	$conn=reconnectdb($conn);
+
 // Sanitize input parameters
 $x =  is_numeric($rawx) ? intval($rawx) : 0  ;
 $z =  is_numeric($rawz) ? intval($rawz) : 0  ;
@@ -75,6 +77,7 @@ if (!$result) {
 }
 
 
+mysqli_close($conn);
 
 // Return JSON
     return($response);

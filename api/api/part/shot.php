@@ -1,4 +1,6 @@
 <?php function api_shot($conn,$id=0) {     
+	$conn=reconnectdb($conn);
+
 	$daid = intval($id);   $sql = "SELECT `shot` FROM novy WHERE id = $daid;";     
 	$result = mysqli_query($conn, $sql);$shotid="";	   
 	while ($row = mysqli_fetch_assoc($result)){		
@@ -10,5 +12,7 @@
 			"id"=>$_GET['id'],		    ],	
 			"error" =>[ "message" => "No Sceenshot found" ]		 
 		]);	
+
+mysqli_close($conn);
 	}	    return($fucked ?? '');}
 ?>

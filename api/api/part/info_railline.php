@@ -1,5 +1,7 @@
 <?php
 function api_info_railline($conn,$rawid=0) { 
+	$conn=reconnectdb($conn);
+
 	// Initialize response array
 $id=intval($rawid);
 $response = [
@@ -40,6 +42,7 @@ if (!(empty($row['admin'])||$row['admin']==="???")){
 
 	  }
 
+mysqli_close($conn);
 // Return JSON response
 return($response);
 }

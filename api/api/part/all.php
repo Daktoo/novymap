@@ -1,5 +1,6 @@
 <?php
 function api_all($conn,$d=0) { 
+$conn=reconnectdb($conn);
 
 // Get and sanitize 'dial' parameter
 if ($d===0 or $d===1){
@@ -59,8 +60,8 @@ $response['data'] = [];
 		  unset($response['data'][$row['id']]['shot']);
   }
 // Close DB connection
-mysqli_close($conn);
 
+mysqli_close($conn);
 // Return JSON response
 return($response);
 }
