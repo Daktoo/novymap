@@ -2300,7 +2300,7 @@ img {
 }
 .map .marker.marker--player .marker__label 
 {
-  background: #0000009c !important;
+  background: var(--pmarker) !important;
 }
 .player .player__icon[data-v-1f77067f] {
   height: 32px;
@@ -2390,6 +2390,7 @@ input[type=radio]+.marker .marker__icon[data-v-3a029710] {
   --text-day: #e0af68;
   --text-base: #c0caf5;
   --text-subtle: #7dcfff;
+  --pmarker:#1a1b26a3;
 }
 :root[data-theme="light"] {
   --background-base: #e1e2e7;
@@ -2407,6 +2408,7 @@ input[type=radio]+.marker .marker__icon[data-v-3a029710] {
   --text-day: #8c6c3e;
   --text-base: #3760bf;
   --text-subtle: #007197;
+  --pmarker:#e1e2e7a3;
 }
 input {
   background-color: var(--background-selected) !important;
