@@ -5,13 +5,23 @@ ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 include_once('../../../shared/db.php');
-include('../../../shared/statslog.php');
 include('../../../shared/webhook.php');
 include('../../../shared/san.php');
 include_once('../../../shared/credential.php');
+$conn=reconnectdb($conn);
 
 webhookmsg("https://map.novymap-qvh.top/live-atlas/assets/fbi.png",$discord_maphook,"FBI","A user is using `" . $_SERVER['HTTP_USER_AGENT'] . "`" );
-logStats("map");
+    $timestamp = date('Y-m-d H:i:s');
+    $ip = $_SERVER['REMOTE_ADDR'] ?? null;
+    $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? null;
+    $stmt = $conn->prepare("
+        INSERT INTO usage_log_qvh (timestamp,  ip_address, user_agent )
+        VALUES (?,  ?, ? )
+    ");
+        $stmt->bind_param('sss', $timestamp,  $ip, $userAgent );
+        $stmt->execute();
+        $stmt->close();
+
 $dialres=[];
 $dialQuery = "
     SELECT 
