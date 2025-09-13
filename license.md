@@ -1,6 +1,6 @@
 # Licenses
 
-## novymap-qvh code/logo (excluding discord/a.php,discord/novydiscordbot.service, nginx/, shared/neofetch.php)
+## novymap-qvh logo
 - **License**: Same as the novymap
 
 ## discord/
@@ -9,8 +9,8 @@
 - **File Path**: discord/a.php
 - **License Text**: [ISC License](./licenses/ISC-qvh)
 ### b.php
-- **License**: Same as the novymap
-- **File Path**: discord/b.php
+- **License**: MIT
+- **License Text**: [MIT License](./licenses/MIT-qvhpigwin)
 
 ## map/
 ### LiveAtlas, icon from dynmap, edited dynmap config
@@ -19,25 +19,20 @@
 - **License Text**: [Apache-2.0 License](./licenses/Apache-2.0)
 
 ### map/api/internal/novy.php
-- **License**: Same as the novymap
-- **File Path**: map/api/internal/novy.php
-
-### map/live-atlas/assets/fbi.png
-- **License**: Unknown
-- **File Path**: map/live-atlas/assets/fbi.png
+- **License**: MIT
+- **License Text**: [MIT License](./licenses/MIT-qvhpigwin)
 
 ## admin/, api/, home/
-- **License**: Same as the novymap
-- **File Paths**: admin/, api/, home/
+- **License**: MIT
+- **License Text**: [MIT License](./licenses/MIT-qvhpigwin)
+
 
 ## shared/FiraCode-Regular.woff2
 - **License**: OFL-1.1
-- **File Path**: shared/FiraCode-Regular.woff2
 - **License Text**: [OFL-1.1 License](./licenses/OFL-1.1-Fira)
 
 ## shared/neofetch.php
 - **License**: CC0
-- **File Path**: shared/neofetch.php
 - **License Text**: [CC0 License](./licenses/CC0)
 
 ## rest of shared/
@@ -46,10 +41,9 @@
 
 ## nginx/ , varnish/
 - **License**: BSD
-- **File Paths**: nginx/
 - **License Text**: [BSD License](./licenses/BSD-qvh)
 
-## map/live-atlas/assets/fbi.png and various images
+## map/live-atlas/assets/fbi.png,home/credits/img/ and other images
 - **License**: Unknown
 - **File Paths**: map/live-atlas/assets/fbi.png and other images with unknown licenses
 
