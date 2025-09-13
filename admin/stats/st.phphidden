@@ -21,28 +21,51 @@ $res=[
 		return $res;
 	}
 	else {
-
-$ch = curl_init("http://ip-api.com/json/" . $ipp);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-$rawjson = curl_exec($ch);
 $fucked = [
 	"isp"=>"api error",
 	"where"=>"api error"
 ];
+global $ipapiisapi;
+$ch = curl_init("https://api.ipapi.is");
+$payload = json_encode([
+       "q" => $ipp,                                                                
+       "key" => $ipapiisapi,                                                      
+]);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);            
+curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+$rawjson = curl_exec($ch);
+
+if (curl_errno($ch) or curl_getinfo($ch, CURLINFO_HTTP_CODE) != 200) {
+$ch = curl_init("http://ip-api.com/json/" . $ipp);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$api="shit";
+$rawjson = curl_exec($ch);
+
+} else {
+	$api="good";
+}
+
 if (curl_errno($ch)) {           
       return  $fucked;
 
 }           
 
-
-if (curl_getinfo($ch, CURLINFO_HTTP_CODE)===200) {
 $decodejson=json_decode($rawjson,true);
+if ($api==="shit") {
 $res=[
 	"where"=>$decodejson["country"],
 	"isp"=>$decodejson["isp"]
 ];
 return $res;
+} else {
+$res=[
+	"where"=>$decodejson["location"]["country"],
+	"isp"=>$decodejson["company"]["name"],
+];
+return $res;
+
 }
         return  $fucked;
 
