@@ -22,7 +22,11 @@
     white-space: nowrap;
     }
     .tabarwrapper{
-          transform: rotate(180deg);
+   /* https://stackoverflow.com/questions/3934271/horizontal-scrollbar-on-top-and-bottom-of-table
+      * scroll bar on top hack
+      */
+
+          transform: rotateX(180deg);
      /* backward compairable for older browser */
      overflow-x: overlay !important;
     overflow-x: scroll;
@@ -45,11 +49,8 @@ position: sticky;
 
 }
     .tabtu {
-     /* https://stackoverflow.com/questions/3934271/horizontal-scrollbar-on-top-and-bottom-of-table
-      * scroll bar on top hack
-      */
-	    margin-bottom: -0.5em;
-	    cursor: grab;
+  	    margin-bottom: -0.5em;
+	        cursor: pointer;
   padding: 0.5em 0.5em 0.5em 0.5em;
   border-top: none;
     border-top-style: none;
@@ -61,7 +62,7 @@ position: sticky;
   border-bottom-color:  rgba(0, 0, 0, 0);
   color: var(--text);
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
       width: 100%;
       background-color: rgba(0, 0, 0, 0);
 }
@@ -71,12 +72,12 @@ position: sticky;
 } 
 
     .tabar-smalltext {
-	        transform: rotate(180deg);
+	        transform: rotateX(180deg);
   font-size: 0.6rem;
 }
 
 .tabar-text{
-	        transform: rotate(180deg);
+	        transform: rotateX(180deg);
 
 }
 
