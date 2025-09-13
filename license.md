@@ -44,7 +44,7 @@
 - **License**: Same as the novymap
 - **File Paths**: shared/ (excluding shared/FiraCode-Regular.woff2 and shared/neofetch.php)
 
-## nginx/
+## nginx/ , varnish/
 - **License**: BSD
 - **File Paths**: nginx/
 - **License Text**: [BSD License](./licenses/BSD-qvh)
