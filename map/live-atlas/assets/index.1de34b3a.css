@@ -2301,6 +2301,7 @@ img {
 .map .marker.marker--player .marker__label 
 {
   background: var(--pmarker) !important;
+  border-radius: var(--border-radius);
 }
 .player .player__icon[data-v-1f77067f] {
   height: 32px;
