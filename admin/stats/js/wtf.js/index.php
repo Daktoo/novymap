@@ -1,4 +1,3 @@
-
 // My dumb ass ide think it is html but it is js ..
 // so i puted script to fool it
 // yes wtf
@@ -16,9 +15,9 @@ $datalist=fatchstats($san['fromDate'],$san['toDate'],$san['aggregation'],$conn,f
 $san['tabid']=htmlspecialchars($_GET['tabid'] ?? $datalist[0][0]);
 
 
-	 $wtf="const datalist = ";
+	 $wtf="const datalist = JSON.parse(`";
 	 $wtf.=json_encode($datalist,JSON_PRETTY_PRINT);
-	 $wtf.=";";
+	 $wtf.="`);";
 
 echo($wtf."\n" );
 
