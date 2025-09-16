@@ -69,12 +69,12 @@ const color = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, 
 	function drawTable (id,name,data) {
 		
 		let eh = "";
-		let count=0;
   		eh+='<thead>';
                eh+=' <tr><th>Date</th><th>Counts</th></tr>';
            	eh+=' </thead>';
              eh+='<tbody>';
 	for (let [a, b] of Object.entries(data)) {
+		let count=0;
 		eh+='<tr><td>';
 			eh+=a;
 		eh+='</td>';
