@@ -39,17 +39,23 @@ $aggregation=[
 
 $stacktoggle=[
 [0=>"yes",1=>"Hell yeah"],
-[0=>"no",1=>"Fuck no"]
+[0=>"no",1=>"Fuck no"],
 ];
-  
+
+ $filptoggle=[
+[0=>"no",1=>"Hell no"],
+[0=>"yes",1=>"Fuck yeah"],
+];
+ 
 $san=htmlsan([                  
 'fromDate' => $_GET['from'] ?? '',
 'toDate' => $_GET['to'] ?? '',               
 ]);
 
 $san['aggregation']=statsanitiser($aggregation,$_GET['aggregation'] ?? $aggregation[0][0] );
-$san['viewtoggle']=statsanitiser($viewtoggle,$_GET['viewtoggle'] ?? $viewtoggle[0][0]  );
-$san['stacktoggle']=statsanitiser($stacktoggle,$_GET['stacktoggle'] ?? $stacktoggle[0][0]  );
+$san['viewtoggle']=statsanitiser($viewtoggle,$_GET['view'] ?? $viewtoggle[0][0]  );
+$san['stacktoggle']=statsanitiser($stacktoggle,$_GET['stack'] ?? $stacktoggle[0][0]  );
+$san['filptoggle']=statsanitiser($filptoggle,$_GET['filp'] ?? $filptoggle[0][0]  );
 
 $datalist=fatchstats($san['fromDate'],$san['toDate'],$san['aggregation'],$conn,true);
 $san['tabid']=statsanitiser($datalist,$_GET['tabid'] ?? $datalist[0][0] );
@@ -103,7 +109,7 @@ foreach ($aggregation as $ah) {
 ?>
         </select>
   <label for="viewtoggle">Bar type:</label>
-        <select id="viewtoggle" name="viewtoggle" class="input">
+        <select id="viewtoggle" name="view" class="input">
 <?php
 foreach ($viewtoggle as $ah) {
 	$result='<option value="';
@@ -117,8 +123,8 @@ foreach ($viewtoggle as $ah) {
 }
 ?>
         </select>
-  <label for="stack">Stacked:</label>
-     <select id="stacktoggle" name="stacktoggle" class="input">
+  <label for="stacktoggle">Stacked:</label>
+     <select id="stacktoggle" name="stack" class="input">
 <?php
 foreach ($stacktoggle as $ah) {
 	$result='<option value="';
@@ -132,8 +138,23 @@ foreach ($stacktoggle as $ah) {
 }
 ?>
         </select>
+<label for="filptoggle">Filp:</label>
+     <select id="filptoggle" name="filp" class="input">
+<?php
+foreach ($filptoggle as $ah) {
+	$result='<option value="';
+	$result.=$ah[0];
+	$result.='" ';
+	$result.= $san['filptoggle'] === $ah[0] ? 'selected="" ' : '' ;
+	$result.='> ';
+	$result.=$ah[1];
+	$result.='</option>';
+	echo $result;
+}
+?>
+        </select>
 
-        <input id="tabid-input" name="tabid" hidden="">
+	<input id="tabid-input" name="tabid" hidden="" value="<?php echo($san['tabid']);?>">
     </form>
     </div>
 
