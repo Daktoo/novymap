@@ -9,7 +9,7 @@ include "../../st.phphidden";
 $san=htmlsan([
 'fromDate' => $_GET['from'] ?? '',
 'toDate' => $_GET['to'] ?? '',
-'aggregation' => $_GET['aggregation'] ?? 'day',
+'aggregation' => $_GET['aggregation'] ?? 'all',
 ]);
 $datalist=fatchstats($san['fromDate'],$san['toDate'],$san['aggregation'],$conn,false);
 $san['tabid']=htmlspecialchars($_GET['tabid'] ?? $datalist[0][0]);

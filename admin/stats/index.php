@@ -30,11 +30,11 @@ $viewtoggle=[
 ];
 
 $aggregation=[
-[0=>"year",1=>"Yearly"],
+[0=>"all",1=>"Null"],
 [0=>"day",1=>"Daily"],
 [0=>"week",1=>"Weekly"],
 [0=>"month",1=>"Monthly"],
-[0=>"all",1=>"Null"]
+[0=>"year",1=>"Yearly"],
 ];
 
 $stacktoggle=[
