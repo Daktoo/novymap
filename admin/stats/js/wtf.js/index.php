@@ -113,16 +113,18 @@ var tilteB=name;
              eh+='<tbody>';
 	for (let [a, b] of Object.entries(data)) {
 		let count=0;
-		eh+='<tr><td>';
+		for (let [c, d] of Object.entries(b)) {
+		count=count+d;
+	}
+	eh+='<tr><td>';
 			eh+=a;
 		eh+='</td>';
 		eh+='<td>';
-		eh+='<table class="stats-table-in-table">';
-	for (let [c, d] of Object.entries(b)) {
-		count=count+d;
-	}
+
+		eh+='<details><summary>'+count+' (Click to expand)</summary><table class="stats-table-in-table">';
 	eh+='<thead>';
-               eh+=' <tr><th>'+tilteA+'</th><th>Counts ('+count+')</th></tr>';
+	eh+=' <tr><th>'+tilteA+'</th>';
+	eh+=' <th>Counts ('+count+')</th></tr>';
            	eh+=' </thead>';
 
 	for (let [c, d] of Object.entries(b)) {
@@ -136,6 +138,7 @@ var tilteB=name;
 		eh+='</td>';
 
 		eh+='</tr>';
+		eh+='</details>';
 			}
 		eh+='</table>';
 		eh+='</td>';
