@@ -32,21 +32,34 @@ function drawChart(view,index,id,name,data) {
   Chart.defaults.elements.arc.borderWidth = 0;
   Chart.defaults.borderColor = window.getComputedStyle(document.body).getPropertyValue('--chartcolor');
   Chart.defaults.backgroundColor = "rgba(0, 0, 0, 0)";
+
+const Labels = [...new Set(Object.values(data).flatMap(d => Object.keys(d)))].sort();
+
+const Datasets = Object.entries(data).map(([page, views]) => {
+const color = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+    return {
+        label: page,
+        data: Labels.map(label => views[label] || 0),
+        backgroundColor: color,
+        borderColor: color,
+        fill: false
+    };
+});
+
     QVHChart[index] = new Chart(document.getElementById(id+'Chart').getContext('2d'), {
         type: view,
         data: {
-            labels: Object.keys(data),
-            datasets: [{
-                label: name+' Distribution',
-                data: Object.values(data),
-                backgroundColor: Object.keys(data).map(() => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')),
-                color: Object.keys(data).map(() => '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0')),
-            }]
+                labels: Labels,
+                datasets: Datasets,
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
-            scales: { y: { beginAtZero: true } },
+	    scales: { 
+		x: { stacked: true },
+                y: { stacked: true , beginAtZero: true },
+
+},
             plugins: { legend: { display: false } }
         }
     });
@@ -54,19 +67,45 @@ function drawChart(view,index,id,name,data) {
 
 
 	function drawTable (id,name,data) {
+		
 		let eh = "";
+		let count=0;
   		eh+='<thead>';
-               eh+=' <tr><th>'+name+'</th><th>Counts</th></tr>';
+               eh+=' <tr><th>Date</th><th>Counts</th></tr>';
            	eh+=' </thead>';
              eh+='<tbody>';
 	for (let [a, b] of Object.entries(data)) {
 		eh+='<tr><td>';
-			eh+= a;
-		eh+='</td><td>';
-			eh+=b;
-		eh+='</td></tr>';
+			eh+=a;
+		eh+='</td>';
+		eh+='<td>';
+		eh+='<table class="stats-table-in-table">';
+	for (let [c, d] of Object.entries(b)) {
+		count=count+d;
+	}
+	eh+='<thead>';
+               eh+=' <tr><th>'+name+'</th><th>Counts ('+count+')</th></tr>';
+           	eh+=' </thead>';
+
+	for (let [c, d] of Object.entries(b)) {
+
+		eh+='<tr>';
+		eh+='<td>';
+		eh+=c;
+		eh+='</td>';
+		eh+='<td>';
+		eh+=d;
+		eh+='</td>';
+
+		eh+='</tr>';
+			}
+		eh+='</table>';
+		eh+='</td>';
+		eh+='</tr>';
 		}
-		document.getElementById(id+"Table").innerHTML=eh;
+             eh+='</tbody>';
+document.getElementById(id+"Table").innerHTML=eh;
+		 
 	}
 
 

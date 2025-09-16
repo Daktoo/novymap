@@ -94,4 +94,7 @@ position: sticky;
 [data-theme="light"] {
    --chartcolor: rgba(255, 255, 255, 0.1);
 }
+.stats-table-in-table{
+width: 100% !important;
+}
 

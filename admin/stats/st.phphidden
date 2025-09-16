@@ -109,15 +109,12 @@ if (!empty($toDate)) {
 
 switch ($aggregation) {
     case 'week':
-        $dateExpr = "YEARWEEK(timestamp, 1) AS period";
         $dateLabel = "CONCAT(YEAR(timestamp), '-W', WEEK(timestamp, 1)) AS label";
         break;
     case 'month':
-        $dateExpr = "DATE_FORMAT(timestamp, '%Y-%m') AS period";
         $dateLabel = "DATE_FORMAT(timestamp, '%b %Y') AS label";
         break;
     default:
-        $dateExpr = "DATE(timestamp) AS period";
         $dateLabel = "DATE(timestamp) AS label";
         break;
 }
@@ -131,28 +128,28 @@ $admCounts = [];
 $disCounts = [];
 $hateCounts = [];
 $dislangCounts = [];
-$osQuery = "SELECT `user_agent`,`loc`,`isp`,`id`,`ip_address` FROM usage_log_qvh $where";
+$osQuery = "SELECT $dateLabel,`user_agent`,`loc`,`isp`,`id`,`ip_address` FROM usage_log_qvh $where";
 $stmtOS = $conn->prepare($osQuery);
 if ($params) {
     $types = str_repeat("s", count($params));
     $stmtOS->bind_param($types, ...$params);
 }
 
-$ADMQuery = "SELECT `admin` FROM admin_stat $where";
+$ADMQuery = "SELECT $dateLabel,`admin` FROM admin_stat $where";
 $stmtADM = $conn->prepare($ADMQuery);
 if ($params) {
     $types = str_repeat("s", count($params));
     $stmtADM->bind_param($types, ...$params);
 }
 
-$DISQuery = "SELECT `cmd`,`lang` FROM dis_stat $where";
+$DISQuery = "SELECT $dateLabel,`cmd`,`lang` FROM dis_stat $where";
 $stmtDIS = $conn->prepare($DISQuery);
 if ($params) {
     $types = str_repeat("s", count($params));
     $stmtDIS->bind_param($types, ...$params);
 }
 
-$HATEQuery = "SELECT `id`,`username` FROM hate_stat $where";
+$HATEQuery = "SELECT $dateLabel,`id`,`username` FROM hate_stat $where";
 $stmtHATE = $conn->prepare($HATEQuery);
 if ($params) {
     $types = str_repeat("s", count($params));
@@ -202,59 +199,92 @@ $iplocation=$rowo['loc'];
 
     }
     }
-
-    if (!isset($osCounts[$result->os->family])){
-	    $osCounts[$result->os->family]=0;
+$label=$row['label'];
+//init count's date
+    if (!isset($osCounts[$label])){
+	    $osCounts[$label]=[];
     }
- if (!isset($broCounts[$result->ua->family])){
-	    $broCounts[$result->ua->family]=0;
+ if (!isset($broCounts[$label])){
+	    $broCounts[$label]=[];
  }
-   if (!isset($ipCounts[$iplocation])){
-	    $ipCounts[$iplocation]=0;
+   if (!isset($ipCounts[$label])){
+	    $ipCounts[$label]=[];
  }
  
-   if (!isset($ispCounts[$isp])){
-	    $ispCounts[$isp]=0;
+   if (!isset($ispCounts[$label])){
+	    $ispCounts[$label]=[];
  }
-    $ispCounts[$isp]++;
-    $broCounts[$result->ua->family]++;
-    $osCounts[$result->os->family]++;
-    $ipCounts[$iplocation]++;
+    //init count's nuber
+if (!isset($osCounts[$label][$result->os->family])){
+	    $osCounts[$label][$result->os->family]=0;
+    }
+ if (!isset($broCounts[$label][$result->ua->family])){
+	    $broCounts[$label][$result->ua->family]=0;
+ }
+   if (!isset($ipCounts[$label][$iplocation])){
+	    $ipCounts[$label][$iplocation]=0;
+ }
+ 
+   if (!isset($ispCounts[$label][$isp])){
+	    $ispCounts[$label][$isp]=0;
+ }
+
+    $ispCounts[$label][$isp]++;
+    $broCounts[$label][$result->ua->family]++;
+    $osCounts[$label][$result->os->family]++;
+    $ipCounts[$label][$iplocation]++;
 }
 $stmtADM->execute();
 $resADM = $stmtADM->get_result();
 while ($row = $resADM->fetch_assoc()) {
- if (!isset($admCounts[$row['admin']])){
-	    $admCounts[$row['admin']]=0;
+$label=$row['label'];
+ if (!isset($admCounts[$label])){
+	    $admCounts[$label]=[];
     }
-$admCounts[$row['admin']]++;
+if (!isset($admCounts[$label][$row['admin']])){
+	    $admCounts[$label][$row['admin']]=0;
+    }
+
+$admCounts[$label][$row['admin']]++;
    }
 
 $stmtDIS->execute();
 $resDIS = $stmtDIS->get_result();
 while ($row = $resDIS->fetch_assoc()) {
- if (!isset($disCounts[$row['cmd']])){
-	    $disCounts[$row['cmd']]=0;
+$label=$row['label'];
+ if (!isset($disCounts[$label])){
+	    $disCounts[$label]=[];
     }
-$disCounts[$row['cmd']]++;
+ if (!isset($disCounts[$label][$row['cmd']])){
+	    $disCounts[$label][$row['cmd']]=0;
+    }
+
+$disCounts[$label][$row['cmd']]++;
 
 if (!empty($row['lang'])){
-if (!isset($dislangCounts[$row['lang']])){
-	    $dislangCounts[$row['lang']]=0;
+if (!isset($dislangCounts[$label])){
+	    $dislangCounts[$label]=[];
+    }
+if (!isset($dislangCounts[$label][$row['lang']])){
+	    $dislangCounts[$label][$row['lang']]=0;
     }
 
-$dislangCounts[$row['lang']]++;
+$dislangCounts[$label][$row['lang']]++;
 }
    }
 
 $stmtHATE->execute();
 $resHATE = $stmtHATE->get_result();
 while ($row = $resHATE->fetch_assoc()) {
-if (!isset($hateCounts[$row['username']])){
-$hateCounts[$row['username']]=0;
+$label=$row['label'];
+if (!isset($hateCounts[$label])){
+$hateCounts[$label]=[];
     }
 
-$hateCounts[$row['username']]++;
+if (!isset($hateCounts[$label][$row['username']])){
+$hateCounts[$label][$row['username']]=0;
+    }
+$hateCounts[$label][$row['username']]++;
 }
 
 $stmtOS->close();
