@@ -123,22 +123,7 @@ foreach ($viewtoggle as $ah) {
 }
 ?>
         </select>
-  <label for="stacktoggle">Stacked:</label>
-     <select id="stacktoggle" name="stack" class="input">
-<?php
-foreach ($stacktoggle as $ah) {
-	$result='<option value="';
-	$result.=$ah[0];
-	$result.='" ';
-	$result.= $san['stacktoggle'] === $ah[0] ? 'selected="" ' : '' ;
-	$result.='> ';
-	$result.=$ah[1];
-	$result.='</option>';
-	echo $result;
-}
-?>
-        </select>
-<label for="filptoggle">Filp:</label>
+  <label for="filptoggle">Filp:</label>
      <select id="filptoggle" name="filp" class="input">
 <?php
 foreach ($filptoggle as $ah) {
@@ -146,6 +131,21 @@ foreach ($filptoggle as $ah) {
 	$result.=$ah[0];
 	$result.='" ';
 	$result.= $san['filptoggle'] === $ah[0] ? 'selected="" ' : '' ;
+	$result.='> ';
+	$result.=$ah[1];
+	$result.='</option>';
+	echo $result;
+}
+?>
+        </select>
+<label for="stacktoggle">Stacked:</label>
+     <select id="stacktoggle" name="stack" class="input">
+<?php
+foreach ($stacktoggle as $ah) {
+	$result='<option value="';
+	$result.=$ah[0];
+	$result.='" ';
+	$result.= $san['stacktoggle'] === $ah[0] ? 'selected="" ' : '' ;
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';

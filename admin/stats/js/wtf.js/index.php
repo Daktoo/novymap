@@ -160,10 +160,14 @@ document.getElementById(id+"Table").innerHTML=eh;
  if (view === 'table') {
  chart.style.display = 'none';
         table.style.display = 'table';
+ document.querySelector("label[for=stacktoggle]").setAttribute("hidden","");
+ document.getElementById("stacktoggle").setAttribute("hidden","");
         drawTable(data);
     } else {
  chart.style.display = 'block';
         table.style.display = 'none';
+ document.querySelector("label[for=stacktoggle]").removeAttribute("hidden") ;
+ document.getElementById("stacktoggle").removeAttribute("hidden") ;
         drawChart(view,index,data);
     }
 
