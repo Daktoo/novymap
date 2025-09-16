@@ -103,7 +103,6 @@ margin-top: calc(3em - 20px );
 .api-dropdown-title{
 margin-left: -0.5em;
   margin-bottom: 0.5em;
-  cursor: pointer;
 }
 
 .api-blob[data-hidden],.json-container[data-hidden]{

@@ -639,3 +639,7 @@ background: black;
     overflow: hidden;
         white-space: nowrap;
 }
+
+summary {
+  cursor: pointer;
+}
