@@ -25,15 +25,33 @@ echo($wtf."\n" );
 ?>
 var QVHChart=[];
 
+function filpdata (data) {
+	var out={};
+	for (let [a, b] of Object.entries(data)) {
+		for (let [c, d] of Object.entries(b)) {
+		if (typeof(out[c]) === "undefined"){
+			out[c]={};
+		}
+			out[c][a]=d;
+	}
+	}
+	return(out);
+}
+
+
 function drawChart(view,index,dataarry) {
 	var id=dataarry[0];
 	var name=dataarry[1];
-	var data=dataarry[2];
     if (QVHChart[index]){QVHChart[index].destroy()};
   Chart.defaults.color = window.getComputedStyle(document.body).getPropertyValue('--text');
   Chart.defaults.elements.arc.borderWidth = 0;
   Chart.defaults.borderColor = window.getComputedStyle(document.body).getPropertyValue('--chartcolor');
   Chart.defaults.backgroundColor = "rgba(0, 0, 0, 0)";
+if (document.getElementById("filptoggle").value==='yes') {
+	var data=filpdata(dataarry[2]);
+}else {
+	var data=dataarry[2];
+}
 
 const Labels = [...new Set(Object.values(data).flatMap(d => Object.keys(d)))].sort();
 
@@ -77,10 +95,20 @@ stack=false;
 	function drawTable (dataarry) {
 		var id=dataarry[0];
 		var name=dataarry[1];
-		var data=dataarry[2];	
+if (document.getElementById("filptoggle").value==='yes') {
+	var data=dataarry[2];
+	var tilteA=name;
+	var tilteB='Date';
+}else {
+	var data=filpdata(dataarry[2]);
+var tilteB=name;
+	var tilteA='Date';
+
+}
+
 		let eh = "";
   		eh+='<thead>';
-               eh+=' <tr><th>Date</th><th>Counts</th></tr>';
+               eh+=' <tr><th>'+tilteB+'</th><th>Counts</th></tr>';
            	eh+=' </thead>';
              eh+='<tbody>';
 	for (let [a, b] of Object.entries(data)) {
@@ -94,7 +122,7 @@ stack=false;
 		count=count+d;
 	}
 	eh+='<thead>';
-               eh+=' <tr><th>'+name+'</th><th>Counts ('+count+')</th></tr>';
+               eh+=' <tr><th>'+tilteA+'</th><th>Counts ('+count+')</th></tr>';
            	eh+=' </thead>';
 
 	for (let [c, d] of Object.entries(b)) {
@@ -142,32 +170,16 @@ document.getElementById(id+"Table").innerHTML=eh;
 
 
 
-function statsreload(bbbb) {
-let activetab="";
-	if (bbbb===""){
-var list = document.getElementsByClassName("tabtu");
-for (var i = 0; i < list.length; i++) {
-    if(list[i].getAttribute("data-tabselected")===''){
-	    activetab=list[i].getAttribute("data-tabid");
-    }
-}
-	}else{
-activetab=bbbb;	
+function statsreload() {
+var params = new URLSearchParams();
+url="/stats/?";
+var foumchild=document.getElementById("stats-from").childNodes;
+for (let kid of foumchild) {
+if (typeof(kid.name) !== "undefined" && typeof(kid.value) !== "undefined" ) {
+params.append(kid.name, kid.value);
 	}
-
-url="/stats/";
-url+="?from=";
-url+=document.getElementById("fromdate").value;
-url+="&to=";
-url+=document.getElementById("todate").value;
-url+="&aggregation=";
-url+=document.getElementById("aggregation").value;
-url+="&viewtoggle=";
-url+=document.getElementById("viewtoggle").value;
-url+="&stacktoggle=";
-url+=document.getElementById("stacktoggle").value;
-url+="&tabid=";
-url+=activetab;
+}
+url+=params.toString();
 window.history.pushState({},'',url); 
 
 }
@@ -179,9 +191,9 @@ addEventListener("DOMContentLoaded", (event) => {
 
 var foumchild=document.getElementById("stats-from").childNodes;
 for (let kidd of foumchild) {
-if (kidd==document.getElementById('viewtoggle')||kidd==document.getElementById('stacktoggle') ){
+if (kidd==document.getElementById('viewtoggle')||kidd==document.getElementById('stacktoggle')||kidd==document.getElementById('filptoggle')  ){
 kidd.addEventListener('change',(e) => {
-statsreload("");
+statsreload();
 		loadchartable();
 
 });
@@ -201,7 +213,7 @@ for (let btuwu of tabtuwu) {
 	{document.getElementById(id+"tab").toggleAttribute("open");
 	}
 document.getElementById('tabid-input').value=id;
-	statsreload(id);
+	statsreload();
 	
 	}, false);
 }
