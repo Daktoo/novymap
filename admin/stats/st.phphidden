@@ -114,8 +114,11 @@ switch ($aggregation) {
     case 'month':
         $dateLabel = "DATE_FORMAT(timestamp, '%b %Y') AS label";
         break;
-    default:
+    case 'day':
         $dateLabel = "DATE(timestamp) AS label";
+        break;
+    default:
+        $dateLabel = "'All' AS label";
         break;
 }
 
