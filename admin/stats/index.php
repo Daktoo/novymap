@@ -49,6 +49,7 @@ $san=htmlsan([
 
 $san['aggregation']=statsanitiser($aggregation,$_GET['aggregation'] ?? $aggregation[0][0] );
 $san['viewtoggle']=statsanitiser($viewtoggle,$_GET['viewtoggle'] ?? $viewtoggle[0][0]  );
+$san['stacktoggle']=statsanitiser($stacktoggle,$_GET['stacktoggle'] ?? $stacktoggle[0][0]  );
 
 $datalist=fatchstats($san['fromDate'],$san['toDate'],$san['aggregation'],$conn,true);
 $san['tabid']=statsanitiser($datalist,$_GET['tabid'] ?? $datalist[0][0] );
@@ -108,7 +109,7 @@ foreach ($viewtoggle as $ah) {
 	$result='<option value="';
 	$result.=$ah[0];
 	$result.='" ';
-	$result.= $san['stacktoggle'] === $ah[0] ? 'selected="" ' : '' ;
+	$result.= $san['viewtoggle'] === $ah[0] ? 'selected="" ' : '' ;
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';
@@ -123,7 +124,7 @@ foreach ($stacktoggle as $ah) {
 	$result='<option value="';
 	$result.=$ah[0];
 	$result.='" ';
-	$result.= $san['viewtoggle'] === $ah[0] ? 'selected="" ' : '' ;
+	$result.= $san['stacktoggle'] === $ah[0] ? 'selected="" ' : '' ;
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';
