@@ -108,11 +108,14 @@ if (!empty($toDate)) {
 }
 
 switch ($aggregation) {
+    case 'year':
+        $dateLabel = "DATE_FORMAT(timestamp, '%Y') AS label";
+        break;
     case 'week':
         $dateLabel = "CONCAT(YEAR(timestamp), '-W', WEEK(timestamp, 1)) AS label";
         break;
     case 'month':
-        $dateLabel = "DATE_FORMAT(timestamp, '%b %Y') AS label";
+        $dateLabel = "DATE_FORMAT(timestamp, '%Y-%m') AS label";
         break;
     case 'day':
         $dateLabel = "DATE(timestamp) AS label";

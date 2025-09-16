@@ -29,6 +29,7 @@ $viewtoggle=[
 ["table","Table"]
 ];
 $aggregation=[
+[0=>"year",1=>"Yearly"],
 [0=>"day",1=>"Daily"],
 [0=>"week",1=>"Weekly"],
 [0=>"month",1=>"Monthly"],
