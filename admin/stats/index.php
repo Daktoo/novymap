@@ -28,6 +28,7 @@ $viewtoggle=[
 ["scatter","Scatter Chart"],
 ["table","Table"]
 ];
+
 $aggregation=[
 [0=>"year",1=>"Yearly"],
 [0=>"day",1=>"Daily"],
@@ -35,7 +36,12 @@ $aggregation=[
 [0=>"month",1=>"Monthly"],
 [0=>"all",1=>"Null"]
 ];
- 
+
+$stacktoggle=[
+[0=>"yes",1=>"Hell yeah"],
+[0=>"no",1=>"Fuck no"]
+];
+  
 $san=htmlsan([                  
 'fromDate' => $_GET['from'] ?? '',
 'toDate' => $_GET['to'] ?? '',               
@@ -102,6 +108,21 @@ foreach ($viewtoggle as $ah) {
 	$result='<option value="';
 	$result.=$ah[0];
 	$result.='" ';
+	$result.= $san['stacktoggle'] === $ah[0] ? 'selected="" ' : '' ;
+	$result.='> ';
+	$result.=$ah[1];
+	$result.='</option>';
+	echo $result;
+}
+?>
+        </select>
+  <label for="stack">Stacked:</label>
+     <select id="stacktoggle" name="stacktoggle" class="input">
+<?php
+foreach ($stacktoggle as $ah) {
+	$result='<option value="';
+	$result.=$ah[0];
+	$result.='" ';
 	$result.= $san['viewtoggle'] === $ah[0] ? 'selected="" ' : '' ;
 	$result.='> ';
 	$result.=$ah[1];
@@ -110,6 +131,7 @@ foreach ($viewtoggle as $ah) {
 }
 ?>
         </select>
+
         <input id="tabid-input" name="tabid" hidden="">
     </form>
     </div>

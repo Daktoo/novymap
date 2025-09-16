@@ -26,7 +26,10 @@ echo($wtf."\n" );
 ?>
 var QVHChart=[];
 
-function drawChart(view,index,id,name,data) {
+function drawChart(view,index,dataarry) {
+	var id=dataarry[0];
+	var name=dataarry[1];
+	var data=dataarry[2];
     if (QVHChart[index]){QVHChart[index].destroy()};
   Chart.defaults.color = window.getComputedStyle(document.body).getPropertyValue('--text');
   Chart.defaults.elements.arc.borderWidth = 0;
@@ -46,6 +49,12 @@ const color = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, 
     };
 });
 
+if (document.getElementById("stacktoggle").value==='yes') {
+stack=true;
+}else{
+stack=false;
+}
+
     QVHChart[index] = new Chart(document.getElementById(id+'Chart').getContext('2d'), {
         type: view,
         data: {
@@ -56,18 +65,20 @@ const color = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, 
             responsive: true,
             maintainAspectRatio: false,
 	    scales: { 
-		x: { stacked: true },
-                y: { stacked: true , beginAtZero: true },
+		x: { stacked: stack },
+                y: { stacked: stack , beginAtZero: true },
 
 },
-            plugins: { legend: { display: false } }
+	plugins: { legend: { display: true,position: 'bottom' } }
         }
     });
 }
 
 
-	function drawTable (id,name,data) {
-		
+	function drawTable (dataarry) {
+		var id=dataarry[0];
+		var name=dataarry[1];
+		var data=dataarry[2];	
 		let eh = "";
   		eh+='<thead>';
                eh+=' <tr><th>Date</th><th>Counts</th></tr>';
@@ -110,20 +121,20 @@ document.getElementById(id+"Table").innerHTML=eh;
 
 
 	function loadchartable () {
-		datalist.forEach((element,index) => {
+		datalist.forEach((data,index) => {
 	let view = document.getElementById('viewtoggle').value;
-    let chart = document.getElementById( element[0] +'Chart');
-    let table = document.getElementById( element[0]+'Table');
+    let chart = document.getElementById( data[0] +'Chart');
+    let table = document.getElementById( data[0]+'Table');
 	
 
  if (view === 'table') {
  chart.style.display = 'none';
         table.style.display = 'table';
-        drawTable(element[0],element[1],element[2]);
+        drawTable(data);
     } else {
  chart.style.display = 'block';
         table.style.display = 'none';
-        drawChart(view,index,element[0],element[1],element[2]);
+        drawChart(view,index,data);
     }
 
 		});
@@ -154,6 +165,8 @@ url+="&aggregation=";
 url+=document.getElementById("aggregation").value;
 url+="&viewtoggle=";
 url+=document.getElementById("viewtoggle").value;
+url+="&stacktoggle=";
+url+=document.getElementById("stacktoggle").value;
 url+="&tabid=";
 url+=activetab;
 window.history.pushState({},'',url); 
@@ -167,17 +180,19 @@ addEventListener("DOMContentLoaded", (event) => {
 
 var foumchild=document.getElementById("stats-from").childNodes;
 for (let kidd of foumchild) {
-if (kidd!==document.getElementById('viewtoggle')){
+if (kidd==document.getElementById('viewtoggle')||kidd==document.getElementById('stacktoggle') ){
 kidd.addEventListener('change',(e) => {
-document.getElementById("stats-from").submit();
-});
-}
-}
-document.getElementById('viewtoggle').addEventListener('change',() => {
-//document.getElementById('viewtoggle-hack').value=document.getElementById('viewtoggle').value;
 statsreload("");
 		loadchartable();
+
 });
+} else {
+kidd.addEventListener('change',(e) => {
+	document.getElementById("stats-from").submit();
+});
+}
+
+}
 var tabtuwu = document.getElementsByClassName("tabtu");
 
 for (let btuwu of tabtuwu) {
