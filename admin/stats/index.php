@@ -154,7 +154,7 @@ foreach ($filptoggle as $ah) {
 ?>
         </select>
 
-	<input id="tabid-input" name="tabid" hidden="" value="<?php echo($san['tabid']);?>">
+	<input type="hidden" id="tabid-input" name="tabid" value="<?php echo($san['tabid']);?>">
     </form>
     </div>
 
