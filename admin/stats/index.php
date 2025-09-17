@@ -65,13 +65,7 @@ $san['tabid']=statsanitiser($datalist,$_GET['tabid'] ?? $datalist[0][0] );
  $customhead="<link rel=\"stylesheet\" href=\"css/stuff.css\">";
     $customhead.="<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>";
   
-$customhead.="<script src=\"js/wtf.js/";
-	$customhead.="?";
-
-
-	$customhead.="from=".$san['fromDate'];
-$customhead.="&to=".$san['toDate'];
-$customhead.="&aggregation=".$san['aggregation'];
+$customhead.="<script src=\"js/stats.js";
 $customhead.="\"></script>";
 $pagetitle="Stats";
 
@@ -88,7 +82,7 @@ echo(admin_head($pagetitle,$customhead));
 <div class="center">
 <div class="settings-container-top">
     <h1 class="qvhtile">📊 Stats</h1>
-    <form id="stats-from" class="form" method="get">
+    <div id="stats-from" class="form" method="get">
   <label for="fromdate">From:</label>
         <input class="input" type="date" id="fromdate" name="from" value="<?php echo($san['fromDate']); ?>">
   <label for="todate">To:</label>
@@ -155,10 +149,9 @@ foreach ($stacktoggle as $ah) {
         </select>
 
 	<input type="hidden" id="tabid-input" name="tabid" value="<?php echo($san['tabid']);?>">
-    </form>
+    </div>
     </div>
 
-<div>
 <div class="settings-container-top ">
 <?php
 $eh='<div class="tabarwrapperwrapper">';
@@ -218,7 +211,6 @@ echo($eh);
              
 
 
-</div>
 </div>
 <?php
  include '../../shared/footer.php'; ?>

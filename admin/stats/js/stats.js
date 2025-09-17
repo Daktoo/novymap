@@ -1,29 +1,5 @@
-// My dumb ass ide think it is html but it is js ..
-// so i puted script to fool it
-// yes wtf
-//<script>
-<?php    
-header('Content-Type: application/javascript');
-include "../../../adm.phphidden";
-include "../../st.phphidden";
-$san=htmlsan([
-'fromDate' => $_GET['from'] ?? '',
-'toDate' => $_GET['to'] ?? '',
-'aggregation' => $_GET['aggregation'] ?? 'all',
-]);
-$datalist=fatchstats($san['fromDate'],$san['toDate'],$san['aggregation'],$conn,false);
-$san['tabid']=htmlspecialchars($_GET['tabid'] ?? $datalist[0][0]);
-
-
-	 $wtf="const datalist = JSON.parse(`";
-	 $wtf.=json_encode($datalist,JSON_PRETTY_PRINT);
-	 $wtf.="`);";
-
-echo($wtf."\n" );
-
-
-?>
 var QVHChart = [];
+var datalist ={};
 function filpdata(data) {
   var out = {};
   for (let[a,
@@ -156,7 +132,31 @@ function drawTable(dataarry) {
   eh += '</tbody>';
   document.getElementById(id + 'Table').innerHTML = eh;
 }
-function loadchartable() {
+async function loadchartable(shoulditfetch) {
+	if (shoulditfetch){
+	document.getElementsByClassName("nav-title")[0].textContent="Loading...";
+  var params = new URLSearchParams();
+  url = 'api/internal/data?';
+ var foumchild = document.getElementById('stats-from').childNodes;
+  for (let kid of foumchild) {
+    if (
+      typeof (kid.name) !== 'undefined' &&
+      typeof (kid.value) !== 'undefined'
+    ) {
+      params.append(kid.name, kid.value);
+    }
+  }
+
+  url += params.toString();
+ const response = await fetch(url);
+  const mine = await response.headers.get('Content-Type');
+      datalist = await response.json();
+if (mine === 'application/json') {
+	document.getElementsByClassName("nav-title")[0].textContent=navtitletext;
+} else {
+	document.getElementsByClassName("nav-title")[0].textContent="Error";
+}
+}
   datalist.forEach(
     (data, index) => {
       let view = document.getElementById('viewtoggle').value;
@@ -195,7 +195,7 @@ function statsreload() {
   }, '', url);
 }
 function customreload() {
-  loadchartable();
+  loadchartable(Object.keys(datalist).length === 0);
 }
 addEventListener(
   'DOMContentLoaded',
@@ -208,14 +208,15 @@ addEventListener(
         kidd == document.getElementById('filptoggle')
       ) {
         kidd.addEventListener('change', (e) => {
-          statsreload();
+          statsreload(false);
           loadchartable();
         });
       } else {
         kidd.addEventListener(
           'change',
           (e) => {
-            document.getElementById('stats-from').submit();
+ statsreload();
+          loadchartable(true);
           }
         );
       }
@@ -258,4 +259,3 @@ addEventListener(
     }
   }
 );
-//</script>
