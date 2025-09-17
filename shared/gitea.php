@@ -37,7 +37,8 @@ function gitea_userinfo_parser($decodejson){
 	"name" => $name . $pro,
 	"rawname" => $decodejson['username'],
 	"desc" => $decodejson['description'],
-	"website" => $decodejson['website']
+	"website" => $decodejson['website'],
+	"loc" => $decodejson['location']
 	] ;
 		
 }
@@ -105,6 +106,10 @@ if (empty($memberinfo['website'])) {
 }
 
 	$res .= "<h3 class=\"staff-role\">". $memberinfo['team'] ."</h3>";
+if (!empty($memberinfo['loc'])) {
+	$res .= "<h3 class=\"staff-loc\"><span class=\"emoji-marker\"></span>". $memberinfo['loc'] ."</h3>";
+}
+
 if (empty($memberinfo['desc'])) {
 	$res .= "<p class=\"staff-desc\">\"This member has forgot to put the description of themselves.\"</p>";
 } else {

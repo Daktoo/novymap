@@ -20,8 +20,10 @@ echo(gitea_gencredit());
                     <h1 class="staff-name">You</h1>
                     <p class="staff-desc">"Thank you for telling us what dial we have missed!"</p>
                 </div>
-<h1 class="qvhtile"> Also Original Novymap Project.</h1>
-<h1 class="qvhtilesmall"> as well as those ex-member of Novymap Project.</h1>
+                </div>
+        <div class="settings-container-top">
+<h1 class="qvhtile"> Thank for Original Novymap Project.</h1>
+<h1 class="qvhtilesmall"> also those ex-member of Novymap Project.</h1>
 <div class="staff-list">
                     <div class="staff-member">
                         <img src="img/oldstuffs/pigwin.png" alt="Cocreator" class="staff-image">
