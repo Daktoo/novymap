@@ -1,5 +1,5 @@
 var QVHChart = [];
-var datalist ={};
+var datalist = {};
 function filpdata(data) {
   var out = {};
   for (let[a,
@@ -133,30 +133,29 @@ function drawTable(dataarry) {
   document.getElementById(id + 'Table').innerHTML = eh;
 }
 async function loadchartable(shoulditfetch) {
-	if (shoulditfetch){
-	document.getElementsByClassName("nav-title")[0].textContent="Loading...";
-  var params = new URLSearchParams();
-  url = 'api/internal/data?';
- var foumchild = document.getElementById('stats-from').childNodes;
-  for (let kid of foumchild) {
-    if (
-      typeof (kid.name) !== 'undefined' &&
-      typeof (kid.value) !== 'undefined'
-    ) {
-      params.append(kid.name, kid.value);
+  if (shoulditfetch) {
+    document.getElementsByClassName('nav-title') [0].textContent = 'Loading...';
+    var params = new URLSearchParams();
+    url = 'api/internal/data?';
+    var foumchild = document.getElementById('stats-from').childNodes;
+    for (let kid of foumchild) {
+      if (
+        typeof (kid.name) !== 'undefined' &&
+        typeof (kid.value) !== 'undefined'
+      ) {
+        params.append(kid.name, kid.value);
+      }
+    }
+    url += params.toString();
+    const response = await fetch(url);
+    const mine = await response.headers.get('Content-Type');
+    datalist = await response.json();
+    if (mine === 'application/json') {
+      document.getElementsByClassName('nav-title') [0].textContent = navtitletext;
+    } else {
+      document.getElementsByClassName('nav-title') [0].textContent = 'Error';
     }
   }
-
-  url += params.toString();
- const response = await fetch(url);
-  const mine = await response.headers.get('Content-Type');
-      datalist = await response.json();
-if (mine === 'application/json') {
-	document.getElementsByClassName("nav-title")[0].textContent=navtitletext;
-} else {
-	document.getElementsByClassName("nav-title")[0].textContent="Error";
-}
-}
   datalist.forEach(
     (data, index) => {
       let view = document.getElementById('viewtoggle').value;
@@ -212,12 +211,10 @@ addEventListener(
           loadchartable();
         });
       } else {
-        kidd.addEventListener(
-          'change',
-          (e) => {
- statsreload();
+        kidd.addEventListener('change', (e) => {
+          statsreload();
           loadchartable(true);
-          }
+        }
         );
       }
     }
