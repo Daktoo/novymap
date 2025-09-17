@@ -23,7 +23,7 @@ echo(gitea_gencredit());
                 </div>
         <div class="settings-container-top">
 <h1 class="qvhtile"> Thank for Original Novymap Project.</h1>
-<h1 class="qvhtilesmall"> also those ex-member of Novymap Project.</h1>
+<h1 class="qvhtilesmall"> also ex-member (as below) of Novymap Project.</h1>
 <div class="staff-list">
                     <div class="staff-member">
                         <img src="img/oldstuffs/pigwin.png" alt="Cocreator" class="staff-image">
