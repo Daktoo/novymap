@@ -618,7 +618,11 @@ flex-direction: column;
     scrollbar-gutter: stable;
     }
     .terminal{
-	    width: fit-content;
+  /* backward compairable for older browser */
+ overflow: overlay !important;
+ 
+    overflow: scroll;
+    scrollbar-gutter: stable;	   
 background: black;
     color: white;
     border-radius: 2rem;
