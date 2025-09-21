@@ -22,10 +22,12 @@ $viewtoggle=[
 ["bubble","Bubble Chart"],
 ["doughnut","Doughnut Chart"],
 ["pie","Pie Chart"],
-["line","Lie Chart"],
+["line","Line Chart"],
 ["polarArea","Polar Area Chart"],
 ["radar","Radar Chart"],
 ["scatter","Scatter Chart"],
+["treemap","Tree"],
+["pcp","Parallel Coordinate Plots"],
 ["table","Table"]
 ];
 
@@ -64,6 +66,8 @@ $san['tabid']=statsanitiser($datalist,$_GET['tabid'] ?? $datalist[0][0] );
 
  $customhead="<link rel=\"stylesheet\" href=\"css/stuff.css\">";
     $customhead.="<script src=\"https://cdn.jsdelivr.net/npm/chart.js\"></script>";
+    $customhead.="<script src=\"https://cdn.jsdelivr.net/npm/chartjs-chart-pcp/build/index.umd.min.js\"></script>";
+    $customhead.="<script src=\"https://cdn.jsdelivr.net/npm/chartjs-chart-treemap/dist/chartjs-chart-treemap.min.js\"></script>";
   
 $customhead.="<script src=\"js/stats.js";
 $customhead.="\"></script>";
