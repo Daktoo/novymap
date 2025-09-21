@@ -87,12 +87,8 @@ position: sticky;
     background: var(--accent);
 }
 
-[data-theme="dark"] {
-    --chartcolor: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme="light"] {
-   --chartcolor: rgba(255, 255, 255, 0.1);
+:root{
+--charttransparent:10;
 }
 .stats-table-in-table{
 width: 100% !important;
