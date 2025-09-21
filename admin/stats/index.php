@@ -102,7 +102,7 @@ foreach ($aggregation as $ah) {
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';
-	echo $result;
+	echo $result.PHP_EOL;
 }
 ?>
         </select>
@@ -117,7 +117,7 @@ foreach ($viewtoggle as $ah) {
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';
-	echo $result;
+	echo $result.PHP_EOL;
 }
 ?>
         </select>
@@ -132,7 +132,7 @@ foreach ($filptoggle as $ah) {
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';
-	echo $result;
+	echo $result.PHP_EOL;
 }
 ?>
         </select>
@@ -147,7 +147,7 @@ foreach ($stacktoggle as $ah) {
 	$result.='> ';
 	$result.=$ah[1];
 	$result.='</option>';
-	echo $result;
+	echo $result.PHP_EOL;
 }
 ?>
         </select>
@@ -168,7 +168,7 @@ foreach ($datalist as $ha) {
 	$eh.='<button';
 	$eh.= $san['tabid'] === $ha[0] ? ' data-tabselected="" ' : '' ;
 	$eh.=' id="'. $ha[0] .'tabtu" data-tabid="'.$ha[0].'"';
-	$eh.= 'class="tabtu" >';
+	$eh.= ' class="tabtu" >';
 	$eh.=PHP_EOL;
 	$eh.='<span data-tabid="'.$ha[0].'"' . ' class="tabar-text">'.$ha[1].'</span>';
 	$eh.=PHP_EOL;
@@ -183,7 +183,7 @@ $eh.='<div class="tabarwrapperbar"></div>';
 $eh.='</div>';
 foreach ($datalist as $ah) {
 $eh.=' <details class="tabpage" data-tabid="'.$ah[0].'" name="admin-stats-tab" id="'. $ah[0] .'tab"';
-	$eh.= $san['tabid'] === $ah[0] ? 'open="" ' : '' ;
+	$eh.= $san['tabid'] === $ah[0] ? ' open="" ' : '' ;
 	$eh.= '>' ;
 
 	$eh.=PHP_EOL;
@@ -203,7 +203,7 @@ $eh.='<h1 class="qvhtilesmall">'.$ah[4] . '</h1>';
 	$eh.=PHP_EOL;
    $eh.=' </div>';
 	$eh.=PHP_EOL;
-$eh.='</details>';
+$eh.='</details>'.PHP_EOL;
 }
 echo($eh);
 
