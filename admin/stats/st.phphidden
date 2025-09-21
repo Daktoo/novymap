@@ -165,7 +165,8 @@ if ($params) {
 $stmtOS->execute();
 $resOS = $stmtOS->get_result();
 $rows = $resOS->fetch_all(MYSQLI_ASSOC);
-foreach ($rows as $row) { 
+foreach ($rows as $rawrow) { 
+$row=htmlsan($rawrow);
     $ua = $row['user_agent'];
     $parser = Parser::create();
     $result = $parser->parse($ua);
@@ -242,7 +243,8 @@ if (!isset($osCounts[$label][$result->os->family])){
 }
 $stmtADM->execute();
 $resADM = $stmtADM->get_result();
-while ($row = $resADM->fetch_assoc()) {
+while ($rawrow = $resADM->fetch_assoc()) {
+$row=htmlsan($rawrow);
 $label=$row['label'];
  if (!isset($admCounts[$label])){
 	    $admCounts[$label]=[];
@@ -256,7 +258,8 @@ $admCounts[$label][$row['admin']]++;
 
 $stmtDIS->execute();
 $resDIS = $stmtDIS->get_result();
-while ($row = $resDIS->fetch_assoc()) {
+while ($rawrow = $resDIS->fetch_assoc()) {
+$row=htmlsan($rawrow);
 $label=$row['label'];
  if (!isset($disCounts[$label])){
 	    $disCounts[$label]=[];
@@ -281,7 +284,8 @@ $dislangCounts[$label][$row['lang']]++;
 
 $stmtHATE->execute();
 $resHATE = $stmtHATE->get_result();
-while ($row = $resHATE->fetch_assoc()) {
+while ($rawrow = $resHATE->fetch_assoc()) {
+$row=htmlsan($rawrow);
 $label=$row['label'];
 if (!isset($hateCounts[$label])){
 $hateCounts[$label]=[];
