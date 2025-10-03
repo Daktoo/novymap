@@ -57,7 +57,7 @@ function showEdit(btn) {
   document.getElementById("add-coord").setAttribute("style","display :none;");
   table.setAttribute("style","display: block;height: 30em;");
  btus[0][2].addEventListener("click", function (e) {
- upcoord="/admin_lines.php/upcoord";
+ upcoord="/admin_lines/upcoord";
 upcoord_pr=new URLSearchParams();
 	 x=inputs[0][2].value;
 	 y=inputs[1][2].value;

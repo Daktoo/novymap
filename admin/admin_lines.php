@@ -1,5 +1,5 @@
 <?php
-include_once '../shared/san';
+include_once '../shared/san.php';
 include 'adm.phphidden';
 $line_id = isset($_GET['line_id']) ? intval($_GET['line_id']) : 0;
 $coord_id = isset($_GET['coord_id']) ? intval($_GET['coord_id']) : 0;
@@ -39,7 +39,7 @@ if (
     // Create or update a line
     if ($action==="edit" or $action==="add") {
 $sanlineinfo=sqlsan([
-        "id"    => intval($_POST['line_id'] ?? 0),
+        "id"    => intval($_GET['line_id'] ?? 0),
         "name"  => $_POST['name'],
         "color" => $_POST['color'],
         "info"  => $_POST['info'],
@@ -164,7 +164,7 @@ pageView("Manage Lines :straight_ruler:");
 		    <label>Color: </label>
 <div class="input colorpick-outside"><input type="text" name="color" class="colorpicker" value="<?php  $HAHA=$editLine['color'];if(empty($HAHA)){echo("#ff00fb");} else {echo $HAHA;} ?>" required></div>
 		    <label>Info: </label>
-<textarea type="text" name="info" class="input" value="<?php echo $editLine['info']; ?>" required>
+<textarea type="text" name="info" class="input" value="<?php echo $editLine['info']; ?>" >
 </textarea>
                     <button type="submit" id="submit-btn"><?php echo ($editLine['id']>0)? 'Save' : 'Add Lines'; ?> </button>
  <?php echo ($editLine['id']>0)? '<button type="button" id="submit-btn" onclick="window.location.assign(&quot;/admin_lines&quot;)" >Cancel</button>' : ''; ?> 
