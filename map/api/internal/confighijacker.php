@@ -22,6 +22,13 @@ $decodedraw["components"][]=[
       "focuschatballoons" => false,
       "type" => "chatballoon"
 ];
+$decodedraw["components"][]=[
+	 "showplayerfaces"  => true,
+      "sendbutton" => false,
+      "type"=> "chatbox",
+      "messagettl" => 5
+      ];
+
 }
 function comphijack($option,$key){
 global $decodedraw;
