@@ -2385,7 +2385,6 @@ input[type=radio]+.marker .marker__icon[data-v-3a029710] {
   --background-hover: #15161E;
   --background-active: #a9b1d6;
   --background-selected: #a9b1d6;
-  --outline-focus: #eeeeee;
   --border-color: #1a1b26;
   --border-error: #f7768e;
   --text-night: #bb9af7;
@@ -2403,7 +2402,6 @@ input[type=radio]+.marker .marker__icon[data-v-3a029710] {
   --background-hover: #e9e9ed;
   --background-active: #6172b0;
   --background-selected: #6172b0;
-  --outline-focus: #eeeeee;
   --border-color: #e9e9ed;
   --border-error: #f52a65;
   --text-night: #9854f1;
@@ -2417,6 +2415,7 @@ input {
   color: var(--text-selected) !important;
 }
 :root {
+  --outline-focus: rgba(0, 0, 0, 0);
   --text-emphasis: var(--text-base);
   --text-disabled: var(--text-subtle);
   --text-marker: var(--text-base);
