@@ -1,0 +1,16 @@
+[Unit]
+Description=novyupdatecon
+
+[Service]
+Type=exec
+ExecStart=/usr/bin/sh -c 'cd /etc/novy/updatecon&&php a.php'
+Restart=always
+RestartSec=1s
+PIDFile=/run/novyupdatecon.pid
+User=http
+Group=http
+Type=simple
+
+
+[Install]
+WantedBy=multi-user.target

@@ -13,16 +13,16 @@
 - **License Text**: [MIT License](./licenses/MIT-qvhpigwin)
 
 ## map/
-### LiveAtlas, icon from dynmap, edited dynmap config
+### LiveAtlas, icon from dynmap
 - **License**: Apache-2.0
-- **File Paths**: map/live-atlas/, map/hack/\_markers\_, map/ (excluding map/api/internal/novy.php and map/live-atlas/assets/fbi.png)
+- **File Paths**: map/live-atlas/, map/hack/\_markers\_, map/ (excluding map/api/internal/novy.php,map/api/internal/confighijacker.php and map/live-atlas/assets/fbi.png)
 - **License Text**: [Apache-2.0 License](./licenses/Apache-2.0)
 
-### map/api/internal/novy.php
+### map/api/internal/novy.php,map/api/internal/confighijacker.php
 - **License**: MIT
 - **License Text**: [MIT License](./licenses/MIT-qvhpigwin)
 
-## admin/, api/, home/
+## admin/, api/, home/, updatecon/
 - **License**: MIT
 - **License Text**: [MIT License](./licenses/MIT-qvhpigwin)
 
