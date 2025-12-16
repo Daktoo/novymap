@@ -40,15 +40,16 @@ if (
     if ($action==="edit" or $action==="add") {
 $sanlineinfo=sqlsan([
         "id"    => intval($_GET['line_id'] ?? 0),
+        "wiki"  => $_POST['wiki'],
         "name"  => $_POST['name'],
         "color" => $_POST['color'],
         "info"  => $_POST['info'],
         "admin" => $fuckinguserinfo['name']
 ],$conn);
         if ($action==="edit") {
-            $sql = "UPDATE `lines` SET info='$sanlineinfo[info]',name='$sanlineinfo[name]', color='$sanlineinfo[color]' WHERE id=$sanlineinfo[id]";
+            $sql = "UPDATE `lines` SET  `wiki`='$sanlineinfo[wiki]',`info`='$sanlineinfo[info]',`name`='$sanlineinfo[name]', `color`='$sanlineinfo[color]' WHERE id=$sanlineinfo[id]";
         } else {
-            $sql = "INSERT INTO `lines` (name, color,admin,info) VALUES ('$sanlineinfo[name]', '$sanlineinfo[color]','$sanlineinfo[admin]','$sanlineinfo[info]')";
+            $sql = "INSERT INTO `lines` (name, color,admin,info,wiki) VALUES ('$sanlineinfo[name]', '$sanlineinfo[color]','$sanlineinfo[admin]','$sanlineinfo[info]','$sanlineinfo[wiki]')";
         }
 	$result=mysqli_query($conn, $sql);
 		if ($result){
@@ -166,6 +167,8 @@ pageView("Manage Lines :straight_ruler:");
 		    <label>Info: </label>
 <textarea type="text" name="info" class="input" value="<?php echo $editLine['info']; ?>" >
 </textarea>
+		<label>Wiki: </label><input type="url" name="wiki" class="input" value="<?php echo($editLine['wiki']); ?>" required>
+
                     <button type="submit" id="submit-btn"><?php echo ($editLine['id']>0)? 'Save' : 'Add Lines'; ?> </button>
  <?php echo ($editLine['id']>0)? '<button type="button" id="submit-btn" onclick="window.location.assign(&quot;/admin_lines&quot;)" >Cancel</button>' : ''; ?> 
                 </form>
@@ -231,7 +234,7 @@ pageView("Manage Line Coords :straight_ruler:");
 <h1 class="qvhtilesmall">Tips:click the color in the table to copy it
 </h1>
                 <table class="table">
-                    <tr><th>ID</th><th>Name</th><th>Info</th><th>Color</th><th>Added by</th><th>Actions</th></tr>
+                    <tr><th>ID</th><th>Name</th><th>Info</th><th>Wiki</th><th>Color</th><th>Added by</th><th>Actions</th></tr>
                     <?php
 
                     $linesRes = mysqli_query($conn, "SELECT * FROM `lines` ORDER BY id ASC");
@@ -242,6 +245,7 @@ pageView("Manage Line Coords :straight_ruler:");
                         <td><?php echo $line['id']; ?></td>
                         <td><?php echo $line['name']; ?></td>
                         <td><?php echo $line['info']; ?></td>
+                        <td><?php echo $line['wiki']; ?></td>
 			<td>
 <?php 
 	    $COLORHT='<div class="button colorblock" style="';

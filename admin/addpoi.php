@@ -26,7 +26,8 @@ pageView("Add POI :wrench::triangular_flag_on_post::pen_fountain:");
 
             <label for="z">Z:</label>
             <input type="number" id="z" name="z" class="input" placeholder="Z" required>
-
+	
+ 
             <label for="marker">Marker:</label>
             <input type="number" id="marker" name="marker" class="input" hidden="" required=""></input>
             <div id="fake-marker" type="button" class="dropdown-fake input" onclick='document.getElementById("marker-dropdown").toggleAttribute("open")'> </div>
@@ -49,6 +50,8 @@ pageView("Add POI :wrench::triangular_flag_on_post::pen_fountain:");
                 }
                 ?>
 </details>
+<label for="wiki">Wiki:<sup class="admin-notreq">*</sup></label>
+            <input type="url" id="wiki" name="wiki" class="input" placeholder="Wiki Link" required>
 
             <label for="info">Info:<sup class="admin-notreq">*</sup></label>
             <textarea id="info" name="info" class="ta" placeholder="Info"></textarea>
@@ -74,6 +77,7 @@ $error=$rawstatus[3];
            'x' =>      $_POST['x'],
            'y' =>      $_POST['y'],
            'z' =>      $_POST['z'],
+           'wiki' => $_POST['wiki'],
            'marker' => $_POST['marker'],
            'info' =>   $_POST['info'],
 	   'admin' =>  $fuckinguserinfo['name']],$conn);
@@ -83,7 +87,7 @@ $error=$rawstatus[3];
                 $error="The cordiantes are outside of the map";
 	    } elseif($uploadfailed){}else {
 
-                          $query = "INSERT INTO `novy`( `id`, `name`, `dial`, `x`,`y`, `z`, `marker`, `info`,`admin`,`shot`) VALUES (NULL, '$sen[name]', '$sen[dial]', $sen[x],$sen[y], $sen[z], $sen[marker], '$sen[info]','$sen[admin]','$shotid')";
+                          $query = "INSERT INTO `novy`( `id`, `name`, `dial`, `x`,`y`, `z`, `marker`, `info`,`admin`,`shot`,`wiki`) VALUES (NULL, '$sen[name]', '$sen[dial]', $sen[x],$sen[y], $sen[z], $sen[marker], '$sen[info]','$sen[admin]','$shotid','$sen[wiki]')";
                 $result = mysqli_query($conn, $query);
 	    $newid=mysqli_insert_id($conn);
 

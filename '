@@ -31,7 +31,7 @@ pageView("Manage Pois :wrench::triangular_flag_on_post::book:");
         <?php
        
     
-        $sql = "SELECT novy.wiki,novy.shot,novy.admin,novy.id, novy.name, novy.dial, novy.info, novy.x,novy.y, novy.z, marker.icon, marker.name AS marker_name  FROM novy  JOIN marker ON novy.marker = marker.id ";
+        $sql = "SELECT novy,wiki,novy.shot,novy.admin,novy.id, novy.name, novy.dial, novy.info, novy.x,novy.y, novy.z, marker.icon, marker.name AS marker_name  FROM novy  JOIN marker ON novy.marker = marker.id ";
         $result = mysqli_query($conn, $sql);
 
         while ($row = mysqli_fetch_assoc($result)) {

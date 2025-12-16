@@ -24,6 +24,7 @@ $error='';
                 'x' => $_POST['x'],
                 'z' => $_POST['z'],
                 'y' => $_POST['y'],
+                'wiki' => $_POST['wiki'],
                 'marker' => $_POST['marker'],
                 'info' => $_POST['info']],$conn);
                     
@@ -51,7 +52,7 @@ if (!($removeshot === "No Screenshot")) {
 }
 	$shotsql=",`shot`='$shotid'";
 }
-                    $query = "UPDATE `novy` SET `name`='$san[name]',`dial`='$san[dial]',`x`='$san[x]',`y`='$san[y]',`z`='$san[z]',`marker`='$san[marker]',`info`='$san[info]' $shotsql WHERE `id` = $san[id];";
+                    $query = "UPDATE `novy` SET `name`='$san[name]',`dial`='$san[dial]',`x`='$san[x]',`y`='$san[y]',`z`='$san[z]',`marker`='$san[marker]',`info`='$san[info]', `wiki`='$san[wiki]'  $shotsql WHERE `id` = $san[id];";
                     $result = mysqli_query($conn, $query);
                     sqlEdit("edited poi :wrench::triangular_flag_on_post::paintbrush: ```sql\n".$query."````$result`");
     
@@ -64,7 +65,7 @@ if (!($removeshot === "No Screenshot")) {
                 }
             }
             if (isset($_GET['id'])){
-                $sql = "SELECT novy.shot, novy.id, novy.name, novy.dial, novy.info, novy.x, novy.z,novy.y, marker.icon AS marker_icon , marker.id AS marker_id, marker.name AS marker_name FROM novy JOIN marker ON novy.marker = marker.id WHERE novy.id = $daid;";
+                $sql = "SELECT novy.shot,novy.wiki, novy.id, novy.name, novy.dial, novy.info, novy.x, novy.z,novy.y, marker.icon AS marker_icon , marker.id AS marker_id, marker.name AS marker_name FROM novy JOIN marker ON novy.marker = marker.id WHERE novy.id = $daid;";
                 $result = mysqli_query($conn, $sql);
 
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -73,6 +74,7 @@ if (!($removeshot === "No Screenshot")) {
                     'name' =>     $row['name'],
                     'dial' =>     $row['dial'],
                     'info' =>     $row['info'],
+                    'wiki' =>     $row['wiki'],
                     'x' =>        $row['x'],
                     'z' =>        $row['z'],
                     'y' =>        $row['y'],
@@ -126,6 +128,9 @@ if (!($removeshot === "No Screenshot")) {
 		}
                 ?>
             </details>
+<label for="wiki">Wiki:</label>
+            <input type="url" id="wiki" name="wiki" class="input" placeholder="Wiki Link"value="<?php if (isset($_GET['id'])){echo $san['wiki'];}?>">
+
 
             <label for="info">Info:</label>
             <textarea id="info" name="info" class="ta" placeholder="Info"><?php if (isset($_GET['id'])){echo $san['info'];}?></textarea>

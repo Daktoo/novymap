@@ -2341,6 +2341,10 @@ input[type=radio]+.marker .marker__icon[data-v-3a029710] {
 .dial-coord {
   font-size: 10px;
 }
+.dial-wiki {
+  font-size: 10px;
+}
+
 .dial-name {
   font-size: 20px;
 }

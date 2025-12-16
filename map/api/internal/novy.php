@@ -33,6 +33,7 @@ $dialQuery = "
         n.y, 
         n.z, 
         n.admin, 
+        n.wiki, 
         m.name AS marker_name, 
         m.icon AS marker_icon, 
         m.id AS marker_id, 
@@ -74,6 +75,7 @@ $dialRow['admin']="Who?";
 
 		$resdesc .= "<p  class=\"dial-dial\">/dial " . $dialRow['dial'] . "</p>";
 		 $resdesc .= "<p  class=\"dial-info\">" . $dialRow['info'] . "</p>";
+		 $resdesc .= "<p  class=\"dial-wiki\">" . '<a href="'. $dialRow['wiki']. '">'.$dialRow['wiki']. '</a>' . "</p>";
 		$resdesc .= "<p  class=\"dial-coord\">" ."X : ". $dialRow['x'] ." Y : ".$dialRow['y'] . " Z : " . $dialRow['z'] . "<br> ID : ".$dialRow['id']. " Added by : ".$dialRow['admin']. "</p>";
 		$resdesc .= "</div>";
 
@@ -103,6 +105,7 @@ $trainQuery = "
         l.name AS line_name, 
         l.color AS line_color, 
         l.info AS line_info, 
+        l.wiki AS line_wiki, 
         lc.seq, 
         lc.x, 
         lc.y, 
@@ -127,7 +130,8 @@ $trains = [];
 while ($trainRow = mysqli_fetch_assoc($trainResult)) {
 	$trainsan=htmlsan([
 		"name"=>$trainRow['line_name'],
-		"info"=>$trainRow['line_info']
+		"info"=>$trainRow['line_info'],
+		"wiki"=>$trainRow['line_wiki']
 	]);
     $lineId = $trainRow['line_id'];
     if (!isset($trains[$lineId])) {
@@ -135,6 +139,7 @@ while ($trainRow = mysqli_fetch_assoc($trainResult)) {
 	$resdesc .= "<h1 class=\"dial-name\">" . $trainsan['name'] . "</h1>";
 		$resdesc .= "<div class=\"dial-bar\"></div>";
 		 $resdesc .= "<p  class=\"dial-info\">" . $trainsan['info'] . "</p>";
+		 $resdesc .= "<p  class=\"dial-wiki\">" . '<a href="'. $trainsan['wiki']. '">'.$trainsan['wiki']. '</a>' . "</p>";
 		$resdesc .= "</div>";
 
         $trains[$lineId] = [
