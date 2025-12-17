@@ -11,6 +11,7 @@ $query = "
         l.color AS line_color, 
         l.info AS line_info, 
         l.admin AS line_admin, 
+        l.wiki AS line_wiki, 
         lc.seq, 
         lc.x, 
         lc.y, 
@@ -44,6 +45,7 @@ while ($trainRow = mysqli_fetch_assoc($result)) {
             "x" => [],
             "y" => [],
             "z" => [],
+            "wiki" => $trainRow['wiki'] ?? "",
             "label" => $trainRow['line_name'],
             "info" => $trainRow['line_info'] ?? ""
         ];

@@ -40,6 +40,10 @@ if (!(empty($row['admin'])||$row['admin']==="???")){
 		  }
 		  unset($response['data']['admin']);
 
+
+if (empty($response['data']['wiki']) ){
+$response['data']['wiki']="Not On Wiki";
+}
 	  }
 
 mysqli_close($conn);

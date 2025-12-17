@@ -10,7 +10,7 @@ $response = [
 
 // Build SQL query
 $query = "
-    SELECT n.id, n.admin, n.name, n.dial, n.x, n.y,n.shot , n.z, m.name AS marker_name, n.info
+    SELECT n.id,n.wiki, n.admin, n.name, n.dial, n.x, n.y,n.shot , n.z, m.name AS marker_name, n.info
     FROM novy n
     JOIN marker m ON n.marker = m.id where n.id=$id
 ";
@@ -49,6 +49,10 @@ $response['data'] = [];
 			$response['data']['screenshot'] = 'No Screenshot';
 		  		}
 		  unset($response['data']['shot']);
+if (empty($response['data']['wiki']) ){
+$response['data']['wiki']="Not On Wiki";
+}
+
   }
 
 mysqli_close($conn);

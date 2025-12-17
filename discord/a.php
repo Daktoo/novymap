@@ -61,6 +61,7 @@ $row[info]
 -# X:$row[x]
 -# Y:$row[y]
 -# Z:$row[z]
+-# Wiki:$row[wiki]
 -# Add by:$row[addedby]
 -# Screesnshot:$shot
 -# Type:$row[marker_name]
@@ -70,6 +71,7 @@ AAAA;
 $row[info]
 -# ID:$row[id]
 -# Rail Name : $row[name]		
+-# Wiki:$row[wiki]
 -# Add by:$row[addedby]
 AAAA;
 	}

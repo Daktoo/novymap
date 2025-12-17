@@ -29,7 +29,7 @@ $response = [
 
 // Build query
 $query = "
-    SELECT n.admin,n.shot,n.id, n.name, n.dial, n.x,n.y, n.z, m.name AS marker_name, n.info,
+    SELECT n.wiki,n.admin,n.shot,n.id, n.name, n.dial, n.x,n.y, n.z, m.name AS marker_name, n.info,
            (POWER(n.x - $x, 2) + POWER(n.z - $z, 2)) AS distance
     FROM novy n
     JOIN marker m ON n.marker = m.id
@@ -65,6 +65,10 @@ if (!(empty($row['admin'])||$row['admin']==="???")){
 			$response['data'][$row['id']]['screenshot'] = 'No Screenshot';
 		  		}
 		  unset($response['data'][$row['id']]['shot']);
+if (empty($response['data']['wiki']) ){
+$response['data']['wiki']="Not On Wiki";
+}
+
   }
 
 if (!$result) {

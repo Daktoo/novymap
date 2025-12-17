@@ -54,6 +54,10 @@ if (!(empty($row['admin'])||$row['admin']==="???")){
 		$response['data'][$row['id']]['addedby'] = "Who?";
 		  }
 
+if (empty($response['data']['wiki']) ){
+$response['data']['wiki']="Not On Wiki";
+}
+
 		  }
 
 mysqli_close($conn);
