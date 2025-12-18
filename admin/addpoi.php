@@ -51,7 +51,7 @@ pageView("Add POI :wrench::triangular_flag_on_post::pen_fountain:");
                 ?>
 </details>
 <label for="wiki">Wiki:<sup class="admin-notreq">*</sup></label>
-            <input type="url" id="wiki" name="wiki" class="input" placeholder="Wiki Link" required>
+            <input type="url" id="wiki" name="wiki" class="input" placeholder="Wiki Link">
 
             <label for="info">Info:<sup class="admin-notreq">*</sup></label>
             <textarea id="info" name="info" class="ta" placeholder="Info"></textarea>
