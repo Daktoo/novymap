@@ -15,8 +15,11 @@
 ## map/
 ### LiveAtlas, icon from dynmap
 - **License**: Apache-2.0
-- **File Paths**: map/live-atlas/, map/hack/\_markers\_, map/ (excluding map/api/internal/novy.php,map/api/internal/confighijacker.php and map/live-atlas/assets/fbi.png)
+- **File Paths**: map/live-atlas/, map/markers, map/ (excluding map/api/internal/novy.php,map/api/internal/confighijacker.php and map/live-atlas/assets/fbi.png)
 - **License Text**: [Apache-2.0 License](./licenses/Apache-2.0)
+### Icon from minecraft
+- **License**: Minecraft ToS
+- **File Paths** : map/markers/pvp.png
 
 ### map/api/internal/novy.php,map/api/internal/confighijacker.php
 - **License**: MIT
