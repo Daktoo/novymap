@@ -35,6 +35,8 @@ echo(json_encode(api_info_railline($conn,$_GET["id"]),$jsonarg));
 }elseif($_SERVER['PATH_INFO']==='/staging/shot'){
 header('Content-Type: image/png');
 echo(api_shot($conn,$_GET["id"]));
+}elseif($_SERVER['PATH_INFO']==='/staging/wikidump'){
+echo(api_wikidump($conn));
 }else {
 echo(json_encode(["error"=>"No API Found"],$jsonarg));
 }
