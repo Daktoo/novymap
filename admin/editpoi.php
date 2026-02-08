@@ -38,7 +38,7 @@ $error=$rawstatus[3];
 
                 if ($san['x'] > 20001 || $san['x'] < -20001 || $san['z'] > 20001 || $san['z'] < -20001) {
                     $error="The cordiantes are outside of the map";
-                } elseif($uploadfailed){} else {
+	    } elseif($uploadfailed){} else {
 if ($shotid==="No Screenshot"){
 	$shotsql="";
 }else {
