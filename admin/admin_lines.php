@@ -167,7 +167,7 @@ pageView("Manage Lines :straight_ruler:");
 		    <label>Info: </label>
 <textarea type="text" name="info" class="input" value="<?php echo $editLine['info']; ?>" >
 </textarea>
-		<label>Wiki: </label><input type="url" name="wiki" class="input" value="<?php echo($editLine['wiki']); ?>" required>
+		<label>Wiki: </label><input type="url" name="wiki" class="input" value="<?php echo($editLine['wiki']); ?>" >
 
                     <button type="submit" id="submit-btn"><?php echo ($editLine['id']>0)? 'Save' : 'Add Lines'; ?> </button>
  <?php echo ($editLine['id']>0)? '<button type="button" id="submit-btn" onclick="window.location.assign(&quot;/admin_lines&quot;)" >Cancel</button>' : ''; ?> 
