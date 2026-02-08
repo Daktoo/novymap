@@ -26,8 +26,6 @@ function webhookmsg( $avatarUrl,$webhookUrl,$name,$message ) {
         echo 'Error occurred: ' . curl_error($ch);
     }
 
-    // Close cURL session
-    curl_close($ch);
 }
 
 ?>
