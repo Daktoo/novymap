@@ -8,7 +8,7 @@ if ($MCSERVER==="smp"){
 }
 $decodedraw["components"][]=[
       "text" => "",
-      "linkurl"=> "https://www.novymap-qvh.top/",
+      "linkurl"=> "https://novy.daktoinc.co.uk/",
       "position"=> "top-left",
       "type"=> "logo",
       "logourl" =>"images/novymap-qvh.png"
@@ -57,7 +57,7 @@ $decodedraw["components"]=$tmpcomp;
 foreach ($decodedraw["worlds"] as $world) {
 if ($MCSERVER="smp"){
 	if ($world["name"]==="world"){
-		$world["title"]="Novymap-qvh";
+		$world["title"]="Overworld";
 	}
 }
 	
@@ -66,7 +66,7 @@ foreach ($world["maps"] as $map) {
 	if ($map['name']=== "flat"){
 $map['title']="2D";
 	} elseif ($map['name']=== "surface"){
-$map['title']="3D but not really that 3D";
+$map['title']="3D";
 	}
 	$map['mapzoomin']=9999;
 $tempmap[]=$map;
@@ -81,10 +81,10 @@ comphijack("show-mcr",true);
 comphijack("show-chunk",true);
 comphijack("hidey",true);
 comphijack("showplayerbody",true);
-$decodedraw['dynmapversion']=$decodedraw['dynmapversion']."-novymap-qvh";
+$decodedraw['dynmapversion']=$decodedraw['dynmapversion']."-novymap";
 $decodedraw['defaultmap']="flat";
-$decodedraw['title']="Novymap-qvh - QVH's novymap";
-$decodedraw['msg-maptypes']="3D or 2D ?";
+$decodedraw['title']="Novymap";
+$decodedraw['msg-maptypes']="Map Type";
 unset($decodedraw['confighash']);
 echo(json_encode($decodedraw));
 
