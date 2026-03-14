@@ -23,10 +23,10 @@ function navbar($customnav="") {
 return <<<EOF
 <div class="nav">
 <input type="checkbox" id="nav-check">
-<a class="nav-wrapper" href="https://www.novymap-qvh.top/">
+<a class="nav-wrapper" href="https://novy.daktoinc.co.uk">
     <div class="nav-header">
 <img class="nav-header-logo" src="/img/novymap-qvh.png" alt="">
-        <h1 class="nav-title">Enable Javascript plwase :3</h1>
+        <h1 class="nav-title">Enable Javascript to use this site properly.</h1>
     </div>
 </a>
 <div class="nav-btn">
@@ -37,10 +37,8 @@ return <<<EOF
         </label>
     </div>
     <div class="nav-links">
-        <a href="https://map.novymap-qvh.top/">Map</a>
-        <a href="https://api.novymap-qvh.top/">Map <br class="nav-links-br">API</a>
-        <a href="https://auth.novymap-qvh.top/api/swagger/">Auth <br class="nav-links-br">API</a>
-        <a href="https://admin.novymap-qvh.top/">Admin</a>
+        <a href="https://novymap.daktoinc.co.uk/">Map</a>
+        <a href="https://novyapi.daktoinc.co.uk/">Map <br class="nav-links-br">API</a>
         <a href="https://discord.gg/NSdnxsjA8y">Discord</a>
  $customnav
 

@@ -18,10 +18,6 @@ echo(navbar());
                         <h3>Credits</h3>
                         <p>Learn about the mediocre people behind Novymap.</p>
                     </div>
- <div onclick="window.location.assign(&quot;https://novyadmin.daktoinc.co.uk/&quot;)" class="feature-card">
-                        <h3><del>Admin Panel</del></h3>
-                        <p>There is no Admin Panel for now.</p>
-                    </div>
 <div onclick="window.location.assign(&quot;https://discord.gg/NSdnxsjA8y&quot;)"  class="feature-card">
                         <h3>Discord</h3>
                         <p>Did we miss any dials? Contact us on the Discord server!</p>
@@ -39,10 +35,6 @@ echo(navbar());
                     </div>
 
 
-<div onclick="window.location.assign(&quot;https://novyauth.daktoinc.co.uk/api/swagger/&quot;)"  class="feature-card">
-                        <h3>Auth API</h3>
-                        <p>Auth API Stuff</p>
-                    </div>
 
                 </div>
                 </div>
