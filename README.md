@@ -1,12 +1,8 @@
-Yeah here is the sauce.
+The source code of Novymap.
+Forked from Novymap-QVH.
 
-It is a mess.
-
-![lol](./lol.png)
-
-Dev by Dakto_
 # Repo
 
-Main repo : https://auth.novymap-qvh.top/novymap-qvh/a/
+QVH's repo : https://auth.novymap-qvh.top/novymap-qvh/a/
 
 
