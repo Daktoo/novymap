@@ -8,7 +8,7 @@ echo(navbar());
 <body>
     <div class="center">
         <div class="settings-container-top">
-                <h1 class="qvhtile">Novymap project</h1><h1 class="qvhtilesmall">  Forked from QVH by Dakto.</h1>
+                <h1 class="qvhtile">Novymap project</h1><h1 class="qvhtilesmall">  Forked by Dakto.</h1>
                 <div class="feature-grid">
                     <div onclick="window.location.assign(&quot;https://novymap.daktoinc.co.uk/&quot;)" href="https://novymap.daktoinc.co.uk/" class="feature-card">
                         <h3>Interactive Map</h3>
