@@ -1,6 +1,6 @@
 # Licenses
 
-## novymap-qvh logo
+## novymap logo
 - **License**: Same as the novymap
 
 ## discord/
