@@ -1,3 +1,32 @@
+
+Logo
+Issues
+Pull requests
+Milestones
+Explore
+
+Dakto
+/
+Novymap
+Code
+Issues
+Pull requests
+Projects
+Releases
+Packages
+Wiki
+Activity
+Actions
+Settings
+Novymap
+/shared/sitewide.css
+qvh
+aa55e41905
+csstewal
+5 months ago
+658 lines
+12 KiB
+CSS
 @font-face {
 font-family: 'Fira Code';
 src: url('/font/FiraCode-Regular.woff2') format('woff2');
@@ -656,3 +685,13 @@ summary {
     margin-left: 0.5em;
     margin-right: 0.5em;
 }
+Powered by Forgejo
+Version:
+14.0.2+gitea-1.22.0
+Page:
+61ms
+Template:
+5ms
+Licenses
+API
+
