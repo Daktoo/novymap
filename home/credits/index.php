@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-<?php 
-    $customhead = '<link rel="stylesheet" href="css/stuff.css">
-                   <link rel="icon" type="image/png" href="novymap-qvh.png">';
-    include '../../shared/navbar.php';
-    echo(htmlhead("Novymap Credits", $customhead));
-    echo(navbar());
-?>
-<?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-?>
-=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +9,6 @@ error_reporting(E_ALL);
     <link rel="icon" type="image/png" href="novymap-qvh.png">
 </head>
 <?php include '../../shared/navbar.php'; ?>
->>>>>>> refs/remotes/origin/master
 <body>
     <div class="center">
         <div class="settings-container-top">
