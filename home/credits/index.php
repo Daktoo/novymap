@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" href="novymap-qvh.png">
 </head>
 <?php include '../../shared/navbar.php'; ?>
+<?php include '../../shared/discord.php'; ?>
 <body>
     <div class="center">
         <div class="settings-container-top">

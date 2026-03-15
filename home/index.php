@@ -14,6 +14,7 @@
 <body>
 
     <?php include '../shared/navbar.php'; ?>
+    <?php include '../shared/discord.php'; ?>
     <?php include '../shared/db.php'; ?>
     <main class="center">
         <section class="settings-container-top">
