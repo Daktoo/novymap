@@ -19,7 +19,7 @@ let dontfetch=false;
 
 			return;
 		} 
-            const url = `https://api.novymap-qvh.top/api/staging/${endpoint}?` + params.toString();
+            const url = `https://novyapi.daktoinc.co.uk/api/staging/${endpoint}?` + params.toString();
             document.getElementById(`${endpoint}-url`).textContent = url;
             const response = await fetch(url);
 	    const mine = await response.headers.get('Content-Type');

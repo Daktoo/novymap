@@ -50,7 +50,7 @@ if ($D) {
 	if ($row['screenshot']==="No Screenshot"){
   $shot="No Screenshot";
 	} else {
-  $shot='https://api.novymap-qvh.top/api/staging/shot?id='.$row['id'];
+  $shot='https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id'];
 	}
 
 	
@@ -86,7 +86,7 @@ AAAA;
 if ($D) {
 if($E===1){
 	if (!($row['screenshot']==="No Screenshot")){
-		$embed->setImage('https://api.novymap-qvh.top/api/staging/shot?id='.$row['id']);
+		$embed->setImage('https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id']);
 	}
 }
 }
@@ -97,7 +97,7 @@ function websithandler (Interaction $interaction) {
 		global $botcolor;
 
 		global $discord;
-		$sitearry=["https://map.novymap-qvh.top","https://api.novymap-qvh.top","https://www.novymap-qvh.top"];
+		$sitearry=["https://map.novymap-qvh.top","https://novyapi.daktoinc.co.uk","https://www.novymap-qvh.top"];
 	$site=' '.$sitearry[array_rand($sitearry)].' ';
 //Ripped from novymap bot
 $msg=websithandlermsg($site);

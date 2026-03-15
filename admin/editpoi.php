@@ -142,7 +142,7 @@ if (!($removeshot === "No Screenshot")) {
 <?php
 		if (!(empty($san['shot'])||$san['shot']==="No Screenshot"))
 		{
-			echo '<img id="shot-img" class="screeshot input" src="https://api.novymap-qvh.top/api/staging/shot?id='.$san['id'].'">';
+			echo '<img id="shot-img" class="screeshot input" src="https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$san['id'].'">';
 			echo '<a id="submit-btn" class="input" onclick="rufksure(&quot;deleteshot?id='.intval($_GET['id']).'&quot;,&quot;Screeshot&quot;)">Delete Screenshot</a>';
 		} else {
 			echo '<p>No Screenshot</p>';

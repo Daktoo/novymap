@@ -58,8 +58,8 @@ $dialRow['admin']="Who?";
 		$resdesc .= "<div class=\"dial-bar\"></div>";
 		if (!(empty($dialRow['shot'])||$dialRow['shot']==="No Screenshot"))
 		{
-			 $resdesc .= '<a class="dial-img-warpper" href="https://api.novymap-qvh.top/api/staging/shot?id='.$dialRow['id'].'">';
-			 $resdesc .= '<img class="dial-img" src="https://api.novymap-qvh.top/api/staging/shot?id='.$dialRow['id'].'">';
+			 $resdesc .= '<a class="dial-img-warpper" href="https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$dialRow['id'].'">';
+			 $resdesc .= '<img class="dial-img" src="https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$dialRow['id'].'">';
 			 $resdesc .= '</a>';
 		}
 

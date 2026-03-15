@@ -59,7 +59,7 @@ if (!(empty($row['admin'])||$row['admin']==="???")){
 
 		if (!(empty($row['shot'])||$row['shot']==="No Screenshot"))
 		{
-		$response['data'][$row['id']]['screenshot'] = 'https://api.novymap-qvh.top/api/staging/shot?id='.$row['id'] ;
+		$response['data'][$row['id']]['screenshot'] = 'https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id'] ;
 		  		} else{
 		  
 			$response['data'][$row['id']]['screenshot'] = 'No Screenshot';

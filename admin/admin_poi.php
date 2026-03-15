@@ -79,7 +79,7 @@ pageView("Manage Pois :wrench::triangular_flag_on_post::book:");
 			$shotres.='<p class="shot-titlewindowscontroll">⎯ ❐ ⤬</p>';
 			$shotres.='</div>';
 
-		$shotres.='<img class="shot-img" src="https://api.novymap-qvh.top/api/staging/shot?id='.$row['id'].'">';
+		$shotres.='<img class="shot-img" src="https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id'].'">';
 			$shotres.='</div>';
 			$shotres.='</summary>';
 			$shotres.='</details>';
