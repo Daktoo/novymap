@@ -1,12 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Novymap</title>
-    <link rel="stylesheet" href="nav.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../shared/nav.css">
+    <link rel="stylesheet" href="css/sitewide.css">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Novymap Home">
     <meta name="twitter:description" content="This is the home page of Novymap, where you can do stuffs..">
