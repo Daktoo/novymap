@@ -1,7 +1,7 @@
     <?php 
     $customhead="<link rel=\"stylesheet\" href=\"css/stuff.css\">";
     include '../../shared/navbar.php';
-    echo(htmlhead("Novymap-qvh Creads",$customhead));
+    echo(htmlhead("Novymap Credits",$customhead));
 echo (navbar());
 ?>
         <link rel="icon" type="image/png" href="novymap-qvh.png">
