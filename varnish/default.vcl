@@ -19,23 +19,31 @@ backend default {
 }
 
 sub vcl_recv {
-    # Happens before we check if we have this in cache already.
-    #
-    # Typically you clean up the request here, removing cookies you don't need,
-    # rewriting the request, etc.
+    if (req.url ~ "MySQL_tiles\.php" || req.url ~ "MySQL_update\.php" || req.url ~ "\.(png|gif|jpg)$") {
+        unset req.http.cookie;
+    }
 }
 
 sub vcl_backend_response {
-    # Happens after we have read the response headers from the backend.
-    #
-    # Here you clean the response headers, removing silly Set-Cookie headers
-    # and other mistakes your backend does.
-  if (bereq.url ~ "\.(png|gif|jpg)$") {
-     unset beresp.http.set-cookie;
-     set beresp.ttl = 8h;
-  } else {
-     set beresp.ttl = 0s;
-  }
+    if (bereq.url ~ "MySQL_tiles\.php") {
+        unset beresp.http.set-cookie;
+        unset beresp.http.cache-control;
+        unset beresp.http.pragma;
+        unset beresp.http.expires;
+        set beresp.ttl = 10m;
+        set beresp.uncacheable = false;
+    } elseif (bereq.url ~ "MySQL_update\.php") {
+        unset beresp.http.set-cookie;
+        unset beresp.http.cache-control;
+        unset beresp.http.pragma;
+        set beresp.ttl = 5s;
+        set beresp.uncacheable = false;
+    } elseif (bereq.url ~ "\.(png|gif|jpg)$") {
+        unset beresp.http.set-cookie;
+        set beresp.ttl = 8h;
+    } else {
+        set beresp.ttl = 0s;
+    }
 }
 
 sub vcl_deliver {
