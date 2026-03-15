@@ -5,6 +5,10 @@
     echo(htmlhead("Novymap Credits", $customhead));
     echo(navbar());
 ?>
+<?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+?>
 <body>
     <div class="center">
         <div class="settings-container-top">
