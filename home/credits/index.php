@@ -1,10 +1,14 @@
-<?php 
-    $customhead = '<link rel="stylesheet" href="css/stuff.css">
-                   <link rel="icon" type="image/png" href="novymap-qvh.png">';
-    include '../../shared/navbar.php';
-    echo(htmlhead("Novymap Credits", $customhead));
-    echo(navbar());
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novymap Credits</title>
+    <link rel="stylesheet" href="/shared/nav.css">
+    <link rel="stylesheet" href="css/stuff.css">
+    <link rel="icon" type="image/png" href="novymap-qvh.png">
+</head>
+<?php include '../../shared/navbar.php'; ?>
 <body>
     <div class="center">
         <div class="settings-container-top">
@@ -57,7 +61,7 @@
             </div>
         </div>
     </div>
- 
+
     <?php include '../../shared/footer.php'; ?>
 </body>
 </html>
