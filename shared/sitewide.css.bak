@@ -1,6 +1,5 @@
-/* Modernized CSS with easy dark/light toggling via CSS variables */
 
-/* Default (dark) theme variables */
+/* Default (dark) theme variables (tokyonight-dark) */
 :root {
   --background: #121212;
   --surface-bg: #1e1e1e;
@@ -31,6 +30,15 @@
   --card-shadow: rgba(0, 0, 0, 0.1);
 }
 
+
+:root[data-theme="light"]  .darkicon {
+	display:none;
+}
+
+:root[data-theme="dark"]  .lighticon {
+	display:none;
+}
+
 /* Global styles */
 body {
   background-color: var(--background);
@@ -42,7 +50,19 @@ body {
   line-height: 1.6;
   transition: background-color var(--transition), color var(--transition);
 }
+#submit-btn,.input, .button{
+	text-decoration: none;
+font-size: 15px;
+ margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
 
+}
+.table .button{
+ margin-top: 0rem;
+  margin-bottom: 0rem;
+
+}
+ 
 /* Link styling */
 a {
   color: var(--link);
@@ -100,20 +120,30 @@ a:focus {
 
 /* Settings containers */
 .settings-container-top,
-.settings-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.settings-container,.dropdown[open] {
   background-color: var(--surface-bg);
-  width: 100vh;
-  max-width: 88vw;
   box-shadow: 0 8px 32px var(--card-shadow);
   border-radius: 2rem;
-  padding: 2rem;
   font-size: 1.25rem;
   margin: 1.5rem 0;
   animation: fadeIn 0.6s ease both;
 }
+.settings-container-top,
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+  max-width: 88vw;
+  padding: 2rem;
+  /* backward compairable for older browser */
+ overflow: overlay !important;
+ 
+    overflow: scroll;
+    scrollbar-gutter: stable;
+}
+
+
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
@@ -126,22 +156,18 @@ a:focus {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  font-size: 1.75rem;
 }
-
 .input,
 .ta {
+  background-color: var(--card-bg);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+   color: var(--text);
   width: 80%;
   max-width: 600px;
   padding: 0.75em;
-  font-size: 1.25rem;
   border-radius: 0.75rem;
   text-align: left;
   border: 2px solid var(--muted-text);
-  background-color: var(--card-bg);
-  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
-  margin-top: 0.75rem;
-  color: var(--text);
 }
 
 /* Hover effect for .input (use on buttons or inputs) */
@@ -160,7 +186,7 @@ a:focus {
 }
 
 .button {
-    background-color: var(--primary);
+    background-color: var(--accent);
     color: var(--text);
     padding: 0.5em 1em;
     border: none;
@@ -170,15 +196,15 @@ a:focus {
 }
 
 .button:hover {
-    background-color: var(--accent);
-    transform: translateY(-2px);
+    background-color: var(--primary);
 }
+
+  .button:hover{ transform: translateY(-2px);}
 
 #submit-btn {
   background-color: var(--accent);
   color: var(--text);
   padding: 0.75em 1.5em;
-  font-size: 1.25rem;
   border: none;
   border-radius: 1rem;
   cursor: pointer;
@@ -193,14 +219,14 @@ a:focus {
 /* Tables */
 table {
   border-collapse: collapse;
-  width: 90%;
-  margin: 5% auto 7.5 auto;
+  width: 80vw;
   font-size: 1rem;
   background-color: var(--card-bg);
   box-shadow: 0 4px 16px var(--card-shadow);
-  border-radius: 1rem;
   overflow: hidden;
   animation: fadeInTable 0.8s ease both;
+  border-top-left-radius: 1rem;
+border-top-right-radius: 1rem;
 }
 
 @keyframes fadeInTable {
@@ -210,46 +236,25 @@ table {
 
 th,
 td {
-  padding: 0.75em;
+  padding: 0.5em;
   text-align: left;
   border-bottom: 1px solid var(--muted-text);
 }
-
+ td {
+  border-right: 1px solid var(--muted-text);
+  border-left: 1px solid var(--muted-text);
+}
 th {
   background-color: var(--accent);
   color: var(--text);
 }
 
-tbody tr:nth-child(even) {
-  background-color: var(--surface-bg);
-}
 
 tr:hover {
   background-color: var(--link-hover);
 }
 
-/* Suggestion cards */
-.suggestions-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5em;
-  width: 90%;
-  margin: 2em auto;
-}
 
-.suggestion-card {
-  background-color: var(--card-bg);
-  border-radius: 1rem;
-  padding: 1.5em;
-  box-shadow: 0 6px 16px var(--card-shadow);
-  color: var(--text);
-  transition: transform var(--transition), box-shadow var(--transition);
-}
-
-.suggestion-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px var(--card-shadow);
-}
 
 .card-header .name {
   font-size: 1.75rem;
@@ -299,12 +304,14 @@ tr:hover {
 }
 
 .feature-card {
-  background-color: var(--surface-bg);
+  background-color:var(--accent);
   border-radius: 1.5rem;
   padding: 2rem;
   text-align: center;
   box-shadow: 0 6px 18px var(--card-shadow);
   transition: transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .feature-card h3 {
@@ -358,17 +365,7 @@ tr:hover {
   color: var(--muted-text);
   text-align: center;
   padding: 1rem 0;
-  border-top: 1px solid var(--muted-text);
   font-size: 0.9rem;
-}
-
-.footer p a {
-  color: var(--link);
-  transition: color var(--transition);
-}
-
-.footer p a:hover {
-  color: var(--link-hover);
 }
 
 /* Responsive tweaks */
@@ -388,3 +385,272 @@ tr:hover {
     transition-duration: 0.01ms !important;
   }
 }
+/* Modern navbar styling matching the theme variables and dark/light toggling */
+
+/* Global resets */
+* {
+  box-sizing: border-box;
+}
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide the native checkbox */
+#nav-check {
+	        margin-top: 0px !important;
+  display: none;
+}
+
+/* Base Navbar */
+.nav {
+	height: 3em;
+  width: 100%;
+  background-color: var(--accent);
+  box-shadow: 0 2px 4px var(--card-shadow);
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  animation: fadeDown var(--transition) both;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Brand / Title */
+.nav-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: inherit;
+}
+
+.nav-title {
+  font-size: 1.5rem;
+  color: var(--text);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Nav Links */
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links > a {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 1rem;
+  transition: background-color var(--transition), color var(--transition);
+  border-radius: 0.5rem;
+}
+
+.nav-links > a:hover,
+.nav-links > a:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
+  outline: none;
+}
+
+/* Hamburger Button (mobile) */
+.nav-btn {
+  display: none;
+}
+.nav-btn > label {
+  display: none;
+  padding: 0.75rem;
+}
+.nav-btn > label,.nav-theme-btn > svg {
+  cursor: pointer;
+  border-radius: 0.5rem;
+  transition: background-color var(--transition);
+    fill: var(--text);
+}
+
+.nav-btn > label:hover,.nav-theme-btn > svg:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-btn span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: var(--text);
+  margin: 4px 0;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.nav-header-logo{
+	    height: 2.5rem;
+}
+
+.nav-wrapper {
+  text-decoration: none;
+    overflow: hidden;
+        white-space: nowrap;
+}
+
+/* Responsive: mobile toggle */
+@media (max-width: 768px) {
+.archbox,.archbox-center {
+flex-direction: column;
+}
+.nav-links-br {
+  display: none;
+}
+  .nav {
+    padding-left: 1rem;
+  }
+  .nav-btn,.nav-theme-btn {
+    display: block;
+    position: absolute;
+    display: flex;
+    align-items: center;
+  }
+ .nav-btn {
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+.nav-theme-btn {
+	right: 3.5em;
+}
+  .nav-btn > label {
+    display: block;
+  }
+  .nav-links {
+    position: absolute;
+    top: 3em;
+    left: 0;
+    width: 100vw;
+    background-color: var(--surface-bg);
+    flex-direction: column;
+    align-items: flex-start;
+  /* backward compairable for older browser*/
+  overflow: overlay !important;
+  overflow: scroll;
+    scrollbar-gutter: stable;
+    max-height: 0;
+    transition: max-height var(--transition) ease-in;
+  }
+  .nav-links > a {
+    width: 100%;
+    color: var(--text);
+  }
+  /* Toggle checked */
+  #nav-check:checked ~ .nav-links {
+    max-height: calc(100vh - 50px);
+  }
+  /* Animate hamburger to X on open */
+  #nav-check:checked + .nav-wrapper + .nav-btn label span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  #nav-check:checked + .nav-wrapper + .nav-btn label span:nth-child(2) {
+    opacity: 0;
+  }
+  #nav-check:checked + .nav-wrapper + .nav-btn label span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
+  .nav-wrapper {
+    width: calc(100% - 5em);
+}
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .nav,
+  .nav-links {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.qvhtile,.qvhtilesmall {
+  align-content: center;
+  text-align: center;
+  text-transform: capitalize;
+  text-decoration: underline;
+}
+
+.qvhtile {
+  font-size: 30px;
+}
+
+.qvhtilesmall {
+	margin-top: -1.5rem;
+  font-size: 20px;
+}
+
+.nav-theme-btn {
+  height: 70%;
+}
+
+.nav-theme-btn svg {
+	height: 100%;
+}
+
+.archbox,.archbox-center {
+  display: flex;
+  /* backward compairable for older browser */
+    overflow: overlay !important;
+        overflow: scroll;
+    scrollbar-gutter: stable;
+    }
+    .terminal{
+  /* backward compairable for older browser */
+ overflow: overlay !important;
+ 
+    overflow: scroll;
+    scrollbar-gutter: stable;	   
+background: black;
+    color: white;
+    border-radius: 2rem;
+
+    }
+.archbox-center {
+	justify-content: center;
+}
+
+
+.archlogo,.archinfo{
+	display: block;
+}
+
+.archlogo {
+  margin-right: 2em;
+}
+.spoiler {
+    background-color: var(--muted-text);
+}
+
+
+
+summary {
+  cursor: pointer;
+}
+
+.emoji-marker {
+    content: url(/img/emoji/marker.png);
+    height: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+}
+Powered by Forgejo
+Version:
+14.0.2+gitea-1.22.0
+Page:
+61ms
+Template:
+5ms
+Licenses
+API
+
