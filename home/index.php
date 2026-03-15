@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php include '../shared/navbar.php'; ?>
+    <?php include '../shared/db.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Novymap</title>
@@ -11,8 +13,7 @@
 </head>
 <body>
   
-    <?php include '../shared/navbar.php'; ?>
-    <?php include '../shared/db.php'; ?>
+
     <main class="center">
         <section class="settings-container-top">
             <?php if (!$userData): ?>
