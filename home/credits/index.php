@@ -4,6 +4,7 @@
     echo(htmlhead("Novymap-qvh Creads",$customhead));
 echo (navbar());
 ?>
+        <link rel="icon" type="image/png" href="novymap-qvh.png">
 <body>
     <div class="center">
         <div class="settings-container-top">
