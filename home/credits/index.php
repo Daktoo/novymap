@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
     $customhead = '<link rel="stylesheet" href="css/stuff.css">
                    <link rel="icon" type="image/png" href="novymap-qvh.png">';
@@ -9,6 +10,19 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 ?>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novymap Credits</title>
+    <link rel="stylesheet" href="/shared/nav.css">
+    <link rel="stylesheet" href="css/stuff.css">
+    <link rel="icon" type="image/png" href="novymap-qvh.png">
+</head>
+<?php include '../../shared/navbar.php'; ?>
+>>>>>>> refs/remotes/origin/master
 <body>
     <div class="center">
         <div class="settings-container-top">
@@ -61,7 +75,7 @@ error_reporting(E_ALL);
             </div>
         </div>
     </div>
- 
+
     <?php include '../../shared/footer.php'; ?>
 </body>
 </html>
