@@ -6,6 +6,7 @@
     <title>Welcome to Novymap</title>
     <link rel="stylesheet" href="../shared/nav.css">
     <link rel="stylesheet" href="css/sitewide.css">
+    <link rel="icon" type="image/png" href="novymap-qvh.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Novymap Home">
     <meta name="twitter:description" content="This is the home page of Novymap, where you can do stuffs..">
