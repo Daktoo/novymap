@@ -9,7 +9,7 @@ $isLoggedIn = isset($_SESSION['discord_access_token']);
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
         <div class="nav-title">
-            <link rel="icon" type="image/png" href="/img/novymap-qvh.png">
+            <link rel="icon" type="image/png" href="novymap-qvh.png">
             novymap
         </div>
     </div>
