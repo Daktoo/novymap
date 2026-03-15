@@ -1,0 +1,133 @@
+<?php
+if (!isset($_SERVER['HTTP_X_FORWARDED_USER'])){
+	header($_SERVER["SERVER_PROTOCOL"] . '401 Unauthorized');
+die("");
+}
+include_once '/etc/novy/shared/navbar.php';
+include_once '/etc/novy/shared/db.php';
+include_once '/etc/novy/shared/webhook.php';
+include_once '/etc/novy/shared/san.php';
+include_once '/etc/novy/shared/gitea.php';
+$conn=reconnectdb($conn);
+
+
+	$fuckinguserinfo=gitea_userinfo($_SERVER['HTTP_X_FORWARDED_USER']);
+
+function admin_head($fuckingtitle,$customhead="") {
+$customhead.="<link rel=\"stylesheet\" href=\"/css/admin.css\">";
+$customhead.="<script src=\"/js/admin.js\"></script>";
+$pagetitle="Admin Panel : " . $fuckingtitle ;
+return(htmlhead($pagetitle,$customhead));
+}
+function admin_navbar($customnav="") {
+$customnav.="<a href=\"/oauth2/sign_out\">Logout</a>";
+return(navbar($customnav));
+}
+function webhookmsg_admin( $message ) {
+global $fuckinguserinfo;
+global $discord_admhook;
+$name=$fuckinguserinfo['name'];
+    $avatarUrl=$fuckinguserinfo['pfp'];
+webhookmsg($avatarUrl,$discord_admhook,$name,$message);
+    }
+
+function pageView($page) {
+          webhookmsg_admin(  ":bookmark_tabs: " . $page);
+}
+
+function sqlEdit($query, $admin_discord_id = null ) {
+	global $_SERVER,$conn;
+
+          webhookmsg_admin( ":pencil: " . $query);
+	    $timestamp = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO `admin_stat`(`id`, `admin`, `timestamp`) VALUES (NULL,'".mysqli_real_escape_string($conn,$_SERVER['HTTP_X_FORWARDED_USER'])."','".$timestamp."' )";
+	                $result = mysqli_query($conn, $sql);
+       
+    
+}
+function dropdownbtu($name, $fakevalue, $value,$img  ) {
+	$BTU='<div ';
+		$BTU.='type="button" ';
+		$BTU.='id="submit-btn" ';
+		$BTU.='class="input" ';
+		$BTU.="onclick='dropdownclick(\"";
+		$BTU.=$name;
+		$BTU.="\",\"";
+		$BTU.=$fakevalue;
+		$BTU.='","';
+		$BTU.=$value;
+		$BTU.='","';
+		$BTU.=$img;
+		$BTU.="\")";
+		$BTU.="' >";
+		$BTU.='<img class="drowdrop-img" src="';
+		$BTU.=$img;
+		$BTU.='">';
+		$BTU.=$fakevalue;
+		$BTU.='</div>';
+    return $BTU; 
+}
+$shotallowfile = ['image/bmp','image/webp','image/x-ms-bmp','image/jpeg', 'image/png', 'image/gif'];
+$shotallowfiletag = 'accept="';
+foreach ($shotallowfile as $ah) {
+$shotallowfiletag .= $ah . ', ';
+}
+$shotallowfiletag .= '"';
+
+function shothandler($ufile ) {
+global $shotallowfile ;
+$shotid='No Screenshot';
+$fucked="";
+$maxFileSize = 20 * 1024 * 1024;
+	      if ($ufile['error']=== UPLOAD_ERR_NO_FILE) {
+$uploaded=false;
+$uploadfailed=false;
+		      }elseif ($ufile['size'] > $maxFileSize) {
+	      
+	    
+                        $fucked="File too big !!! ";
+$uploaded=true;
+			$uploadfailed=true;
+	    
+		      } elseif (!in_array($ufile["type"], $shotallowfile)) {
+	      
+	    
+                        $fucked="Unsupport file format(only support webp bmp png gif)";
+$uploaded=true;
+			$uploadfailed=true;
+	    
+		      }elseif ($ufile['error'] === UPLOAD_ERR_OK ){
+			
+$uploaded=true;
+			$uploadfailed=false;
+	    } else {
+                        $fucked="Upload failed";
+		
+$uploaded=true;
+			$uploadfailed=true;
+
+
+	    }
+if(!$uploadfailed && $uploaded){
+$shotid=substr(hash(hash_algos()[array_rand(hash_algos())],random_bytes(10)),0,100); 
+	    $filename="/srv/http/novy/shot2/".$shotid.".png";
+		$imagick = new Imagick($ufile["tmp_name"]);
+$store=fopen($filename, "w");
+
+if (file_exists($filename)) {
+
+unlink($filename);
+}
+$imagick->setImageFormat("PNG");
+    $imagick->stripImage();
+$imagick->writeImage($filename);
+
+
+}
+
+return [$uploaded,$uploadfailed,$shotid,$fucked];
+}
+
+?>
+
+

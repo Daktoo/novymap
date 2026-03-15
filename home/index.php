@@ -18,12 +18,6 @@
     <?php include '../shared/db.php'; ?>
     <main class="center">
         <section class="settings-container-top">
-            <?php if (!$userData): ?>
-                <h1>You need to log in to use some features</h1>
-                <p><a href="/auth/login">Click here to log in</a>.</p>
-            <?php else: ?>
-                <h1>Welcome, <?php echo htmlspecialchars($userData['username']); ?>!</h1>
-            <?php endif; ?>
             <h2>Explore Novymap</h2>
             <div class="feature-grid">
                 <a href="https://novymap.daktoinc.co.uk" class="feature-card">
@@ -34,9 +28,9 @@
                     <h3>Discord</h3>
                     <p>Did we miss any dials? Contact us on our Discord server!</p>
                 </a>
-                <a href="#" class="feature-card disabled">
-                    <h3>Coming soon</h3>
-                    <p>Coming soon.</p>
+                <a href="https://novyadmin.daktoinc.co.uk" class="feature-card">
+                    <h3>Admin Panel</h3>
+                    <p>Join our Discord to apply for Admin.</p>
                 </a>
                 <a href="https://novyapi.daktoinc.co.uk" class="feature-card">
                     <h3>API Documentation</h3>

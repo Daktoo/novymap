@@ -10,7 +10,7 @@ pageView("Admin Panels Home Page :wrench::triangular_flag_on_post::book:");
 <div class="center">
 <div class="settings-container-top">
 <?php
-echo "<h1 class=\"qvhtile\">Welcome to Admin Panel !!!</h1><h1 class=\"qvhtilesmall\">Hello admin $fuckinguserinfo[name] !!!</h1>";
+echo "<h1 class=\"qvhtile\">Admin Panel</h1><h1 class=\"qvhtilesmall\">Welcome, $fuckinguserinfo[name]</h1>";
 ?>
 <div class="feature-grid">
          

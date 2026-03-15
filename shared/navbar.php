@@ -25,9 +25,10 @@ $isLoggedIn = isset($_SESSION['discord_access_token']);
         <?php if ($isLoggedIn): ?>
             <a href="https://discord.gg/NSdnxsjA8y">Discord</a>
             <a href="https://novyapi.daktoinc.co.uk">API</a>
-            <a href="#">Logout</a>
+            <a href="https://novyadmin.daktoinc.co.uk">Admin</a>
         <?php else: ?>
-            <a href="https://novyapi.daktoinc.co.uk">API</a>
+	    <a href="https://novyapi.daktoinc.co.uk">API</a>
+	    <a href="https://novyadmin.daktoinc.co.uk">Admin</a>
         <?php endif; ?>
         <a href="javascript:void(0);" onclick="toggleTheme()">Toggle Theme</a>
     </div>
