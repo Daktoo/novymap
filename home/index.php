@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Novymap</title>
-    <link rel="stylesheet" href="../shared/nav.css">
     <link rel="stylesheet" href="css/sitewide.css">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Novymap Home">
@@ -12,7 +11,8 @@
 </head>
 <body>
   
-    <?php include '../shared/navbar.php'; include '../shared/neofetch.php'; include '../shared/db.php'; ?>
+    <?php include '../shared/navbar.php'; ?>
+    <?php include '../shared/db.php'; ?>
     <main class="center">
         <section class="settings-container-top">
             <?php if (!$userData): ?>
