@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novymap Credits</title>
     <link rel="stylesheet" href="/shared/nav.css">
+    <link rel="stylesheet" href="../../shared/sitewide.css">
     <link rel="stylesheet" href="css/stuff.css">
     <link rel="icon" type="image/png" href="novymap-qvh.png">
 </head>
