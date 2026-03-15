@@ -20,7 +20,7 @@ $isLoggedIn = isset($_SESSION['discord_access_token']);
         </label>
     </div>
     <div class="nav-links">
-        <a href="/">Home</a>
+        <a href="https://novy.daktoinc.co.uk/">Home</a>
         <a href="https://novymap.daktoinc.co.uk">Map</a>
         <?php if ($isLoggedIn): ?>
             <a href="https://discord.gg/NSdnxsjA8y">Discord</a>
