@@ -5,10 +5,10 @@ session_start();
 // Check if the user is logged in
 $isLoggedIn = isset($_SESSION['discord_access_token']);
 ?>
+        <link rel="icon" type="image/png" href="novymap-qvh.png">
 <div class="nav">
     <input type="checkbox" id="nav-check">
     <div class="nav-header">
-            <link rel="icon" type="image/png" href="novymap-qvh.png">
         <div class="nav-title">
             novymap
         </div>
