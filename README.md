@@ -3,4 +3,4 @@ Forked from Novymap-QVH.
 
 Based on the original Novymap by Pigwin. Uses LiveAtlas on top of Novylen's Dynmap. Currently hosted by Dakto after QVH handed it over.
 
-[2D Map](novylen1.png)
+![](novylen1.png)
