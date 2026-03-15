@@ -1,0 +1,9 @@
+<?php
+include("./part/all.php");
+include("./part/cords.php");
+include("./part/markers.php");
+include("./part/markers_icon.php");
+include("./part/railline.php");
+include("./part/search.php");
+include("./part/shot.php");
+?>

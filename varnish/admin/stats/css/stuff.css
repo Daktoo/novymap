@@ -1,0 +1,96 @@
+        .stats-chart-container {
+    height: 400px;
+    position: relative;
+            width: 100%;
+	    display: flex;
+  justify-content: center;
+
+}
+
+.stats-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.tabar{
+	display: flex;
+  flex-direction: row;
+      background: var(--card-bg);
+    white-space: nowrap;
+    }
+    .tabarwrapper{
+   /* https://stackoverflow.com/questions/3934271/horizontal-scrollbar-on-top-and-bottom-of-table
+      * scroll bar on top hack
+      */
+
+          transform: rotateX(180deg);
+     /* backward compairable for older browser */
+     overflow-x: overlay !important;
+    overflow-x: scroll;
+    scrollbar-gutter: stable;
+     overflow-y: clip;
+    width: 100%;
+      }
+
+
+.tabarwrapperwrapper{
+position: sticky;
+      background: var(--card-bg);
+    top: -2rem;
+    z-index: 9999;
+  margin-top: -2rem;
+      margin-left: -2rem;
+    margin-right: -2rem;
+        padding-right: 2rem;
+    padding-left: 2rem;
+
+}
+    .tabtu {
+  	    margin-bottom: -0.5em;
+	        cursor: pointer;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  border-top: none;
+    border-top-style: none;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  border-bottom-style: solid;
+  border-bottom-width: 1em;
+  border-bottom-color:  rgba(0, 0, 0, 0);
+  color: var(--text);
+  display: flex;
+  flex-direction: column-reverse;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0);
+}
+    .tabtu[data-tabselected] {
+  border-bottom-color: var(--primary);
+       box-shadow: 3px 3px 3px 3px var(--card-shadow);
+} 
+
+    .tabar-smalltext {
+	        transform: rotateX(180deg);
+  font-size: 0.6rem;
+}
+
+.tabar-text{
+	        transform: rotateX(180deg);
+
+}
+
+.tabarwrapperbar {
+    width: 100%;
+    height: 0.1em;
+    background: var(--accent);
+}
+
+:root{
+--charttransparent:10;
+}
+.stats-table-in-table{
+width: 100% !important;
+}
+

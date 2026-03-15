@@ -1,0 +1,6 @@
+{
+    "require": {
+        "ua-parser/uap-php": "^3.10.0",
+        "team-reflex/discord-php": "^10.45.16"
+    }
+}

@@ -1,0 +1,64 @@
+<?php
+
+declare(strict_types=1);
+
+/*
+ * This file is a part of the DiscordPHP project.
+ *
+ * Copyright (c) 2015-2022 David Cole <david.cole1340@gmail.com>
+ * Copyright (c) 2020-present Valithor Obsidion <valithor@discordphp.org>
+ *
+ * This file is subject to the MIT license that is bundled
+ * with this source code in the LICENSE.md file.
+ */
+
+namespace Discord\WebSockets\Events;
+
+use Discord\Helpers\ExCollectionInterface;
+use Discord\WebSockets\Event;
+use Discord\Parts\Guild\Emoji;
+use Discord\Parts\Guild\Guild;
+
+/**
+ * @link https://discord.com/developers/docs/topics/gateway-events#guild-emojis-update
+ *
+ * @since 7.0.0
+ */
+class GuildEmojisUpdate extends Event
+{
+    /**
+     * @inheritDoc
+     */
+    public function handle($data)
+    {
+        /** @var ExCollectionInterface<Emoji> $oldEmojis */
+        $oldEmojis = $this->discord->getCollectionClass()::for(Emoji::class);
+        /** @var ExCollectionInterface<Emoji> $emojiParts */
+        $emojiParts = $this->discord->getCollectionClass()::for(Emoji::class);
+
+        /** @var ?Guild */
+        if ($guild = yield $this->discord->guilds->cacheGet($data->guild_id)) {
+            $oldEmojis->merge($guild->emojis);
+            $guild->emojis->clear();
+        }
+
+        foreach ($data->emojis as &$emoji) {
+            if (isset($emoji->user)) {
+                // User caching from emoji uploader
+                $this->cacheUser($emoji->user);
+            } elseif ($oldEmoji = $oldEmojis->offsetGet($emoji->id)) {
+                if ($uploader = $oldEmoji->user) {
+                    $emoji->user = (object) $uploader->getRawAttributes();
+                }
+            }
+            $emoji->guild_id = $data->guild_id;
+            $emojiParts->pushItem($this->factory->part(Emoji::class, (array) $emoji, true));
+        }
+
+        if (isset($guild)) {
+            yield $guild->emojis->cache->setMultiple($emojiParts->jsonSerialize());
+        }
+
+        return [$emojiParts, $oldEmojis];
+    }
+}
