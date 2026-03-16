@@ -28,7 +28,7 @@ use Monolog\Handler\StreamHandler;
 $streamHandler = new StreamHandler('/var/log/novydiscordbot/log', Level::Info);
 //$streamHandler = new StreamHandler('/srv/http/novy/discord/log', Level::Debug);
 $streamHandler->setFormatter(new HtmlFormatter());
-$logger = new Logger('Novymap-qvh', [$streamHandler]);
+$logger = new Logger('Novymap', [$streamHandler]);
 $botcolor="#7d5df4";
 $discord = new Discord([
     'logger' => $logger,
@@ -63,7 +63,7 @@ $row[info]
 -# Z:$row[z]
 -# Wiki:$row[wiki]
 -# Add by:$row[addedby]
--# Screesnshot:$shot
+-# Screenshot:$shot
 -# Type:$row[marker_name]
 AAAA;
 	}else{
@@ -97,7 +97,7 @@ function websithandler (Interaction $interaction) {
 		global $botcolor;
 
 		global $discord;
-		$sitearry=["https://map.novymap-qvh.top","https://novyapi.daktoinc.co.uk","https://www.novymap-qvh.top"];
+		$sitearry=["https://novymap.daktoinc.co.uk","https://novyapi.daktoinc.co.uk","https://novy.daktoinc.co.uk"];
 	$site=' '.$sitearry[array_rand($sitearry)].' ';
 //Ripped from novymap bot
 $msg=websithandlermsg($site);
@@ -106,7 +106,7 @@ $msg=websithandlermsg($site);
             $embed->setTitle('website')
                 ->setType(Embed::TYPE_RICH)
                 ->setColor($botcolor)
-                ->setImage('https://www.novymap-qvh.top/img/novymap-qvh.png')
+                ->setImage('https://novy.daktoinc.co.uk/img/novymap-qvh.png')
                 ->setDescription($msg[array_rand($msg)]);
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 }
@@ -396,7 +396,7 @@ if(empty($a) or ($a > 25) or ($a < 0)){
 
 	  global $conn;
 $result = api_search($conn, $q,$a,$w,0);
-	 $embed=dialtodis(true,$result['data'],'Search','Found Dial :');
+	 $embed=dialtodis(true,$result['data'],'Search','Found Dial:');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });
 $discord->listenCommand('cords', function (Interaction $interaction) {
@@ -412,7 +412,7 @@ $discord->listenCommand('cords', function (Interaction $interaction) {
 	  }
 	  global $conn;
 $result = api_cords($conn, $x,$z,$r,$a,0);
-	 $embed=dialtodis(true,$result['data'],'Coords','Found Dial :');
+	 $embed=dialtodis(true,$result['data'],'Coords','Found Dial:');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });
 $discord->listenCommand('search_railline', function (Interaction $interaction) {
@@ -423,7 +423,7 @@ $discord->listenCommand('search_railline', function (Interaction $interaction) {
 	  }
 	  global $conn;
 $result = api_search_railline($conn, $q,$a);
-	 $embed=dialtodis(false,$result['data'],'Lines','Found Line :');
+	 $embed=dialtodis(false,$result['data'],'Lines','Found Line:');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });
 
@@ -433,22 +433,22 @@ $discord->listenCommand('ping', function (Interaction $interaction) use (&$disco
             $embed->setTitle('Ping')
                 ->setType(Embed::TYPE_RICH)
                 ->setColor($botcolor)
-                ->setImage('https://www.novymap-qvh.top/img/novymap-qvh.png')
-                ->setDescription('I am alive :3');
+                ->setImage('https://novy.daktoinc.co.uk/img/novymap-qvh.png')
+                ->setDescription('The bot is online');
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });
 
 $discord->listenCommand('whoami', function (Interaction $interaction) use (&$discord) {
 	global $botcolor;
 	$user=$interaction->user;
-	$out="Your username : ".disusername($user).PHP_EOL;
+	$out="Your username: ".disusername($user).PHP_EOL;
 	if(!empty($user['global_name'])){
-	$out.="Your display name : ".$user['global_name'].PHP_EOL;
+	$out.="Your display name: ".$user['global_name'].PHP_EOL;
 	} 
-	$out.="You speak : ".$interaction->locale;
+	$out.="You speak: ".$interaction->locale;
 
 	 $embed = new Embed($discord);
-            $embed->setTitle('I know who are you')
+            $embed->setTitle('I know who you are')
                 ->setType(Embed::TYPE_RICH)
                 ->setColor($botcolor)
 		->setImage(str_replace("webp","png",$user['avatar']))
@@ -477,14 +477,14 @@ $discord->listenCommand('about', function (Interaction $interaction) {
 	 global $discord;
 	 $embed = new Embed($discord);
 	 $A=<<<AAAA
-Officaly discord bot of [novymap-qvh](https://www.novymap-qvh.top/).
+Officaly discord bot of [Novymap](https://novy.daktoinc.co.uk/).
 -# Proudly powered by [DiscordPHP](https://github.com/discord-php/DiscordPHP)
 AAAA;
 
             $embed->setTitle('About')
                 ->setType(Embed::TYPE_RICH)
                 ->setColor($botcolor)
-                ->setImage('https://www.novymap-qvh.top/img/novymap-qvh.png')
+                ->setImage('https://novy.daktoinc.co.uk/img/novymap-qvh.png')
                 ->setDescription($A);
                           $interaction->respondWithMessage(MessageBuilder::new()->addEmbed($embed));
 });

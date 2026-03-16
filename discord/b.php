@@ -27,7 +27,6 @@ return[
 
 		'All hail pigwin the one true god! Also the website is'. $site.'!',
 
-		'QuteVoiceHacker the narcissistist hacker/nerd that can make qute voice! Also the website is'.$site.'!',
 
 ];
 }
