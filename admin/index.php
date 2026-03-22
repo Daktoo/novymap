@@ -26,7 +26,7 @@ echo "<h1 class=\"qvhtile\">Admin Panel</h1><h1 class=\"qvhtilesmall\">Welcome, 
                     <h3>Marker Admin Panel</h3>
 	    </div>
 <div onclick="window.location.assign(&quot;/admin_regions&quot;)" class="feature-card">
-		    <h3>Town Region Admin Panel</h3>
+		    <h3>Town Borders Admin Panel</h3>
 	    </div>
 <div onclick="window.location.assign(&quot;/phpinfo&quot;)" class="feature-card">
                     <h3>Server Info</h3>

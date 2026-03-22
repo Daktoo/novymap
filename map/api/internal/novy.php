@@ -196,7 +196,7 @@ $response['sets']['regions'] = [
 	"circles" => new stdClass(),
 	"markers" => new stdClass(),
 	"lines" => new stdClass(),
-	"label" => "Regions",
+	"label" => "Town Borders",
 	"areas" => $regions,
 	"layerprio" => 2,
 ];

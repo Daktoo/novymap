@@ -5,19 +5,19 @@ $region_id = isset($_GET['region_id']) ? intval($_GET['region_id']) : 0;
 $coord_id = isset($_GET['coord_id']) ? intval($_GET['coord_id']) : 0;
 $customhead = "";
 if ($_SERVER['PATH_INFO'] === "/add") {
-    $pagetitle = "Manage Regions";
+    $pagetitle = "Manage Town Borders";
     $action = "add";
 } elseif ($_SERVER['PATH_INFO'] === "/deregion") {
     $action = "deregion";
 } elseif ($_SERVER['PATH_INFO'] === "/edit") {
-    $pagetitle = "Manage Regions";
+    $pagetitle = "Manage Town Borders";
     $action = "edit";
 } elseif ($_SERVER['PATH_INFO'] === "/delcoord") {
     $action = "delcoord";
 } elseif ($_SERVER['PATH_INFO'] === "/upcoord") {
     $action = "upcoord";
 } elseif ($_SERVER['PATH_INFO'] === "/coord") {
-    $pagetitle = "Manage Region Coords";
+    $pagetitle = "Manage Town Border Coords";
     $action = "coord";
     $customhead = '<script src="/js/admin_regions_coord_editor.js"></script>';
 } else {
@@ -123,9 +123,9 @@ echo(admin_navbar());
 ?>
 <body>
     <div class="center">
-    <?php if ($action !== 'coord'): pageView("Manage Regions :map:"); ?>
+    <?php if ($action !== 'coord'): pageView("Manage Town Borders :map:"); ?>
         <div class="settings-container">
-            <h1 class="qvhtile"><?php echo ($action === 'edit') ? 'Edit Region' : 'Add New Region'; ?></h1>
+            <h1 class="qvhtile"><?php echo ($action === 'edit') ? 'Edit Town Border' : 'Add New Town Border'; ?></h1>
             <?php
             $rawedit = ['id' => 0, 'name' => '', 'color' => '', 'info' => '', 'wiki' => '', 'main_dial' => '', 'owners' => '', 'members' => '', 'railways' => ''];
             if ($action === 'edit' && $region_id > 0) {
@@ -153,13 +153,13 @@ echo(admin_navbar());
                 <input type="text" name="members" class="input" value="<?php echo $edit['members']; ?>">
                 <label>Railways:</label>
                 <input type="text" name="railways" class="input" value="<?php echo $edit['railways']; ?>">
-                <button type="submit" id="submit-btn"><?php echo ($edit['id'] > 0) ? 'Save' : 'Add Region'; ?></button>
+                <button type="submit" id="submit-btn"><?php echo ($edit['id'] > 0) ? 'Save' : 'Add Town Border'; ?></button>
                 <?php echo ($edit['id'] > 0) ? '<button type="button" id="submit-btn" onclick="window.location.assign(&quot;/admin_regions&quot;)">Cancel</button>' : ''; ?>
             </form>
         </div>
 
         <div class="settings-container">
-            <h1 class="qvhtile">Regions</h1>
+            <h1 class="qvhtile">Town Borders</h1>
             <h1 class="qvhtilesmall">Click the color to copy it</h1>
             <table class="table">
                 <tr><th>ID</th><th>Name</th><th>Info</th><th>Main Dial</th><th>Color</th><th>Added by</th><th>Actions</th></tr>
@@ -195,7 +195,7 @@ echo(admin_navbar());
         </div>
     <?php endif; ?>
 
-    <?php if ($action === 'coord'): pageView("Manage Region Coords :map:"); ?>
+    <?php if ($action === 'coord'): pageView("Manage Town Border Coords :map:"); ?>
         <?php
         $regionRes = mysqli_query($conn, "SELECT * FROM `regions` WHERE id=$region_id");
         $region = mysqli_fetch_assoc($regionRes);
@@ -213,7 +213,7 @@ echo(admin_navbar());
                     <option value="start">Start</option>
                 </select>
                 <button type="submit" id="submit-btn">Add</button>
-                <button type="button" onclick='window.location.assign("/admin_regions");' id="submit-btn">&larr; Back to Regions</button>
+                <button type="button" onclick='window.location.assign("/admin_regions");' id="submit-btn">&larr; Back to Town Borders</button>
             </form>
         </div>
         <div class="settings-container">
