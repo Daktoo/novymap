@@ -70,13 +70,14 @@ $dialRow['admin']="Who?";
 		$resdesc .= "</div>";
 
     $dialres[$dialRow['marker_id']]["markers"][$dialRow['id']] = [
-        "label" => $dialRow['name'],
+        "label" => $dialRow['name'] . "
+" . $dialRow['dial'],
         "desc" => $resdesc,
         "x" => $dialRow['x'],
         "y" => $dialRow['y'],
         "z" => $dialRow['z'],
         "icon" => $lowcaseicon,
-        "info" => $dialRow['name']
+        "info" => $dialRow['dial']
     ];
 }
 

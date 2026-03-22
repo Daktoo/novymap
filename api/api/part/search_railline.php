@@ -3,10 +3,6 @@ function api_search_railline($conn,$rawq,$rawa) {
 $conn=reconnectdb($conn);
 
 $q = mysqli_real_escape_string($conn, $rawq);
-$a = is_numeric($rawa) ? (int)$rawa : 0;
-$w = mysqli_real_escape_string($conn, $raww);
-if (! ((!empty($w)) || $w == 'dial' || $w == 'name' || $w == 'both')){
-          $w="both";
           }
 
 // Debugging: Initialize the response array with the query parameters

@@ -8,6 +8,7 @@ include_once('../../../shared/db.php');
 include('../../../shared/webhook.php');
 include('../../../shared/san.php');
 include_once('../../../shared/credential.php');
+include_once('/etc/novy/shared/api/regions.php');
 $conn=reconnectdb($conn);
 
 
@@ -187,6 +188,17 @@ $response["sets"]["markers"]=[
             "markers" => [],
             "lines" => [],
             "layerprio" => 0
+];
+
+$regions = api_regions($conn);
+$response['sets']['regions'] = [
+	"hide"	=> false,
+	"circles" => new stdClass(),
+	"markers" => new stdClass(),
+	"lines" => new stdClass(),
+	"label" => "Regions",
+	"areas" => $regions,
+	"layerprio" => 2,
 ];
 
 // Close DB connection

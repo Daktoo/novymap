@@ -38,61 +38,43 @@ $init_called = false;
 $application_init_called = false;
 
 function dialtodis($D,$C,$A,$B="") {
-	global $botcolor;
-	global $discord;
-	$E=0;
-	 $embed = new Embed($discord);
- $embed->setTitle($A)
-                ->setType(Embed::TYPE_RICH)
-                ->setColor($botcolor);
-	foreach($C as $row){
-if ($D) {
-	if ($row['screenshot']==="No Screenshot"){
-  $shot="No Screenshot";
-	} else {
-  $shot='https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id'];
-	}
-
+    global $botcolor;
+    global $discord;
+    $E=0;
+    $embed = new Embed($discord);
+    $embed->setTitle($A)
+        ->setType(Embed::TYPE_RICH)
+        ->setColor($botcolor);
+    foreach($C as $row){
+        if ($D) {
+            $shot = (empty($row['screenshot']) || $row['screenshot']==="No Screenshot")
+                ? "No Screenshot"
+                : 'https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id'];
+            $info = empty($row['info']) ? "No info" : $row['info'];
+            $wiki = empty($row['wiki']) ? "Not on wiki" : $row['wiki'];
+            $dial = empty($row['dial']) ? "N/A" : $row['dial'];
+            $F = "/dial $dial\n$info\n-# ID:{$row['id']}\n-# X:{$row['x']}\n-# Y:{$row['y']}\n-# Z:{$row['z']}\n-# Wiki:$wiki\n-# Add by:{$row['addedby']}\n-# Screenshot:$shot\n-# Type:{$row['marker_name']}";
+        } else {
+            $info = empty($row['info']) ? "No info" : $row['info'];
+            $wiki = empty($row['wiki']) ? "Not on wiki" : $row['wiki'];
+            $name = empty($row['name']) ? "Unknown" : $row['name'];
+            $F = "$info\n-# ID:{$row['id']}\n-# Rail Name: $name\n-# Wiki:$wiki\n-# Add by:{$row['addedby']}";
+        }
+        $name = empty($row['name']) ? "Unknown" : $row['name'];
+        $embed->addField([
+            'name' => $name,
+            'value' => $F,
+            'inline' => true,
+        ]);
+        $E++;
+    }
+    if ($D && $E===1 && !empty($row['screenshot']) && $row['screenshot']!=="No Screenshot") {
+        $embed->setImage('https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id']);
+    }
+    if (!empty($B)) { $embed->setDescription($B.$E); }
+    return $embed;
+}
 	
-		$F = <<< AAAA
-/dial $row[dial]		
-$row[info]
--# ID:$row[id]
--# X:$row[x]
--# Y:$row[y]
--# Z:$row[z]
--# Wiki:$row[wiki]
--# Add by:$row[addedby]
--# Screenshot:$shot
--# Type:$row[marker_name]
-AAAA;
-	}else{
-	$F = <<< AAAA
-$row[info]
--# ID:$row[id]
--# Rail Name : $row[name]		
--# Wiki:$row[wiki]
--# Add by:$row[addedby]
-AAAA;
-	}
-		$embed ->addField([
-                    'name' => $row['name'],
-                    'value' => $F,
-                    'inline' => true,
-                ]);
-		$E++;
-
-}
-if ($D) {
-if($E===1){
-	if (!($row['screenshot']==="No Screenshot")){
-		$embed->setImage('https://novyapi.daktoinc.co.uk/api/staging/shot?id='.$row['id']);
-	}
-}
-}
-		if (!(empty($B))){$embed->setDescription($B.$E);}
-		return($embed);
-}
 function websithandler (Interaction $interaction) {
 		global $botcolor;
 
