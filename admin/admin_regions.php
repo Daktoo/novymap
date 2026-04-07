@@ -51,6 +51,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $result = mysqli_query($conn, $sql);
         if ($result) {
             sqlEdit(($action === "edit" ? "Updated" : "Added") . " region :map: ```sql\n" . $sql . "````$result`");
+            auditlog($action === "edit" ? 'edit' : 'add', 'Town Border', [
+                'name'      => $saninfo['name'],
+                'color'     => $saninfo['color'],
+                'info'      => $saninfo['info'],
+                'main_dial' => $saninfo['main_dial'],
+                'owners'    => $saninfo['owners'],
+                'members'   => $saninfo['members'],
+                'railways'  => $saninfo['railways'],
+                'wiki'      => $saninfo['wiki']
+            ]);
         } else {
             die(mysqli_error($conn));
         }
@@ -108,10 +118,15 @@ if ($action === 'delcoord') {
 }
 
 if ($action === "deregion") {
+    $namerow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT name FROM `regions` WHERE id=$region_id"));
     $sql = "DELETE FROM `regions` WHERE id=$region_id";
     $result = mysqli_query($conn, $sql);
     if ($result) {
         sqlEdit("Deleted region :map: ```sql\n" . $sql . "````$result`");
+        auditlog('delete', 'Town Border', [
+            'name' => $namerow['name'] ?? "ID $region_id",
+            'id'   => $region_id
+        ]);
     } else {
         die(mysqli_error($conn));
     }

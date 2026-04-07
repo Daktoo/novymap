@@ -10,14 +10,14 @@ pageView("Edit POI :wrench::triangular_flag_on_post::paintbrush:");
     <div class="settings-container-top">
         <form action=""  enctype="multipart/form-data" class="form" method="post">
             <label for="id">ID:</label>
-	    <input type="number" id="id" name="id" class="input" placeholder="ID" value="<?php
+	   <input type="number" id="id" name="id" class="input" placeholder="ID" value="<?php
                 $daid = intval($_GET['id']) ?? '';
  if (!empty($daid)){echo ($daid);} ?>" required>
 
             <?php
 $error='';
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-		    $san=sqlsan([
+		   $san=sqlsan([
                 'id' => $_POST['id'],
                 'name' => $_POST['name'],
                 'dial' => $_POST['dial'],
@@ -38,7 +38,7 @@ $error=$rawstatus[3];
 
                 if ($san['x'] > 20001 || $san['x'] < -20001 || $san['z'] > 20001 || $san['z'] < -20001) {
                     $error="The cordiantes are outside of the map";
-	    } elseif($uploadfailed){} else {
+	   } elseif($uploadfailed){} else {
 if ($shotid==="No Screenshot"){
 	$shotsql="";
 }else {
@@ -55,6 +55,16 @@ if (!($removeshot === "No Screenshot")) {
                     $query = "UPDATE `novy` SET `name`='$san[name]',`dial`='$san[dial]',`x`='$san[x]',`y`='$san[y]',`z`='$san[z]',`marker`='$san[marker]',`info`='$san[info]', `wiki`='$san[wiki]'  $shotsql WHERE `id` = $san[id];";
                     $result = mysqli_query($conn, $query);
                     sqlEdit("edited poi :wrench::triangular_flag_on_post::paintbrush: ```sql\n".$query."````$result`");
+                    auditlog('edit', 'POI', [
+                        'name'   => $san['name'],
+                        'dial'   => $san['dial'],
+                        'x'      => $san['x'],
+                        'y'      => $san['y'],
+                        'z'      => $san['z'],
+                        'marker' => $san['marker'],
+                        'info'   => $san['info'],
+                        'wiki'   => $san['wiki']
+                    ]);
     
                     if ($result) {
                         $error="POI updated successfully!";
@@ -96,7 +106,7 @@ if (!($removeshot === "No Screenshot")) {
             <input type="number" id="x" name="x" class="input" placeholder="X" value="<?php if (isset($_GET['id'])){echo $san['x'];}?>" required>
 
    <label for="y">Y:</label>
-	    <input type="number" id="y" name="y" class="input" placeholder="Y" value="<?php if (isset($_GET['id'])){echo $san['y'];}?>" required>
+	   <input type="number" id="y" name="y" class="input" placeholder="Y" value="<?php if (isset($_GET['id'])){echo $san['y'];}?>" required>
 
             <label for="z">Z:</label>
             <input type="number" id="z" name="z" class="input" placeholder="Z" value="<?php if (isset($_GET['id'])){echo $san['z'];}?>" required>
@@ -150,7 +160,7 @@ if (!($removeshot === "No Screenshot")) {
 		}
 ?>
             <input type="submit" value="Update POI" id="submit-btn" onclick="return shotrufksure();" class="input">
-	    <input type="button" value="Delete POI" id="submit-btn" class="input" onclick="rufksure(&quot;deletepoi?id=<?php echo($daid);?>&quot;,&quot;poi&quot;)">
+	   <input type="button" value="Delete POI" id="submit-btn" class="input" onclick="rufksure(&quot;deletepoi?id=<?php echo($daid);?>&quot;,&quot;poi&quot;)">
  <input type="button" value="Cancel and Return to Manage POI" id="submit-btn" class="input" onclick='window.location.assign("/admin_poi")'>
 
         </form>
@@ -158,4 +168,3 @@ if (!($removeshot === "No Screenshot")) {
     </div>
 </div>    <?php include '../shared/footer.php'; ?>
 </body>
-

@@ -20,7 +20,7 @@ pageView("Add POI :wrench::triangular_flag_on_post::pen_fountain:");
             <label for="x">X:</label>
             <input type="number" id="x" name="x" class="input" placeholder="X" required>
 
-	 <label for="y">Y:</label>
+	<label for="y">Y:</label>
             <input type="number" id="y" value="64" name="y" class="input" placeholder="X" required>
 
 
@@ -43,7 +43,7 @@ pageView("Add POI :wrench::triangular_flag_on_post::pen_fountain:");
 		$san=htmlsan([
                     'id' => $row['id'],
                     'name' => $row['name'],
-		    'icon' => $row['icon']
+		   'icon' => $row['icon']
 		]);
     echo (dropdownbtu("marker",$san['name'],$san['id'],"https://map.novymap-qvh.top/hack/_markers_/".$san['icon'].".png")); 
 
@@ -56,7 +56,7 @@ pageView("Add POI :wrench::triangular_flag_on_post::pen_fountain:");
             <label for="info">Info:<sup class="admin-notreq">*</sup></label>
             <textarea id="info" name="info" class="ta" placeholder="Info"></textarea>
             <label for="info">Screenshot:<sup class="admin-notreq">*</sup></label>
-	    <input type="file" id="shot-upload" name="screenshot" <?php echo($shotallowfiletag); ?> class="input">
+	   <input type="file" id="shot-upload" name="screenshot" <?php echo($shotallowfiletag); ?> class="input">
 
             <input type="submit" value="Add POI" id="submit-btn" class="input">
  <input type="button" value="Cancel and Return to Manage POI" id="submit-btn" class="input" onclick='window.location.assign("/admin_poi")'>
@@ -80,20 +80,31 @@ $error=$rawstatus[3];
            'wiki' => $_POST['wiki'],
            'marker' => $_POST['marker'],
            'info' =>   $_POST['info'],
-	   'admin' =>  $fuckinguserinfo['name']],$conn);
+	  'admin' =>  $fuckinguserinfo['name']],$conn);
 
 
             if ($sen['x'] > 20001 || $sen['x'] < -20001 || $sen['z'] > 20001 || $sen['z'] < -20001) {
                 $error="The cordiantes are outside of the map";
-	    } elseif($uploadfailed){}else {
+	   } elseif($uploadfailed){}else {
 
                           $query = "INSERT INTO `novy`( `id`, `name`, `dial`, `x`,`y`, `z`, `marker`, `info`,`admin`,`shot`,`wiki`) VALUES (NULL, '$sen[name]', '$sen[dial]', $sen[x],$sen[y], $sen[z], $sen[marker], '$sen[info]','$sen[admin]','$shotid','$sen[wiki]')";
                 $result = mysqli_query($conn, $query);
-	    $newid=mysqli_insert_id($conn);
+	   $newid=mysqli_insert_id($conn);
 
                 if ($result) {
                     $error="POI added successfully!";
                     sqlEdit("added poi :wrench::triangular_flag_on_post::pen_fountain: ```sql\n".$query."````$result`");
+                    auditlog('add', 'POI', [
+                        'name'   => $sen['name'],
+                        'dial'   => $sen['dial'],
+                        'x'      => $sen['x'],
+                        'y'      => $sen['y'],
+                        'z'      => $sen['z'],
+                        'marker' => $sen['marker'],
+                        'info'   => $sen['info'],
+                        'shot'   => $shotid,
+                        'wiki'   => $sen['wiki']
+                    ]);
                 } else {
                     $error="Failed to add POI!";
                 }
@@ -107,4 +118,3 @@ echo ("<p class='error'>".$error."</p>");
     </div>
 </div>    <?php include '../shared/footer.php'; ?>
 </body>
-
